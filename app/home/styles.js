@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         columnGap: 8,
-        width: 200
+        width: 150
     },
 
     song: {
