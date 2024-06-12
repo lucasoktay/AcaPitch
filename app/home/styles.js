@@ -4,8 +4,8 @@ const styles = StyleSheet.create({
     fullscreen: {
         flexGrow: 1,
         // backgroundColor: 'grey',
-        marginTop: 64,
-        marginHorizontal: 16,
+        paddingTop: 64,
+        paddingHorizontal: 20,
     },
 
     searchbar: {
@@ -56,6 +56,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'space-between',
         padding: 8,
+        marginVertical: 4
     },
 
     songwrapperleft: {
@@ -67,7 +68,6 @@ const styles = StyleSheet.create({
     },
 
     song: {
-        // backgroundColor: 'blue',
         fontSize: 22,
     },
 
@@ -121,10 +121,21 @@ const styles = StyleSheet.create({
     },
 
     playicon: {
-        height: 52,
-        width: 52,
+        borderWidth: 2,
+        height: 48,
+        width: 48,
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        flexGrow: 0,
+        borderRadius: "50%",
+        margin: 8
+    },
+
+    bottomline: {
+        width: '104%',
+        borderWidth: .5,
+        borderColor: 'black',
+        marginLeft: '-2%',
     }
 });
 
