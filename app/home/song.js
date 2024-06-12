@@ -1,8 +1,10 @@
-import { Text, View } from "react-native"
-import PlayIcon from "./playicon"
-import styles from "./styles"
+import { Text, View } from "react-native";
+import PlayIcon from "./playicon";
+import styles from "./styles";
 
 const Song = ({ title, tempo, artist, notes }) => {
+
+    const formatnotes = notes.join(", ");
 
     return (
         <View style={styles.songwrapper}>
@@ -15,7 +17,7 @@ const Song = ({ title, tempo, artist, notes }) => {
             </View>
             <View style={styles.songinfo}>
                 <Text numberOfLines={1}>{tempo} BPM</Text>
-                <Text numberOfLines={1}>{notes}</Text>
+                <Text numberOfLines={1}>{formatnotes}</Text>
             </View>
         </View>
     )

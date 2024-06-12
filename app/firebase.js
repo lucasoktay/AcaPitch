@@ -2,6 +2,7 @@ import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
+
 const firebaseConfig = {
     apiKey: "AIzaSyD2-sRbPud08IjZCqVTg948ZJdhZ-0QJ8Q",
     authDomain: "acapitch-5c6c2.firebaseapp.com",
@@ -14,6 +15,11 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
+
+// const firestoreDB = initializeFirestore(firebaseApp, {
+//     experimentalForceLongPolling: true, // this line
+//     useFetchStreams: false, // and this line
+// })
 
 export const auth = getAuth(app);
 export const firestore = getFirestore(app);
