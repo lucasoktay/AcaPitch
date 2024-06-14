@@ -1,4 +1,4 @@
-package com.lucasoktay.acapitch2
+package com.acapitch2
 
 import android.os.Build
 import android.os.Bundle
