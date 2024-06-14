@@ -26,5 +26,7 @@
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
 	<string>1:63437970168:ios:44ea4e50c1562fdb31790d</string>
+	<key>DATABASE_URL</key>
+	<string>https://acapitch2-default-rtdb.firebaseio.com</string>
 </dict>
 </plist>
