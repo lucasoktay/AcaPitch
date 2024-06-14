@@ -1,10 +1,10 @@
-import firestore from '@react-native-firebase/firestore';
+// import firestore from '@react-native-firebase/firestore';
 import { useState } from 'react';
 import { ScrollView } from 'react-native';
 import Song from './song.js';
 import styles from './styles.js';
 
-const usersCollection = firestore().collection('Users');
+// const usersCollection = firestore().collection('users');
 
 const SongList = () => {
     const [songlist, setsonglist] = useState([
