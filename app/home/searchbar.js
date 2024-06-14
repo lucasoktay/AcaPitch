@@ -1,5 +1,5 @@
 import { Text, View } from 'react-native';
-import styles from './styles.js';
+import styles from '../styles.js';
 
 const SearchBar = () => {
     return (

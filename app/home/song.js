@@ -1,6 +1,6 @@
 import { Text, View } from "react-native";
+import styles from "../styles";
 import PlayIcon from "./playicon";
-import styles from "./styles";
 
 const Song = ({ title, tempo, artist, notes }) => {
 

@@ -1,10 +1,10 @@
 import { Text, View } from 'react-native';
 import NavBar from '../navbar/navbar.js';
+import styles from '../styles.js';
 import PlusButton from './plusbutton.js';
 import SearchBar from './searchbar.js';
 import SettingsIcon from './settingsicon.js';
 import SongList from './songlist.js';
-import styles from './styles.js';
 
 const Home = () => {
     return (

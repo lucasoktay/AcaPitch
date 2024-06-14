@@ -1,27 +1,33 @@
-// import firestore from '@react-native-firebase/firestore';
-import { useState } from 'react';
+import firestore from '@react-native-firebase/firestore';
+import { useEffect, useState } from 'react';
 import { ScrollView } from 'react-native';
-import Song from './song.js';
-import styles from './styles.js';
-
-// const usersCollection = firestore().collection('users');
+import styles from '../styles';
+import Song from './song';
 
 const SongList = () => {
-    const [songlist, setsonglist] = useState([
-        { title: "Colors", tempo: 120, artist: "Black Pumas", notes: ["F#", "A", "C"] },
-        { title: "Feel Like Myself", tempo: 130, artist: "Jonny West", notes: ["Db", "F", "Ab"] },
-        { title: "Parking Lot", tempo: 140, artist: "Genevieve Stokes", notes: ["G", "C"] },
-        { title: "Let Me Go", tempo: 150, artist: "Ogi", notes: ["Db", "E", "A"] },
-        { title: "Echo", tempo: 160, artist: "Olivia Dean", notes: ["Bb", "Bb"] },
-        { title: "Sunday", tempo: 170, artist: "Office Hours", notes: ["G", "A", "D", "F#", "G", "A", "D", "F#"] },
-        { title: "song7", tempo: 180, artist: "Lucas OK", notes: ["F#", "A", "C"] },
-        { title: "song8", tempo: 190, artist: "Lucas OK", notes: ["F#", "A", "C"] },
-        { title: "song9", tempo: 200, artist: "Lucas OK", notes: ["F#", "A", "C"] },
-    ]);
-    const containerstyle = {
-        justifyContent: 'space-between',
-        rowGap: 8
-    }
+
+    const [songDetails, setSongDetails] = useState([]);
+
+    useEffect(() => {
+        const songsCollection = firestore().collection('songs');
+        songsCollection.get()
+            .then((querySnapshot) => {
+                const songsList = [];
+                querySnapshot.forEach((doc) => {
+                    const songData = doc.data();
+                    songsList.push({
+                        title: songData.title,
+                        tempo: songData.tempo,
+                        artist: songData.artist,
+                        notes: songData.notes
+                    });
+                });
+                setSongDetails(songsList);
+            })
+            .catch((error) => {
+                console.error('Error fetching songs:', error);
+            });
+    })
 
     const AddSong = (title) => {
         setsonglist([songlist, title]);
@@ -30,11 +36,10 @@ const SongList = () => {
     return (
         <ScrollView
             style={styles.songlist}
-            contentContainerStyle={containerstyle}
             showsVerticalScrollIndicator={false}
             showsHorizontalScrollIndicator={false}
         >
-            {songlist.map(({ title, tempo, artist, notes }, index) => (
+            {songDetails.map(({ title, tempo, artist, notes }, index) => (
                 <Song key={index} title={title} tempo={tempo} artist={artist} notes={notes} />
             ))}
         </ScrollView>

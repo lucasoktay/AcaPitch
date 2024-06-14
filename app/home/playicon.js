@@ -1,7 +1,7 @@
 import { faPlay } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { View } from "react-native";
-import styles from "./styles";
+import styles from "../styles";
 
 const PlayIcon = () => {
     return (
@@ -9,7 +9,7 @@ const PlayIcon = () => {
             <View style={styles.playicon}>
                 <FontAwesomeIcon
                     icon={faPlay}
-                    size={28}
+                    size={22}
                     style={{ marginLeft: 4 }}
                 />
             </View>

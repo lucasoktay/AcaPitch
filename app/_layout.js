@@ -9,6 +9,7 @@ const MyStack = () => {
     return (
         <NavigationContainer independent="true">
             <Stack.Navigator screenOptions={{
+                animation: 'none',
                 headerShown: false,
                 orientation: 'portrait',
             }}>
@@ -26,6 +27,7 @@ const MyStack = () => {
                 <Stack.Screen
                     name="Settings"
                     component={Settings}
+                    options={{ animation: "slide_from_right" }}
                 />
             </Stack.Navigator>
         </NavigationContainer>
