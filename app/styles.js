@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
 
     songlist: {
         flexDirection: 'column',
-        height: "73%",
+        height: "76%",
         overflow: 'scroll',
         flexGrow: 0,
     },
@@ -106,7 +106,7 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-start',
         padding: 8,
         paddingLeft: 20,
-        marginTop: 16
+        marginTop: 8
     },
 
     navbar: {
