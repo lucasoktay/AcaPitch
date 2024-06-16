@@ -1,15 +1,20 @@
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { Text, View } from "react-native";
+// import { useNavigation } from "@react-navigation/native";
+import { Pressable, Text, View } from "react-native";
 import styles from "../styles";
 
-const PlusButton = () => {
+const PlusButton = ({ onPlusButtonPress }) => {
+    // const navigation = useNavigation();
+
     return (
         <View >
-            <View style={styles.plusbutton}>
-                <FontAwesomeIcon icon={faPlus} size={32} style={{ marginRight: 16 }} />
-                <Text style={styles.song} numberOfLines={1}>Add Song</Text>
-            </View>
+            <Pressable onPress={onPlusButtonPress}>
+                <View style={styles.plusbutton}>
+                    <FontAwesomeIcon icon={faPlus} size={32} style={{ marginRight: 16 }} />
+                    <Text style={styles.song} numberOfLines={1}>Add Song</Text>
+                </View>
+            </Pressable>
         </View>
     )
 }

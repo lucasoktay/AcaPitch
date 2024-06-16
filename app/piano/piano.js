@@ -1,17 +1,52 @@
-import { Text, View } from "react-native";
+import { useState } from 'react';
+import { ScrollView, View } from "react-native";
+import { Piano } from 'react-native-piano';
+// import { instrument } from 'react-native-soundfont';
 import NavBar from "../navbar/navbar";
 import styles from "../styles.js";
+import PlayLocalSoundFile from './makesound.js';
 
-const Piano = () => {
+
+
+const PianoComponent = () => {
+
+    const [pianoData, setPianoData] = useState([])
+
+    const makeSound = (note) => {
+        PlayLocalSoundFile(note);
+    };
+
+    const handlePlayNote = (note) => {
+        setPianoData(pianoData => [...pianoData, note]);
+        makeSound(note);
+    }
+
+    const handleStopNote = () => {
+        // console.log(pianoData);
+    }
 
     return (
         <View style={{ backgroundColor: '#f9f5ef', flexGrow: 1 }}>
-            <View style={styles.fullscreen}>
-                <Text>Piano</Text>
+            <View style={styles.fullscreenpiano}>
+                <ScrollView
+                    horizontal={true}
+                    style={styles.pianoscrollview}
+                    showsVerticalScrollIndicator={false}
+                    showsHorizontalScrollIndicator={false}
+                >
+                    <View style={styles.pianowrapper}>
+                        <Piano
+                            noteRange={{ first: 'c1', last: 'c7' }}
+                            style={styles.piano}
+                            onPlayNoteInput={midiNumber => handlePlayNote(midiNumber)}
+                            onStopNoteInput={midiNumber => handleStopNote()}
+                        />
+                    </View>
+                </ScrollView>
             </View>
             <NavBar />
         </View>
     )
 }
 
-export default Piano
+export default PianoComponent
