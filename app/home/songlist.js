@@ -7,16 +7,18 @@ import Song from './song';
 const SongList = () => {
     const [songDetails, setSongDetails] = useState([]);
 
-    // get songlist from backend
+    const [unsubscribe, setUnsubscribe] = useState(null);
+
+    // get songlist from backend and listen for real-time updates
     useEffect(() => {
         const songsCollection = firestore().collection('songs');
-        songsCollection.get()
-            .then((querySnapshot) => {
+        const unsubscribeListener = songsCollection.onSnapshot(
+            (querySnapshot) => {
                 const songsList = [];
                 querySnapshot.forEach((doc) => {
                     const songData = doc.data();
                     songsList.push({
-                        id: doc.id, // Store the document ID
+                        id: doc.id,
                         title: songData.title,
                         tempo: songData.tempo,
                         artist: songData.artist,
@@ -24,10 +26,18 @@ const SongList = () => {
                     });
                 });
                 setSongDetails(songsList);
-            })
-            .catch((error) => {
+            },
+            (error) => {
                 console.error('Error fetching songs:', error);
-            });
+            }
+        );
+
+        // Cleanup function to unsubscribe from real-time updates
+        return () => {
+            if (unsubscribe) {
+                unsubscribe();
+            }
+        };
     }, []);
 
     const deleteSong = async (title) => {
