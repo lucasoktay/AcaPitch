@@ -5,6 +5,7 @@ import { Piano } from 'react-native-piano';
 import NavBar from "../navbar/navbar";
 import styles from "../styles.js";
 import PlayLocalSoundFile from './makesound.js';
+import NoteLabel from './notelabel.js'; // Import the NoteLabel component
 
 
 
@@ -40,6 +41,7 @@ const PianoComponent = () => {
                             style={styles.piano}
                             onPlayNoteInput={midiNumber => handlePlayNote(midiNumber)}
                             onStopNoteInput={midiNumber => handleStopNote()}
+                            children={midiNumber => <NoteLabel midiNumber={midiNumber} />}
                         />
                     </View>
                 </ScrollView>

@@ -43,13 +43,6 @@ const Song = ({ title, tempo, artist, notes, onDelete }) => {
         }
     }
 
-    // const playNotes = async () => {
-    //     notes.forEach(async note => {
-    //         makeSound(note);
-    //         await sleep(10000);
-    //     });
-    // }
-
     const formatnotes = notes.join(", ");
 
     return (
