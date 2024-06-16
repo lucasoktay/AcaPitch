@@ -60,7 +60,7 @@ const SongList = ({ numSongs, setNum }) => {
 
     if (numSongs < 7) {
         return (
-            <View style={styles.lesssongslist}>
+            <View >
                 {songDetails.map(({ title, tempo, artist, notes }, index) => (
                     <Song key={index} title={title} tempo={tempo} artist={artist} notes={notes} onDelete={deleteSong} />
                 ))}
@@ -68,15 +68,17 @@ const SongList = ({ numSongs, setNum }) => {
         )
     } else {
         return (
-            <ScrollView
-                style={styles.songlist}
-                showsVerticalScrollIndicator={false}
-                showsHorizontalScrollIndicator={false}
-            >
-                {songDetails.map(({ title, tempo, artist, notes }, index) => (
-                    <Song key={index} title={title} tempo={tempo} artist={artist} notes={notes} onDelete={deleteSong} />
-                ))}
-            </ScrollView>
+            <View>
+                <ScrollView
+                    style={styles.songlist}
+                    showsVerticalScrollIndicator={false}
+                    showsHorizontalScrollIndicator={false}
+                >
+                    {songDetails.map(({ title, tempo, artist, notes }, index) => (
+                        <Song key={index} title={title} tempo={tempo} artist={artist} notes={notes} onDelete={deleteSong} />
+                    ))}
+                </ScrollView>
+            </View>
         )
     }
 }

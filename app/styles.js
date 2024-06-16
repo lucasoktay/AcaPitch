@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
 
     lesssongslist: {
         flexDirection: 'column',
-        height: "80%",
+        height: "73%",
         overflow: 'hidden',
         flexGrow: 1,
     },
