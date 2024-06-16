@@ -16,7 +16,6 @@ const styles = StyleSheet.create({
     },
 
     searchbar: {
-        // backgroundColor: 'blue',
         borderWidth: 1,
         height: 40,
         width: "85%",
@@ -28,7 +27,6 @@ const styles = StyleSheet.create({
     },
 
     settingsicon: {
-        // backgroundColor: 'blue',
         borderWidth: 1,
         height: 40,
         width: 40,
@@ -53,7 +51,6 @@ const styles = StyleSheet.create({
     },
 
     songwrapper: {
-        // backgroundColor: 'red',
         borderWidth: 1,
         height: 64,
         borderRadius: 20,
@@ -67,7 +64,6 @@ const styles = StyleSheet.create({
     },
 
     songwrapperleft: {
-        // backgroundColor: 'grey',
         flexDirection: 'row',
         alignItems: 'center',
         columnGap: 8,
@@ -79,15 +75,20 @@ const styles = StyleSheet.create({
     },
 
     songlist: {
-        // backgroundColor: 'blue',
         flexDirection: 'column',
-        maxHeight: "60%",
+        height: "73%",
         overflow: 'scroll',
         flexGrow: 0,
     },
 
+    lesssongslist: {
+        flexDirection: 'column',
+        height: "80%",
+        overflow: 'hidden',
+        flexGrow: 1,
+    },
+
     songinfo: {
-        // backgroundColor: 'blue',
         height: 64,
         width: 120,
         justifyContent: 'space-between',
@@ -105,6 +106,7 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-start',
         padding: 8,
         paddingLeft: 20,
+        marginTop: 16
     },
 
     navbar: {
@@ -142,12 +144,11 @@ const styles = StyleSheet.create({
         width: '104%',
         borderWidth: .5,
         borderColor: 'black',
-        marginBottom: 16,
         marginLeft: '-2%',
     },
 
     fullscreenpiano: {
-        marginVertical: "10%"
+        marginVertical: "5%"
     },
 
     pianoscrollview: {
@@ -193,7 +194,6 @@ const styles = StyleSheet.create({
         height: 200,
         width: "100%",
         marginTop: 20,
-        backgroundColor: 'blue',
         marginVertical: 10
     },
 
@@ -209,7 +209,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         height: 40,
         borderRadius: 10,
-        // backgroundColor: '#DBCCC9',
         marginBottom: 8
     },
 
@@ -261,13 +260,13 @@ const styles = StyleSheet.create({
 
     deletesongbutton: {
         height: 64,
-        backgroundColor: 'red',
         borderRadius: 20,
         width: 80,
         marginLeft: 12,
         color: 'white',
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        backgroundColor: 'red'
     }
 });
 

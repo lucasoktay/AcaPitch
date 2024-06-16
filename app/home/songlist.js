@@ -1,10 +1,10 @@
 import firestore from '@react-native-firebase/firestore';
 import { useEffect, useState } from 'react';
-import { ScrollView } from 'react-native';
+import { ScrollView, View } from 'react-native';
 import styles from '../styles';
 import Song from './song';
 
-const SongList = () => {
+const SongList = ({ numSongs, setNum }) => {
     const [songDetails, setSongDetails] = useState([]);
 
     const [unsubscribe, setUnsubscribe] = useState(null);
@@ -26,6 +26,7 @@ const SongList = () => {
                     });
                 });
                 setSongDetails(songsList);
+                setNum(songsList.length);
             },
             (error) => {
                 console.error('Error fetching songs:', error);
@@ -57,17 +58,27 @@ const SongList = () => {
         }
     }
 
-    return (
-        <ScrollView
-            style={styles.songlist}
-            showsVerticalScrollIndicator={false}
-            showsHorizontalScrollIndicator={false}
-        >
-            {songDetails.map(({ title, tempo, artist, notes }, index) => (
-                <Song key={index} title={title} tempo={tempo} artist={artist} notes={notes} onDelete={deleteSong} />
-            ))}
-        </ScrollView>
-    )
+    if (numSongs < 7) {
+        return (
+            <View style={styles.lesssongslist}>
+                {songDetails.map(({ title, tempo, artist, notes }, index) => (
+                    <Song key={index} title={title} tempo={tempo} artist={artist} notes={notes} onDelete={deleteSong} />
+                ))}
+            </View>
+        )
+    } else {
+        return (
+            <ScrollView
+                style={styles.songlist}
+                showsVerticalScrollIndicator={false}
+                showsHorizontalScrollIndicator={false}
+            >
+                {songDetails.map(({ title, tempo, artist, notes }, index) => (
+                    <Song key={index} title={title} tempo={tempo} artist={artist} notes={notes} onDelete={deleteSong} />
+                ))}
+            </ScrollView>
+        )
+    }
 }
 
 export default SongList;

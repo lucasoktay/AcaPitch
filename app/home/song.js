@@ -16,7 +16,7 @@ const Song = ({ title, tempo, artist, notes, onDelete }) => {
         });
 
         return (
-            <View style={{ justifyContent: 'center', height: "100%" }}>
+            <View style={{ justifyContent: 'center', height: "100%" }} >
                 <Animated.View style={{ transform: [{ translateX: trans }] }}>
                     <Pressable
                         onPress={() => onDelete(title)}
@@ -25,7 +25,7 @@ const Song = ({ title, tempo, artist, notes, onDelete }) => {
                         <FontAwesomeIcon icon={faTrash} size={24} />
                     </Pressable>
                 </Animated.View>
-            </View>
+            </View >
         );
     };
 

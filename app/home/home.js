@@ -1,7 +1,7 @@
 import firestore from '@react-native-firebase/firestore';
 import { useRoute } from '@react-navigation/native';
-import React, { useRef } from 'react';
-import { Text, View } from 'react-native';
+import React, { useRef, useState } from 'react';
+import { ScrollView, Text, View } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { Modalize } from 'react-native-modalize';
 import NavBar from '../navbar/navbar.js';
@@ -44,6 +44,29 @@ const Home = () => {
         modalizeRef.current?.close();
     }
 
+    const [numSongs, setNumSongs] = useState(0);
+
+    const SongSubList = () => {
+
+        if (numSongs < 7) {
+            return (
+                <ScrollView style={styles.lesssongslist}>
+                    <SongList numSongs={numSongs} setNum={setNumSongs} />
+                    <PlusButton onPlusButtonPress={handlePlusButtonPress} />
+                </ScrollView>
+            )
+        } else {
+            return (
+                <View>
+                    <SongList numSongs={numSongs} setNum={setNumSongs} />
+                    <View style={styles.bottomline}></View>
+                    <PlusButton onPlusButtonPress={handlePlusButtonPress} />
+                </View>
+            )
+        }
+    }
+
+
     return (
         <GestureHandlerRootView style={{ flex: 1 }}>
             <View style={{ backgroundColor: '#FFFBF6', flexGrow: 1 }}>
@@ -53,9 +76,8 @@ const Home = () => {
                         <SettingsIcon />
                     </View>
                     <Text style={styles.yoursongs}>Your Songs</Text>
-                    <SongList />
-                    <View style={styles.bottomline}></View>
-                    <PlusButton onPlusButtonPress={handlePlusButtonPress} />
+                    <View style={styles.bottomline} />
+                    <SongSubList />
                 </View>
                 <NavBar />
                 <Modalize ref={modalizeRef} modalHeight={650}>
