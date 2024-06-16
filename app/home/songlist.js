@@ -5,9 +5,9 @@ import styles from '../styles';
 import Song from './song';
 
 const SongList = () => {
-
     const [songDetails, setSongDetails] = useState([]);
 
+    // get songlist from backend
     useEffect(() => {
         const songsCollection = firestore().collection('songs');
         songsCollection.get()
@@ -16,6 +16,7 @@ const SongList = () => {
                 querySnapshot.forEach((doc) => {
                     const songData = doc.data();
                     songsList.push({
+                        id: doc.id, // Store the document ID
                         title: songData.title,
                         tempo: songData.tempo,
                         artist: songData.artist,
@@ -27,10 +28,23 @@ const SongList = () => {
             .catch((error) => {
                 console.error('Error fetching songs:', error);
             });
-    })
+    }, []);
 
-    const AddSong = (title) => {
-        setsonglist([songlist, title]);
+    const deleteSong = async (title) => {
+        try {
+            // Find the song document by title
+            const songDoc = songDetails.find(song => song.title === title);
+            if (songDoc) {
+                // Delete the document from Firestore
+                await firestore().collection('songs').doc(songDoc.id).delete();
+                // Update the local state to remove the deleted song
+                setSongDetails(songDetails.filter(song => song.title !== title));
+            } else {
+                console.error('Song not found');
+            }
+        } catch (error) {
+            console.error('Error deleting song:', error);
+        }
     }
 
     return (
@@ -40,7 +54,7 @@ const SongList = () => {
             showsHorizontalScrollIndicator={false}
         >
             {songDetails.map(({ title, tempo, artist, notes }, index) => (
-                <Song key={index} title={title} tempo={tempo} artist={artist} notes={notes} />
+                <Song key={index} title={title} tempo={tempo} artist={artist} notes={notes} onDelete={deleteSong} />
             ))}
         </ScrollView>
     )

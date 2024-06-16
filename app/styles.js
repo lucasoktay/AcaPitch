@@ -257,6 +257,17 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         color: 'white',
         fontSize: 20,
+    },
+
+    deletesongbutton: {
+        height: 64,
+        backgroundColor: 'red',
+        borderRadius: 20,
+        width: 80,
+        marginLeft: 12,
+        color: 'white',
+        justifyContent: 'center',
+        alignItems: 'center'
     }
 });
 

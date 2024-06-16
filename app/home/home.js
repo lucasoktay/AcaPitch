@@ -2,6 +2,7 @@ import firestore from '@react-native-firebase/firestore';
 import { useRoute } from '@react-navigation/native';
 import React, { useRef } from 'react';
 import { Text, View } from 'react-native';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { Modalize } from 'react-native-modalize';
 import NavBar from '../navbar/navbar.js';
 import NewSong from '../newsong/newsong.js';
@@ -44,22 +45,24 @@ const Home = () => {
     }
 
     return (
-        <View style={{ backgroundColor: '#FFFBF6', flexGrow: 1 }}>
-            <View style={styles.fullscreen}>
-                <View style={styles.topbar}>
-                    <SearchBar />
-                    <SettingsIcon />
+        <GestureHandlerRootView style={{ flex: 1 }}>
+            <View style={{ backgroundColor: '#FFFBF6', flexGrow: 1 }}>
+                <View style={styles.fullscreen}>
+                    <View style={styles.topbar}>
+                        <SearchBar />
+                        <SettingsIcon />
+                    </View>
+                    <Text style={styles.yoursongs}>Your Songs</Text>
+                    <SongList />
+                    <View style={styles.bottomline}></View>
+                    <PlusButton onPlusButtonPress={handlePlusButtonPress} />
                 </View>
-                <Text style={styles.yoursongs}>Your Songs</Text>
-                <SongList />
-                <View style={styles.bottomline}></View>
-                <PlusButton onPlusButtonPress={handlePlusButtonPress} />
+                <NavBar />
+                <Modalize ref={modalizeRef} modalHeight={650}>
+                    <NewSong onSaveButtonPress={handleSaveButtonPress} noteMessage={noteMessage} />
+                </Modalize>
             </View>
-            <NavBar />
-            <Modalize ref={modalizeRef} modalHeight={650}>
-                <NewSong onSaveButtonPress={handleSaveButtonPress} noteMessage={noteMessage} />
-            </Modalize>
-        </View>
+        </GestureHandlerRootView>
     );
 }
 

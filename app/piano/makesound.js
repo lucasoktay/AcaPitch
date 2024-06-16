@@ -6,7 +6,7 @@ const PlayLocalSoundFile = (note) => {
     const nextLetter = { 'A': 'B', 'B': 'C', 'C': 'D', 'D': 'E', 'E': 'F', 'F': 'G', 'G': 'A' };
 
     const checkSharp = (note) => {
-        if (note.length === 3) {
+        if (note.length === 3 && note[1] === '#') {
             note = nextLetter[note[0]] + 'b' + note[2];
         }
         return note;

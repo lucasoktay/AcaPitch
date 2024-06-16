@@ -1,25 +1,75 @@
-import { Text, View } from "react-native";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
+import { Animated, Pressable, Text, View } from "react-native";
+import { Swipeable } from 'react-native-gesture-handler';
+import PlayLocalSoundFile from '../piano/makesound.js';
 import styles from "../styles";
 import PlayIcon from "./playicon";
 
-const Song = ({ title, tempo, artist, notes }) => {
+const Song = ({ title, tempo, artist, notes, onDelete }) => {
+
+    const renderRightActions = (progress, dragX) => {
+        const trans = dragX.interpolate({
+            inputRange: [0, 400],
+            outputRange: [0, -400],
+            extrapolate: 'clamp',
+        });
+
+        return (
+            <View style={{ justifyContent: 'center', height: "100%" }}>
+                <Animated.View style={{ transform: [{ translateX: trans }] }}>
+                    <Pressable
+                        onPress={() => onDelete(title)}
+                        style={styles.deletesongbutton}
+                    >
+                        <FontAwesomeIcon icon={faTrash} size={24} />
+                    </Pressable>
+                </Animated.View>
+            </View>
+        );
+    };
+
+    const sleep = (delay) => new Promise((resolve) => setTimeout(resolve, delay))
+
+    const makeSound = (note) => {
+        PlayLocalSoundFile(note);
+    };
+
+    const playNotes = async () => {
+        // for loop
+        for (let i = 0; i < notes.length; i++) {
+            makeSound(notes[i]);
+            await sleep(550);
+        }
+    }
+
+    // const playNotes = async () => {
+    //     notes.forEach(async note => {
+    //         makeSound(note);
+    //         await sleep(10000);
+    //     });
+    // }
 
     const formatnotes = notes.join(", ");
 
     return (
-        <View style={styles.songwrapper}>
-            <View style={styles.songwrapperleft}>
-                <PlayIcon />
-                <View >
-                    <Text style={styles.song} numberOfLines={1}>{title}</Text>
-                    <Text numberOfLines={1}>{artist}</Text>
+        <Swipeable renderRightActions={renderRightActions}>
+            <View style={styles.songwrapper}>
+                <View style={styles.songwrapperleft}>
+                    <Pressable onPress={playNotes}>
+                        <PlayIcon />
+                    </Pressable>
+                    <View >
+                        <Text style={styles.song} numberOfLines={1}>{title}</Text>
+                        <Text numberOfLines={1}>{artist}</Text>
+                    </View>
+                </View>
+                <View style={styles.songinfo}>
+                    <Text numberOfLines={1}>{tempo} BPM</Text>
+                    <Text numberOfLines={1}>{formatnotes}</Text>
                 </View>
             </View>
-            <View style={styles.songinfo}>
-                <Text numberOfLines={1}>{tempo} BPM</Text>
-                <Text numberOfLines={1}>{formatnotes}</Text>
-            </View>
-        </View>
+        </Swipeable>
     )
 }
 

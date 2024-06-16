@@ -16,10 +16,6 @@ const NewSong = ({ onSaveButtonPress, noteMessage }) => {
     }, []);
 
     handleSaveButtonPress = () => {
-        console.log('saved')
-        console.log(title);
-        console.log(artist);
-        console.log(tempo);
         onSaveButtonPress({ title, artist, tempo });
     }
 
