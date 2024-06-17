@@ -31,7 +31,7 @@ const Home = () => {
     }
 
     const handleSaveButtonPress = ({ title, artist, tempo }) => {
-        if (!savedNotes) {
+        if (!savedNotes || !title) {
             // tell user to add notes
         } else {
             songsCollection.add({
@@ -40,8 +40,10 @@ const Home = () => {
                 tempo: tempo,
                 notes: savedNotes
             })
+
+            modalizeRef.current?.close();
         }
-        modalizeRef.current?.close();
+
     }
 
     const [numSongs, setNumSongs] = useState(0);
