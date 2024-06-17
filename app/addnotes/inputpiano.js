@@ -5,7 +5,7 @@ import styles from "../styles.js";
 
 
 
-const InputPiano = ({ onPlayNoteInput, onStopNoteInput }) => {
+const InputPiano = ({ addedNotes, onPlayNoteInput, onStopNoteInput }) => {
 
     const handleStopNote = () => {
         onStopNoteInput();
@@ -22,6 +22,7 @@ const InputPiano = ({ onPlayNoteInput, onStopNoteInput }) => {
             style={styles.pianoscrollview}
             showsVerticalScrollIndicator={false}
             showsHorizontalScrollIndicator={false}
+            contentOffset={{ x: 700, y: 0 }}
         >
             <View style={styles.pianowrapper}>
                 <Piano
@@ -29,6 +30,7 @@ const InputPiano = ({ onPlayNoteInput, onStopNoteInput }) => {
                     style={styles.piano}
                     onPlayNoteInput={midiNumber => handlePlayNote(midiNumber)}
                     onStopNoteInput={midiNumber => handleStopNote()}
+                    addedNotes={addedNotes}
                 />
             </View>
         </ScrollView>

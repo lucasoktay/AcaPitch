@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { ScrollView, View } from "react-native";
 import { Piano } from 'react-native-piano';
 import NavBar from "../navbar/navbar";
@@ -25,13 +25,6 @@ const PianoComponent = () => {
         // console.log(pianoData);
     };
 
-    useEffect(() => {
-        // Scroll to the middle of the piano keys
-        if (scrollViewRef.current) {
-            scrollViewRef.current.scrollTo({ x: 1000, animated: false }); // Adjust the x value as needed
-        }
-    }, []);
-
     const handleTouchStart = (midiNumber) => {
         setIsScrolling(false);
         setCurrentNote(midiNumber);
@@ -52,12 +45,12 @@ const PianoComponent = () => {
         <View style={{ backgroundColor: '#f9f5ef', flexGrow: 1 }}>
             <View style={styles.fullscreenpiano}>
                 <ScrollView
-                    ref={scrollViewRef}
+                    // ref={scrollViewRef}
                     horizontal={true}
                     style={styles.pianoscrollview}
                     showsVerticalScrollIndicator={false}
                     showsHorizontalScrollIndicator={false}
-                    contentOffset={{ x: 1000, y: 0 }} // Set the initial scroll position
+                    contentOffset={{ x: 700, y: 0 }} // Set the initial scroll position
                     onTouchMove={handleTouchMove}
                 >
                     <View style={styles.pianowrapper}>

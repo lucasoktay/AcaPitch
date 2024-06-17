@@ -70,7 +70,6 @@ const SongList = ({ numSongs, setNum }) => {
         return (
             <View style={styles.songlist}>
                 <ScrollView
-                    // style={styles.songlist}
                     showsVerticalScrollIndicator={false}
                     showsHorizontalScrollIndicator={false}
                 >

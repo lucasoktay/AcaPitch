@@ -54,6 +54,7 @@ const AddNotes = () => {
                     <InputPiano
                         onPlayNoteInput={handlePlayNote}
                         onStopNoteInput={handleStopNote}
+                        addedNotes={noteData}
                     />
                     <BottomButtons
                         isKeyPressed={isKeyPressed}
