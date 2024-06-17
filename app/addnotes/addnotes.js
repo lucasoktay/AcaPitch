@@ -44,7 +44,11 @@ const AddNotes = () => {
     };
 
     const handleSaveButtonPress = () => {
-        navigation.navigate('Home', { savedNotes: noteData });
+        if (!areNotesAdded) {
+            alert('Add notes or press cancel.');
+        } else {
+            navigation.navigate('Home', { savedNotes: noteData });
+        }
     };
 
     return (

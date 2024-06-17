@@ -1,6 +1,6 @@
 import firestore from '@react-native-firebase/firestore';
 import { useRoute } from '@react-navigation/native';
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { ScrollView, Text, View } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { Modalize } from 'react-native-modalize';
@@ -18,21 +18,31 @@ const Home = () => {
 
     const modalizeRef = useRef(null);
 
+    const [noteMessage, setNoteMessage] = useState("EDIT NOTES");
+
     const route = useRoute();
     const { savedNotes } = route.params || {};
-    let noteMessage = "ADD NOTES"
 
-    if (savedNotes) {
-        noteMessage = "EDIT NOTES"
-    }
+    useEffect(() => {
+        if (savedNotes) {
+            setNoteMessage("EDIT NOTES");
+        }
+    }, [savedNotes]);
 
     const handlePlusButtonPress = () => {
+        setNoteMessage("ADD NOTES");
         modalizeRef.current?.open();
     }
 
     const handleSaveButtonPress = ({ title, artist, tempo }) => {
         if (!savedNotes || !title) {
-            // tell user to add notes
+            if (title) {
+                alert("Add some notes first!")
+            } else if (savedNotes) {
+                alert("Please enter a title.")
+            } else {
+                alert("Please enter a title and add notes, or swipe down to cancel.")
+            }
         } else {
             songsCollection.add({
                 title: title,
