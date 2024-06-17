@@ -245,7 +245,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         color: 'white',
-        fontSize: 20,
+        fontSize: 16,
     },
 
     savesong: {
@@ -255,7 +255,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         color: 'white',
-        fontSize: 20,
+        fontSize: 16,
     },
 
     deletesongbutton: {

@@ -22,7 +22,7 @@ const NewSong = ({ onSaveButtonPress, noteMessage }) => {
     return (
         <View style={{ backgroundColor: '#B79992', height: 400 }}>
             <View style={styles.addsonginputs}>
-                <InputField name={'Title'} ref={firstInputRef} onChangeText={(text) => setTitle(text)} />
+                <InputField name={'Title (required)'} ref={firstInputRef} onChangeText={(text) => setTitle(text)} />
                 <InputField name={'Artist'} onChangeText={(text) => setArtist(text)} />
                 <InputField name={'Tempo'} onChangeText={(text) => setTempo(text)} />
                 <AddNotesButton noteMessage={noteMessage} />
