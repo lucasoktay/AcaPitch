@@ -7,6 +7,7 @@ import { Modalize } from 'react-native-modalize';
 import NavBar from '../navbar/navbar.js';
 import NewSong from '../newsong/newsong.js';
 import styles from '../styles.js';
+import { getFontFamily } from "../utils/fontFamily.ts";
 import PlusButton from './plusbutton.js';
 import SearchBar from './searchbar.js';
 import SettingsIcon from './settingsicon.js';
@@ -81,13 +82,13 @@ const Home = () => {
 
     return (
         <GestureHandlerRootView style={{ flex: 1 }}>
-            <View style={{ backgroundColor: '#FFFBF6', flexGrow: 1 }}>
+            <View style={{ backgroundColor: '#F9F5F1', flexGrow: 1 }}>
                 <View style={styles.fullscreen}>
                     <View style={styles.topbar}>
                         <SearchBar />
                         <SettingsIcon />
                     </View>
-                    <Text style={styles.yoursongs}>Your Songs</Text>
+                    <Text style={[styles.yoursongs, { fontFamily: getFontFamily(true, "bold") }]}>Your Songs</Text>
                     <View style={styles.bottomline} />
                     <SongSubList />
                 </View>

@@ -1,4 +1,10 @@
 import { StyleSheet } from "react-native";
+import { getFontFamily } from "./utils/fontFamily.ts";
+
+const montserratMed = getFontFamily(true, "medium")
+const montserratReg = getFontFamily(true, "normal")
+const montserratBold = getFontFamily(true, "bold")
+const rubik = getFontFamily(false, "normal")
 
 const styles = StyleSheet.create({
     fullscreen: {
@@ -16,6 +22,9 @@ const styles = StyleSheet.create({
     },
 
     searchbar: {
+        flexDirection: 'row',
+        justifyContent: 'flex-start',
+        alignItems: 'center',
         borderWidth: 1,
         height: 40,
         width: "85%",
@@ -23,11 +32,11 @@ const styles = StyleSheet.create({
         overflow: 'hidden',
         flexGrow: 0,
         paddingLeft: 16,
-        justifyContent: 'center',
+        columnGap: 8
     },
 
     settingsicon: {
-        borderWidth: 1,
+        // borderWidth: 1,
         height: 40,
         width: 40,
         borderRadius: 20,
@@ -45,9 +54,10 @@ const styles = StyleSheet.create({
 
     yoursongs: {
         fontSize: 24,
-        marginVertical: 24,
-        fontWeight: '700',
-        flexGrow: 0
+        marginTop: 24,
+        marginBottom: 8,
+        // fontWeight: '700',
+        flexGrow: 0,
     },
 
     songwrapper: {
@@ -60,18 +70,20 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'space-between',
         padding: 8,
-        marginVertical: 8
+        marginVertical: 8,
+        borderColor: "#444444"
     },
 
     songwrapperleft: {
         flexDirection: 'row',
         alignItems: 'center',
         columnGap: 8,
-        width: 150
+        width: 150,
     },
 
     song: {
         fontSize: 22,
+        color: "#444444"
     },
 
     songlist: {
@@ -145,6 +157,7 @@ const styles = StyleSheet.create({
         borderWidth: .5,
         borderColor: 'black',
         marginLeft: '-2%',
+        marginBottom: 24,
     },
 
     fullscreenpiano: {

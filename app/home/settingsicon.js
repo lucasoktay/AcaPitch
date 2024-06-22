@@ -11,7 +11,7 @@ const SettingsIcon = () => {
         <Pressable onPress={() =>
             navigation.navigate('Settings')}
             style={styles.settingsicon}>
-            <FontAwesomeIcon icon={faGear} size={24} />
+            <FontAwesomeIcon icon={faGear} size={30} color={"#444444"} />
         </Pressable>
     );
 }

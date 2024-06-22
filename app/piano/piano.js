@@ -42,7 +42,7 @@ const PianoComponent = () => {
     };
 
     return (
-        <View style={{ backgroundColor: '#f9f5ef', flexGrow: 1 }}>
+        <View style={{ backgroundColor: '#F9F5F1', flexGrow: 1 }}>
             <View style={styles.fullscreenpiano}>
                 <ScrollView
                     // ref={scrollViewRef}
