@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react';
 import { ScrollView, View } from "react-native";
-import { Piano } from 'react-native-piano';
 import NavBar from "../navbar/navbar";
+import { Piano } from '../react-native-piano/index.js';
 import styles from "../styles.js";
 import PlayLocalSoundFile from './makesound.js';
 import NoteLabel from './notelabel.js'; // Import the NoteLabel component

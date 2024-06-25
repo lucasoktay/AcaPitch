@@ -1,5 +1,5 @@
 import { ScrollView, View } from "react-native";
-import { Piano } from 'react-native-piano';
+import { Piano } from '../react-native-piano/index.js';
 // import { instrument } from 'react-native-soundfont';
 import styles from "../styles.js";
 
