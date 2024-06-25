@@ -1,5 +1,7 @@
 import firestore from '@react-native-firebase/firestore';
 import { useRoute } from '@react-navigation/native';
+import AppLoading from 'expo-app-loading';
+import * as Font from 'expo-font';
 import React, { useEffect, useRef, useState } from 'react';
 import { ScrollView, Text, View } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
@@ -7,14 +9,23 @@ import { Modalize } from 'react-native-modalize';
 import NavBar from '../navbar/navbar.js';
 import NewSong from '../newsong/newsong.js';
 import styles from '../styles.js';
-import { getFontFamily } from "../utils/fontFamily.ts";
 import PlusButton from './plusbutton.js';
 import SearchBar from './searchbar.js';
 import SettingsIcon from './settingsicon.js';
 import SongList from './songlist.js';
 
+const fetchFonts = () => {
+    return Font.loadAsync({
+        'MontserratRegular': require('../../assets/fonts/MontserratRegular.ttf'),
+        'MontserratSemiBold': require('../../assets/fonts/MontserratSemiBold.ttf'),
+        'MontserratMedium': require('../../assets/fonts/MontserratMedium.ttf'),
+        'RubikRegular': require('../../assets/fonts/RubikRegular.ttf'),
+    });
+};
 
 const Home = () => {
+    const [fontLoaded, setFontLoaded] = useState(false);
+
     const songsCollection = firestore().collection('songs');
 
     const modalizeRef = useRef(null);
@@ -79,6 +90,15 @@ const Home = () => {
         }
     }
 
+    if (!fontLoaded) {
+        return (
+            <AppLoading
+                startAsync={fetchFonts}
+                onFinish={() => setFontLoaded(true)}
+                onError={(err) => console.log(err)}
+            />
+        );
+    }
 
     return (
         <GestureHandlerRootView style={{ flex: 1 }}>
@@ -88,7 +108,7 @@ const Home = () => {
                         <SearchBar />
                         <SettingsIcon />
                     </View>
-                    <Text style={[styles.yoursongs, { fontFamily: getFontFamily(true, "bold") }]}>Your Songs</Text>
+                    <Text style={[styles.yoursongs]}>Your Songs</Text>
                     <View style={styles.bottomline} />
                     <SongSubList />
                 </View>

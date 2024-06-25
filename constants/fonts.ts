@@ -3,7 +3,7 @@ import { Platform } from 'react-native';
 export const fontFamilies = {
     MONTSERRAT: {
         normal: (Platform.OS === 'ios') ? 'Montserrat-Regular' : 'MontserratRegular',
-        medium: (Platform.OS === 'ios') ? 'Montserrat-Medium' : 'MontserratMedium',
+        medium: (Platform.OS === 'ios') ? 'MontserratMedium' : 'MontserratMedium',
         bold: (Platform.OS === 'ios') ? 'Montserrat-Bold' : 'MontserratBold',
     },
     RUBIK: {

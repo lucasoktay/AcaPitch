@@ -1,10 +1,4 @@
 import { StyleSheet } from "react-native";
-import { getFontFamily } from "./utils/fontFamily.ts";
-
-const montserratMed = getFontFamily(true, "medium")
-const montserratReg = getFontFamily(true, "normal")
-const montserratBold = getFontFamily(true, "bold")
-const rubik = getFontFamily(false, "normal")
 
 const styles = StyleSheet.create({
     fullscreen: {
@@ -56,7 +50,7 @@ const styles = StyleSheet.create({
         fontSize: 24,
         marginTop: 24,
         marginBottom: 8,
-        // fontWeight: '700',
+        fontWeight: '500',
         flexGrow: 0,
     },
 

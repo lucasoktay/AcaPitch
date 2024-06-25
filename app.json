@@ -15,7 +15,10 @@
     "ios": {
       "googleServicesFile": "./GoogleService-Info.plist",
       "supportsTablet": true,
-      "bundleIdentifier": "com.lucasoktay.acapitch2"
+      "bundleIdentifier": "com.lucasoktay.acapitch2",
+      "config": {
+        "usesNonExemptEncryption": false
+      }
     },
     "android": {
       "googleServicesFile": "./google-services.json",
