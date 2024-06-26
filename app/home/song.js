@@ -45,25 +45,50 @@ const Song = ({ title, tempo, artist, notes, onDelete }) => {
 
     const formatnotes = notes.join(", ");
 
-    return (
-        <Swipeable renderRightActions={renderRightActions}>
-            <View style={styles.songwrapper}>
-                <View style={styles.songwrapperleft}>
-                    <Pressable onPress={playNotes}>
-                        <PlayIcon />
-                    </Pressable>
-                    <View >
-                        <Text style={styles.song} numberOfLines={1}>{title}</Text>
-                        <Text numberOfLines={1} style={{ color: "#444444" }}>{artist}</Text>
+    if (tempo != "") {
+        tempo = tempo + " BPM";
+    }
+
+    if (artist != "") {
+        return (
+            <Swipeable renderRightActions={renderRightActions}>
+                <View style={styles.songwrapper}>
+                    <View style={styles.songwrapperleft}>
+                        <Pressable onPress={playNotes}>
+                            <PlayIcon />
+                        </Pressable>
+                        <View >
+                            <Text style={styles.song} numberOfLines={1}>{title}</Text>
+                            <Text numberOfLines={1} style={{ color: "#444444" }}>{artist}</Text>
+                        </View>
+                    </View>
+                    <View style={styles.songinfo}>
+                        <Text numberOfLines={1} style={{ color: "#444444" }}>{tempo}</Text>
+                        <Text numberOfLines={1} style={{ color: "#444444" }}>{formatnotes}</Text>
                     </View>
                 </View>
-                <View style={styles.songinfo}>
-                    <Text numberOfLines={1} style={{ color: "#444444" }}>{tempo} BPM</Text>
-                    <Text numberOfLines={1} style={{ color: "#444444" }}>{formatnotes}</Text>
+            </Swipeable>
+        )
+    } else {
+        return (
+            <Swipeable renderRightActions={renderRightActions}>
+                <View style={styles.songwrapper}>
+                    <View style={styles.songwrapperleft}>
+                        <Pressable onPress={playNotes}>
+                            <PlayIcon />
+                        </Pressable>
+                        <View >
+                            <Text style={styles.song} numberOfLines={1}>{title}</Text>
+                        </View>
+                    </View>
+                    <View style={styles.songinfo}>
+                        <Text numberOfLines={1} style={{ color: "#444444" }}>{tempo}</Text>
+                        <Text numberOfLines={1} style={{ color: "#444444" }}>{formatnotes}</Text>
+                    </View>
                 </View>
-            </View>
-        </Swipeable>
-    )
+            </Swipeable>
+        )
+    }
 }
 
 export default Song
