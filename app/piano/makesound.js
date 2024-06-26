@@ -1,7 +1,7 @@
 import Sound from 'react-native-sound';
 
 const PlayLocalSoundFile = (note) => {
-    Sound.setCategory('Playback');
+    Sound.setCategory('Playback', true);
 
     const nextLetter = { 'A': 'B', 'B': 'C', 'C': 'D', 'D': 'E', 'E': 'F', 'F': 'G', 'G': 'A' };
 
