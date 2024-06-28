@@ -109,7 +109,7 @@ const Home = () => {
                         <SettingsIcon />
                     </View>
                     <Text style={[styles.yoursongs]}>Your Songs</Text>
-                    <View style={styles.bottomline} />
+                    <View style={styles.topbottomline} />
                     <SongSubList />
                 </View>
                 <NavBar />

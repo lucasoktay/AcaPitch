@@ -146,12 +146,19 @@ const styles = StyleSheet.create({
         margin: 8
     },
 
+    topbottomline: {
+        width: '104%',
+        borderWidth: .5,
+        borderColor: 'black',
+        marginLeft: '-2%',
+    },
+
     bottomline: {
         width: '104%',
         borderWidth: .5,
         borderColor: 'black',
         marginLeft: '-2%',
-        marginBottom: 24,
+        marginBottom: 8
     },
 
     fullscreenpiano: {
