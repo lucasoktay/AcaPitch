@@ -2,7 +2,7 @@
   "expo": {
     "name": "AcaPitch",
     "slug": "AcaPitch2",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "orientation": "default",
     "icon": "./assets/images/icon.png",
     "scheme": "myapp",
@@ -19,7 +19,7 @@
       "config": {
         "usesNonExemptEncryption": false
       },
-      "buildNumber": "4"
+      "buildNumber": "8"
     },
     "android": {
       "googleServicesFile": "./google-services.json",
