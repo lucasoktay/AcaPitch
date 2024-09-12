@@ -1,9 +1,9 @@
 import firestore from '@react-native-firebase/firestore';
 import { useRoute } from '@react-navigation/native';
-import AppLoading from 'expo-app-loading';
 import * as Font from 'expo-font';
-import React, { useEffect, useRef, useState } from 'react';
-import { ScrollView, Text, View } from 'react-native';
+import * as SplashScreen from 'expo-splash-screen';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { Text, View } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { Modalize } from 'react-native-modalize';
 import NavBar from '../navbar/navbar.js';
@@ -14,32 +14,55 @@ import SearchBar from './searchbar.js';
 import SettingsIcon from './settingsicon.js';
 import SongList from './songlist.js';
 
-const fetchFonts = () => {
-    return Font.loadAsync({
-        'MontserratRegular': require('../../assets/fonts/MontserratRegular.ttf'),
-        'MontserratSemiBold': require('../../assets/fonts/MontserratSemiBold.ttf'),
-        'MontserratMedium': require('../../assets/fonts/MontserratMedium.ttf'),
-        'RubikRegular': require('../../assets/fonts/RubikRegular.ttf'),
-    });
-};
+SplashScreen.preventAutoHideAsync();
 
 const Home = () => {
-    const [fontLoaded, setFontLoaded] = useState(false);
-
-    const songsCollection = firestore().collection('songs');
-
-    const modalizeRef = useRef(null);
-
+    const [appIsReady, setAppIsReady] = useState(false);
     const [noteMessage, setNoteMessage] = useState("EDIT NOTES");
 
+    const songsCollection = firestore().collection('songs');
+    const modalizeRef = useRef(null);
     const route = useRoute();
     const { savedNotes } = route.params || {};
+
+    useEffect(() => {
+        async function prepare() {
+            try {
+                await Font.loadAsync({
+                    'MontserratRegular': require('../../assets/fonts/MontserratRegular.ttf'),
+                    'MontserratSemiBold': require('../../assets/fonts/MontserratSemiBold.ttf'),
+                    'MontserratMedium': require('../../assets/fonts/MontserratMedium.ttf'),
+                    'RubikRegular': require('../../assets/fonts/RubikRegular.ttf'),
+                });
+                // Artificially delay for two seconds to simulate a slow loading
+                // experience. Please remove this if you copy and paste the code!
+                // await new Promise(resolve => setTimeout(resolve, 2));
+            } catch (e) {
+                console.warn(e);
+            } finally {
+                // Tell the application to render
+                setAppIsReady(true);
+            }
+        }
+
+        prepare();
+    }, []);
 
     useEffect(() => {
         if (savedNotes) {
             setNoteMessage("EDIT NOTES");
         }
     }, [savedNotes]);
+
+    const onLayoutRootView = useCallback(async () => {
+        if (appIsReady) {
+            await SplashScreen.hideAsync();
+        }
+    }, [appIsReady]);
+
+    if (!appIsReady) {
+        return null;
+    }
 
     const handlePlusButtonPress = () => {
         setNoteMessage("ADD NOTES");
@@ -68,34 +91,8 @@ const Home = () => {
 
     }
 
-    const [numSongs, setNumSongs] = useState(0);
-
-    const SongSubList = () => {
-
-        if (numSongs < 7) {
-            return (
-                <ScrollView style={styles.lesssongslist}>
-                    <SongList numSongs={numSongs} setNum={setNumSongs} />
-                    <PlusButton onPlusButtonPress={handlePlusButtonPress} />
-                </ScrollView>
-            )
-        } else {
-
-        }
-    }
-
-    if (!fontLoaded) {
-        return (
-            <AppLoading
-                startAsync={fetchFonts}
-                onFinish={() => setFontLoaded(true)}
-                onError={(err) => console.log(err)}
-            />
-        );
-    }
-
     return (
-        <GestureHandlerRootView style={{ flex: 1 }}>
+        <GestureHandlerRootView style={{ flex: 1 }} onLayout={onLayoutRootView}>
             <View style={{ backgroundColor: '#F9F5F1', flexGrow: 1 }}>
                 <View style={styles.fullscreen}>
                     <View style={styles.topbar}>
@@ -106,8 +103,8 @@ const Home = () => {
                     <Text style={[styles.yoursongs]}>Your Songs</Text>
                     <View style={styles.topline} />
 
-
                     <SongList />
+
                     <View style={styles.bottomline} />
                     <PlusButton onPlusButtonPress={handlePlusButtonPress} />
 
