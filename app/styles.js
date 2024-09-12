@@ -2,17 +2,10 @@ import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
     fullscreen: {
-        // flexGrow: 0,
-        paddingTop: 64,
+        flex: 1,
+        paddingBottom: 80,
+        paddingTop: 60,
         paddingHorizontal: 20,
-    },
-
-    newsongscreen: {
-        justifyContent: 'center',
-        alignItems: 'flex-start',
-        flexDirection: 'column',
-        columnGap: 20,
-        paddingVertical: 20,
     },
 
     searchbar: {
@@ -80,18 +73,15 @@ const styles = StyleSheet.create({
         color: "#444444"
     },
 
-    songlist: {
-        flexDirection: 'column',
-        height: "76%",
-        overflow: 'scroll',
-        flexGrow: 0,
+    songListScrollView: {
+        flex: 1,
     },
 
-    lesssongslist: {
+    songlist: {
         flexDirection: 'column',
-        height: "73%",
-        overflow: 'hidden',
-        flexGrow: 1,
+        overflow: 'scroll',
+        flex: 1,
+        paddingBottom: 95,
     },
 
     songinfo: {
@@ -104,26 +94,31 @@ const styles = StyleSheet.create({
     },
 
     plusbutton: {
-        borderWidth: 1,
+        position: 'absolute',
+        bottom: 15,
+        left: 0,
+        right: 0,
         height: 64,
+        borderWidth: 1,
         borderRadius: 20,
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'flex-start',
-        padding: 8,
         paddingLeft: 20,
-        marginTop: 8
+        zIndex: 999, // Ensure it's above other content but below the navbar
     },
 
     navbar: {
         backgroundColor: '#EDECEA',
         position: 'absolute',
         bottom: 0,
-        width: "100%",
+        left: 0,
+        right: 0,
         height: 80,
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'flex-start',
+        zIndex: 1000
     },
 
     bottomicons: {
@@ -146,7 +141,7 @@ const styles = StyleSheet.create({
         margin: 8
     },
 
-    topbottomline: {
+    topline: {
         width: '104%',
         borderWidth: .5,
         borderColor: 'black',
@@ -154,15 +149,17 @@ const styles = StyleSheet.create({
     },
 
     bottomline: {
-        width: '104%',
         borderWidth: .5,
         borderColor: 'black',
-        marginLeft: '-2%',
-        marginBottom: 8
+        position: 'absolute',
+        bottom: 175,
+        left: 10,
+        right: 10
     },
 
     fullscreenpiano: {
-        marginVertical: "5%"
+        height: "90%",
+        marginTop: '5%'
     },
 
     pianoscrollview: {
@@ -189,11 +186,11 @@ const styles = StyleSheet.create({
     inputfield: {
         height: 40,
         width: 240,
-        borderWidth: 2,
-        borderColor: 'white',
+        borderWidth: 1,
+        borderColor: '#444444',
         borderRadius: 12,
         padding: 8,
-        color: 'white'
+        color: 'black'
     },
 
     addsonginputs: {

@@ -80,13 +80,7 @@ const Home = () => {
                 </ScrollView>
             )
         } else {
-            return (
-                <View>
-                    <SongList numSongs={numSongs} setNum={setNumSongs} />
-                    <View style={styles.bottomline}></View>
-                    <PlusButton onPlusButtonPress={handlePlusButtonPress} />
-                </View>
-            )
+
         }
     }
 
@@ -108,9 +102,15 @@ const Home = () => {
                         <SearchBar />
                         <SettingsIcon />
                     </View>
+
                     <Text style={[styles.yoursongs]}>Your Songs</Text>
-                    <View style={styles.topbottomline} />
-                    <SongSubList />
+                    <View style={styles.topline} />
+
+
+                    <SongList />
+                    <View style={styles.bottomline} />
+                    <PlusButton onPlusButtonPress={handlePlusButtonPress} />
+
                 </View>
                 <NavBar />
                 <Modalize ref={modalizeRef} modalHeight={650}>

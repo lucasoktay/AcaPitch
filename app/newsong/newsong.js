@@ -20,7 +20,10 @@ const NewSong = ({ onSaveButtonPress, noteMessage }) => {
     }
 
     return (
-        <View style={{ backgroundColor: '#B79992', height: 400 }}>
+        <View style={{
+            height: 400,
+            backgroundColor: '#F9F5F1'
+        }}>
             <View style={styles.addsonginputs}>
                 <InputField name={'Title (required)'} ref={firstInputRef} onChangeText={(text) => setTitle(text)} />
                 <InputField name={'Artist'} onChangeText={(text) => setArtist(text)} />
@@ -28,7 +31,7 @@ const NewSong = ({ onSaveButtonPress, noteMessage }) => {
                 <AddNotesButton noteMessage={noteMessage} />
                 <SaveSongButton onSaveButtonPress={handleSaveButtonPress} />
             </View>
-        </View>
+        </View >
     );
 }
 

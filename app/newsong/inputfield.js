@@ -8,7 +8,7 @@ const InputField = React.forwardRef(({ name, onChangeText }, ref) => {
             ref={ref}
             style={styles.inputfield}
             placeholder={name}
-            placeholderTextColor={'white'}
+            placeholderTextColor={'darkgray'}
             onChangeText={(text) => onChangeText(text)}
         />
     );

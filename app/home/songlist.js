@@ -4,10 +4,11 @@ import { ScrollView, View } from 'react-native';
 import styles from '../styles';
 import Song from './song';
 
-const SongList = ({ numSongs, setNum }) => {
+const SongList = () => {
     const [songDetails, setSongDetails] = useState([]);
 
     const [unsubscribe, setUnsubscribe] = useState(null);
+
 
     // get songlist from backend and listen for real-time updates
     useEffect(() => {
@@ -26,7 +27,6 @@ const SongList = ({ numSongs, setNum }) => {
                     });
                 });
                 setSongDetails(songsList);
-                setNum(songsList.length);
             },
             (error) => {
                 console.error('Error fetching songs:', error);
@@ -58,28 +58,20 @@ const SongList = ({ numSongs, setNum }) => {
         }
     }
 
-    if (numSongs < 7) {
-        return (
-            <View >
+
+    return (
+        <View style={styles.songlist}>
+            <ScrollView
+                showsVerticalScrollIndicator={false}
+                showsHorizontalScrollIndicator={false}
+            >
                 {songDetails.map(({ title, tempo, artist, notes }, index) => (
                     <Song key={index} title={title} tempo={tempo} artist={artist} notes={notes} onDelete={deleteSong} />
                 ))}
-            </View>
-        )
-    } else {
-        return (
-            <View style={styles.songlist}>
-                <ScrollView
-                    showsVerticalScrollIndicator={false}
-                    showsHorizontalScrollIndicator={false}
-                >
-                    {songDetails.map(({ title, tempo, artist, notes }, index) => (
-                        <Song key={index} title={title} tempo={tempo} artist={artist} notes={notes} onDelete={deleteSong} />
-                    ))}
-                </ScrollView>
-            </View>
-        )
-    }
+            </ScrollView>
+        </View>
+    )
+
 }
 
 export default SongList;
