@@ -8,6 +8,7 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { Modalize } from 'react-native-modalize';
 import NavBar from '../navbar/navbar.js';
 import NewSong from '../newsong/newsong.js';
+import PlaySound from '../piano/newmakesound.js';
 import styles from '../styles.js';
 import PlusButton from './plusbutton.js';
 import SearchBar from './searchbar.js';
@@ -19,6 +20,7 @@ SplashScreen.preventAutoHideAsync();
 const Home = () => {
     const [appIsReady, setAppIsReady] = useState(false);
     const [noteMessage, setNoteMessage] = useState("EDIT NOTES");
+    const [sound, setSound] = useState();
 
     const songsCollection = firestore().collection('songs');
     const modalizeRef = useRef(null);
@@ -69,6 +71,10 @@ const Home = () => {
         modalizeRef.current?.open();
     }
 
+    const handlePlaySound = async (note) => {
+        await PlaySound(note, setSound);
+    }
+
     const handleSaveButtonPress = ({ title, artist, tempo }) => {
         if (!savedNotes || !title) {
             if (title) {
@@ -106,7 +112,8 @@ const Home = () => {
                     <SongList />
 
                     <View style={styles.bottomline} />
-                    <PlusButton onPlusButtonPress={handlePlusButtonPress} />
+                    {/* <PlusButton onPlusButtonPress={handlePlusButtonPress} /> */}
+                    <PlusButton onPlusButtonPress={handlePlaySound} />
 
                 </View>
                 <NavBar />
