@@ -3,22 +3,19 @@ import { ScrollView, View } from "react-native";
 import NavBar from "../navbar/navbar";
 import { Piano } from '../react-native-piano/index.js';
 import styles from "../styles.js";
-import PlayLocalSoundFile from './makesound.js';
+import PlaySound from './newmakesound.js';
 import NoteLabel from './notelabel.js'; // Import the NoteLabel component
 
 const PianoComponent = () => {
     const [pianoData, setPianoData] = useState([]);
     const [isScrolling, setIsScrolling] = useState(false);
     const [currentNote, setCurrentNote] = useState(null);
+    const [sound, setSound] = useState();
     const scrollViewRef = useRef(null);
 
-    const makeSound = (note) => {
-        PlayLocalSoundFile(note);
-    };
-
-    const handlePlayNote = (note) => {
+    const handlePlayNote = async (note) => {
         setPianoData(pianoData => [...pianoData, note]);
-        makeSound(note);
+        await PlaySound(note, setSound);
     };
 
     const handleStopNote = () => {
@@ -34,9 +31,9 @@ const PianoComponent = () => {
         setIsScrolling(true);
     };
 
-    const handleTouchEnd = () => {
+    const handleTouchEnd = async () => {
         if (!isScrolling && currentNote !== null) {
-            handlePlayNote(currentNote);
+            await handlePlayNote(currentNote);
         }
         setCurrentNote(null);
     };

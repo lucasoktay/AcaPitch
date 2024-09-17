@@ -1,12 +1,15 @@
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
+import { useState } from "react";
 import { Animated, Pressable, Text, View } from "react-native";
 import { Swipeable } from 'react-native-gesture-handler';
-import PlayLocalSoundFile from '../piano/makesound.js';
+import PlaySound from "../piano/newmakesound.js";
 import styles from "../styles";
 import PlayIcon from "./playicon";
 
 const Song = ({ title, tempo, artist, notes, onDelete }) => {
+
+    const [sound, setSound] = useState();
 
     const renderRightActions = (progress, dragX) => {
         const trans = dragX.interpolate({
@@ -32,7 +35,7 @@ const Song = ({ title, tempo, artist, notes, onDelete }) => {
     const sleep = (delay) => new Promise((resolve) => setTimeout(resolve, delay))
 
     const makeSound = (note) => {
-        PlayLocalSoundFile(note);
+        PlaySound(note, setSound);
     };
 
     const playNotes = async () => {

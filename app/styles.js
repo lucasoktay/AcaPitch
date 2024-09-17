@@ -242,15 +242,12 @@ const styles = StyleSheet.create({
 
     addnotesbutton: {
         height: 40,
-        width: 180,
-        borderWidth: .5,
         borderColor: 'lightgrey',
         borderRadius: 12,
         flexDirection: 'row',
         padding: 8,
         columnGap: 8,
         alignItems: 'center',
-        justifyContent: 'center',
     },
 
     savesongbutton: {

@@ -1,7 +1,7 @@
 import { useNavigation } from '@react-navigation/native';
 import { useState } from 'react';
 import { View } from 'react-native';
-import PlayLocalSoundFile from '../piano/makesound.js';
+import PlaySound from '../piano/newmakesound.js';
 import styles from '../styles.js';
 import BottomButtons from './bottombuttons.js';
 import InputPiano from './inputpiano.js';
@@ -17,14 +17,12 @@ const AddNotes = () => {
 
     const [noteData, setNoteData] = useState([]);
 
-    const makeSound = (note) => {
-        PlayLocalSoundFile(note);
-    };
+    const [sound, setSound] = useState();
 
-    const handlePlayNote = (note) => {
+    const handlePlayNote = async (note) => {
         setIsKeyPressed(true);
         setPianoData(note);
-        makeSound(note);
+        await PlaySound(note, setSound);
     };
 
     const handleStopNote = () => {
