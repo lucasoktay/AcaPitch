@@ -116,7 +116,14 @@ const Home = () => {
 
                 </View>
                 <NavBar />
-                <Modalize ref={modalizeRef} modalHeight={560}>
+                <Modalize
+                    ref={modalizeRef}
+                    // modalHeight={560}
+                    modalStyle={{ borderRadius: 20, overflow: 'hidden' }}
+                    keyboardAvoidingBehavior="padding"
+                    keyboardShouldPersistTaps="always"
+                    adjustToContentHeight={true}
+                >
                     <NewSong onSaveButtonPress={handleSaveButtonPress} noteMessage={noteMessage} />
                 </Modalize>
             </View>

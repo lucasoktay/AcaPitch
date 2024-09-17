@@ -19,7 +19,7 @@
       "config": {
         "usesNonExemptEncryption": false
       },
-      "buildNumber": "9"
+      "buildNumber": "11"
     },
     "android": {
       "googleServicesFile": "./google-services.json",

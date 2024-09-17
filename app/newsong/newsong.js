@@ -21,7 +21,6 @@ const NewSong = ({ onSaveButtonPress, noteMessage }) => {
 
     return (
         <View style={{
-            height: 400,
             backgroundColor: '#F9F5F1'
         }}>
             <View style={styles.addsonginputs}>
@@ -44,7 +43,7 @@ const NewSong = ({ onSaveButtonPress, noteMessage }) => {
 
                 <View style={styles.newsongline} />
 
-                <View style={{ flexDirection: 'row', justifyContent: 'space-between', width: "100%", height: 65, alignItems: 'center', }}>
+                <View style={{ flexDirection: 'row', justifyContent: 'space-between', width: "100%", height: 60, alignItems: 'center', marginBottom: -20 }}>
                     <AddNotesButton noteMessage={noteMessage} />
                     <SaveSongButton onSaveButtonPress={handleSaveButtonPress} />
                 </View>
