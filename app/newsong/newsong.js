@@ -25,11 +25,29 @@ const NewSong = ({ onSaveButtonPress, noteMessage }) => {
             backgroundColor: '#F9F5F1'
         }}>
             <View style={styles.addsonginputs}>
-                <InputField name={'Title (required)'} ref={firstInputRef} onChangeText={(text) => setTitle(text)} />
-                <InputField name={'Artist'} onChangeText={(text) => setArtist(text)} />
-                <InputField name={'Tempo'} onChangeText={(text) => setTempo(text)} />
-                <AddNotesButton noteMessage={noteMessage} />
-                <SaveSongButton onSaveButtonPress={handleSaveButtonPress} />
+                <InputField
+                    name={'Title'}
+                    ref={firstInputRef}
+                    onChangeText={(text) => setTitle(text)}
+                    fontSize={24}
+                />
+                <InputField
+                    name={'Artist'}
+                    onChangeText={(text) => setArtist(text)}
+                    fontSize={16}
+                />
+                <InputField
+                    name={'Tempo'}
+                    onChangeText={(text) => setTempo(text)}
+                    fontSize={16}
+                />
+
+                <View style={styles.newsongline} />
+
+                <View style={{ flexDirection: 'row', justifyContent: 'space-between', width: "100%", height: 65, alignItems: 'center', }}>
+                    <AddNotesButton noteMessage={noteMessage} />
+                    <SaveSongButton onSaveButtonPress={handleSaveButtonPress} />
+                </View>
             </View>
         </View >
     );

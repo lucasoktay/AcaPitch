@@ -52,7 +52,7 @@ const Home = () => {
 
     useEffect(() => {
         if (savedNotes) {
-            setNoteMessage("EDIT NOTES");
+            setNoteMessage("Notes");
         }
     }, [savedNotes]);
 
@@ -67,7 +67,7 @@ const Home = () => {
     }
 
     const handlePlusButtonPress = () => {
-        setNoteMessage("ADD NOTES");
+        setNoteMessage("Notes");
         modalizeRef.current?.open();
     }
 
@@ -112,12 +112,11 @@ const Home = () => {
                     <SongList />
 
                     <View style={styles.bottomline} />
-                    {/* <PlusButton onPlusButtonPress={handlePlusButtonPress} /> */}
-                    <PlusButton onPlusButtonPress={handlePlaySound} />
+                    <PlusButton onPlusButtonPress={handlePlusButtonPress} />
 
                 </View>
                 <NavBar />
-                <Modalize ref={modalizeRef} modalHeight={650}>
+                <Modalize ref={modalizeRef} modalHeight={560}>
                     <NewSong onSaveButtonPress={handleSaveButtonPress} noteMessage={noteMessage} />
                 </Modalize>
             </View>

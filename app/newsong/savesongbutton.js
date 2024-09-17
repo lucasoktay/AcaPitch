@@ -1,5 +1,7 @@
+import { faArrowUp } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { useNavigation } from "@react-navigation/native";
-import { Pressable, Text, View } from "react-native";
+import { Pressable, View } from "react-native";
 import styles from "../styles";
 
 const SaveSongButton = ({ onSaveButtonPress }) => {
@@ -7,10 +9,8 @@ const SaveSongButton = ({ onSaveButtonPress }) => {
 
     return (
         <Pressable onPress={onSaveButtonPress}>
-            <View style={styles.addnotesbutton}>
-                <View style={{ width: "100%", alignItems: 'center' }}>
-                    <Text style={styles.savesong}>SAVE SONG</Text>
-                </View>
+            <View style={styles.savesongbutton} >
+                <FontAwesomeIcon icon={faArrowUp} size={20} color={"white"} />
             </View>
         </Pressable>
     )

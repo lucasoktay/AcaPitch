@@ -186,19 +186,24 @@ const styles = StyleSheet.create({
     inputfield: {
         height: 40,
         width: 240,
-        borderWidth: 1,
-        borderColor: '#444444',
-        borderRadius: 12,
-        padding: 8,
-        color: 'black'
+        // padding: 8,
+        color: 'black',
+        fontSize: 18,
     },
 
     addsonginputs: {
-        marginTop: 20,
         flexDirection: 'column',
-        rowGap: 20,
-        justifyContent: 'center',
-        alignItems: 'center',
+        justifyContent: 'flex-start',
+        alignItems: 'flex-start',
+        padding: 20,
+    },
+
+    newsongline: {
+        height: .5,
+        backgroundColor: 'lightgrey',
+        marginTop: 8,
+        width: "120%",
+        marginLeft: "-10%",
     },
 
     inputpiano: {
@@ -237,25 +242,36 @@ const styles = StyleSheet.create({
 
     addnotesbutton: {
         height: 40,
-        width: 240,
-        // borderWidth: 2,
-        borderColor: 'white',
+        width: 180,
+        borderWidth: .5,
+        borderColor: 'lightgrey',
         borderRadius: 12,
+        flexDirection: 'row',
         padding: 8,
+        columnGap: 8,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+
+    savesongbutton: {
+        height: 40,
+        width: 40,
+        borderColor: 'white',
+        borderRadius: 30,
+        justifyContent: 'center',
+        alignItems: 'center',
         color: 'white',
         flexDirection: 'row',
-        alignItems: 'center',
-        backgroundColor: '#DBCCC9',
+        backgroundColor: 'orange',
     },
 
     addnotes: {
-        marginLeft: -70,
         textAlign: 'center',
         lineHeight: 40,
         height: 40,
         alignItems: 'center',
+        color: 'darkgrey',
         justifyContent: 'center',
-        color: 'white',
         fontSize: 16,
     },
 
