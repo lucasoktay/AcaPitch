@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/native';
 import { useState } from 'react';
-import { View } from 'react-native';
+import { Alert, View } from 'react-native';
 import PlaySound from '../piano/newmakesound.js';
 import styles from '../styles.js';
 import BottomButtons from './bottombuttons.js';
@@ -43,7 +43,7 @@ const AddNotes = () => {
 
     const handleSaveButtonPress = () => {
         if (!areNotesAdded) {
-            alert('Add notes or press cancel.');
+            Alert.alert('Add notes or press cancel.');
         } else {
             navigation.navigate('Home', { savedNotes: noteData });
         }

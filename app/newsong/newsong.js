@@ -1,11 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { View } from 'react-native';
+import { KeyboardAvoidingView, Platform, ScrollView, View } from 'react-native';
 import styles from '../styles.js';
 import AddNotesButton from './addnotesbutton.js';
 import InputField from './inputfield.js';
 import SaveSongButton from './savesongbutton.js';
 
-const NewSong = ({ onSaveButtonPress, noteMessage }) => {
+const NewSong = ({ onSaveButtonPress, noteMessage, noteList }) => {
+    const [areNotes, setAreNotes] = useState(false);
+    const [isTitle, setIsTitle] = useState(false);
     const [title, setTitle] = useState('');
     const [artist, setArtist] = useState('');
     const [tempo, setTempo] = useState('');
@@ -15,15 +17,33 @@ const NewSong = ({ onSaveButtonPress, noteMessage }) => {
         firstInputRef.current.focus();
     }, []);
 
+    useEffect(() => {
+        if (noteList && Array.isArray(noteList) && noteList.length > 0) {
+            setAreNotes(true);
+        } else {
+            setAreNotes(false);
+        }
+    }, [noteList]);
+
+    useEffect(() => {
+        if (title) {
+            setIsTitle(true);
+        } else {
+            setIsTitle(false);
+        }
+    }, [title]);
+
     handleSaveButtonPress = () => {
         onSaveButtonPress({ title, artist, tempo });
     }
 
     return (
-        <View style={{
-            backgroundColor: '#F9F5F1'
-        }}>
-            <View style={styles.addsonginputs}>
+
+        <KeyboardAvoidingView
+            style={{ flex: 1 }}
+            behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+        >
+            <ScrollView contentContainerStyle={styles.addsonginputs} keyboardShouldPersistTaps="always">
                 <InputField
                     name={'Title'}
                     ref={firstInputRef}
@@ -44,11 +64,11 @@ const NewSong = ({ onSaveButtonPress, noteMessage }) => {
                 <View style={styles.newsongline} />
 
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between', width: "100%", height: 60, alignItems: 'center', marginBottom: -20 }}>
-                    <AddNotesButton noteMessage={noteMessage} />
-                    <SaveSongButton onSaveButtonPress={handleSaveButtonPress} />
+                    <AddNotesButton noteMessage={noteMessage} noteList={noteList} />
+                    <SaveSongButton onSaveButtonPress={handleSaveButtonPress} areNotes={areNotes} isTitle={isTitle} />
                 </View>
-            </View>
-        </View >
+            </ScrollView>
+        </KeyboardAvoidingView>
     );
 }
 

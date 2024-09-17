@@ -259,6 +259,18 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         color: 'white',
         flexDirection: 'row',
+        backgroundColor: '#D4A25B',
+    },
+
+    savesongbuttonactive: {
+        height: 40,
+        width: 40,
+        borderColor: 'white',
+        borderRadius: 30,
+        justifyContent: 'center',
+        alignItems: 'center',
+        color: 'white',
+        flexDirection: 'row',
         backgroundColor: 'orange',
     },
 

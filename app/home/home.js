@@ -3,7 +3,7 @@ import { useRoute } from '@react-navigation/native';
 import * as Font from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import { Text, View } from 'react-native';
+import { Alert, Text, View } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { Modalize } from 'react-native-modalize';
 import NavBar from '../navbar/navbar.js';
@@ -19,7 +19,7 @@ SplashScreen.preventAutoHideAsync();
 
 const Home = () => {
     const [appIsReady, setAppIsReady] = useState(false);
-    const [noteMessage, setNoteMessage] = useState("EDIT NOTES");
+    const [noteMessage, setNoteMessage] = useState("Notes");
     const [sound, setSound] = useState();
 
     const songsCollection = firestore().collection('songs');
@@ -78,11 +78,11 @@ const Home = () => {
     const handleSaveButtonPress = ({ title, artist, tempo }) => {
         if (!savedNotes || !title) {
             if (title) {
-                alert("Add some notes first!")
+                Alert.alert("Add some notes first!")
             } else if (savedNotes) {
-                alert("Please enter a title.")
+                Alert.alert("Please enter a title.")
             } else {
-                alert("Please enter a title and add notes, or swipe down to cancel.")
+                Alert.alert("Please enter a title and add notes, or swipe down to cancel.")
             }
         } else {
             songsCollection.add({
@@ -118,13 +118,10 @@ const Home = () => {
                 <NavBar />
                 <Modalize
                     ref={modalizeRef}
-                    // modalHeight={560}
                     modalStyle={{ borderRadius: 20, overflow: 'hidden' }}
-                    keyboardAvoidingBehavior="padding"
-                    keyboardShouldPersistTaps="always"
                     adjustToContentHeight={true}
                 >
-                    <NewSong onSaveButtonPress={handleSaveButtonPress} noteMessage={noteMessage} />
+                    <NewSong onSaveButtonPress={handleSaveButtonPress} noteMessage={noteMessage} noteList={savedNotes} />
                 </Modalize>
             </View>
         </GestureHandlerRootView>
