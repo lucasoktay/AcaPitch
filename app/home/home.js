@@ -1,8 +1,6 @@
 import firestore from '@react-native-firebase/firestore';
 import { useRoute } from '@react-navigation/native';
-import * as Font from 'expo-font';
-import * as SplashScreen from 'expo-splash-screen';
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { Alert, Text, View } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { Modalize } from 'react-native-modalize';
@@ -15,10 +13,7 @@ import SearchBar from './searchbar.js';
 import SettingsIcon from './settingsicon.js';
 import SongList from './songlist.js';
 
-SplashScreen.preventAutoHideAsync();
-
 const Home = () => {
-    const [appIsReady, setAppIsReady] = useState(false);
     const [noteMessage, setNoteMessage] = useState("Notes");
     const [sound, setSound] = useState();
 
@@ -28,43 +23,10 @@ const Home = () => {
     const { savedNotes } = route.params || {};
 
     useEffect(() => {
-        async function prepare() {
-            try {
-                await Font.loadAsync({
-                    'MontserratRegular': require('../../assets/fonts/MontserratRegular.ttf'),
-                    'MontserratSemiBold': require('../../assets/fonts/MontserratSemiBold.ttf'),
-                    'MontserratMedium': require('../../assets/fonts/MontserratMedium.ttf'),
-                    'RubikRegular': require('../../assets/fonts/RubikRegular.ttf'),
-                });
-                // Artificially delay for two seconds to simulate a slow loading
-                // experience. Please remove this if you copy and paste the code!
-                // await new Promise(resolve => setTimeout(resolve, 2));
-            } catch (e) {
-                console.warn(e);
-            } finally {
-                // Tell the application to render
-                setAppIsReady(true);
-            }
-        }
-
-        prepare();
-    }, []);
-
-    useEffect(() => {
         if (savedNotes) {
             setNoteMessage("Notes");
         }
     }, [savedNotes]);
-
-    const onLayoutRootView = useCallback(async () => {
-        if (appIsReady) {
-            await SplashScreen.hideAsync();
-        }
-    }, [appIsReady]);
-
-    if (!appIsReady) {
-        return null;
-    }
 
     const handlePlusButtonPress = () => {
         setNoteMessage("Notes");
