@@ -6,7 +6,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { Text, TextInput, View } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import styles from '../styles';
-import SignUpButton from './signinbutton';
+import SignUpButton from './signupbutton';
 
 const SignIn = () => {
     const [appIsReady, setAppIsReady] = useState(false);
