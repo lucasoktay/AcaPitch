@@ -1,9 +1,7 @@
-import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { useNavigation } from '@react-navigation/native';
-import { Pressable } from "react-native";
+import { Pressable, Text } from "react-native";
+import styles from "../styles";
 import SignOut from '../userauth/signout';
-import styles from "./styles";
 
 const SignOutButton = () => {
     const navigation = useNavigation();
@@ -13,9 +11,8 @@ const SignOutButton = () => {
         navigation.navigate('SignIn')
     }
     return (
-        <Pressable onPress={() => handleSignOut()}
-            style={styles.backbutton}>
-            <FontAwesomeIcon icon={faArrowLeft} size={24} />
+        <Pressable style={styles.signoutbutton} onPress={() => handleSignOut()}>
+            <Text style={{ color: "white", fontSize: 20 }}>Sign Out</Text>
         </Pressable>
     )
 }

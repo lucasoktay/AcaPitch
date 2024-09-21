@@ -1,5 +1,16 @@
 import { StyleSheet } from "react-native";
 
+const colors = {
+    lightorange: "#FF9B54",
+    orange: "#FF7F51",
+    lightred: "#CE4257",
+    red: "#720026",
+    darkred: "#4F000B",
+    darkgrey: "#444444",
+    lightgrey: "#E4DFDF",
+    bone: "#EDECEA",
+};
+
 const styles = StyleSheet.create({
     fullscreen: {
         flex: 1,
@@ -58,7 +69,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         padding: 8,
         marginVertical: 8,
-        borderColor: "#444444"
+        borderColor: colors.darkgrey
     },
 
     songwrapperleft: {
@@ -70,7 +81,7 @@ const styles = StyleSheet.create({
 
     song: {
         fontSize: 22,
-        color: "#444444"
+        color: colors.darkgrey
     },
 
     songListScrollView: {
@@ -109,7 +120,19 @@ const styles = StyleSheet.create({
     },
 
     signupbutton: {
-        backgroundColor: '#CE4257',
+        backgroundColor: colors.lightred,
+        borderRadius: 40,
+        width: "60%",
+        height: 60,
+        color: "white",
+        fontSize: 16,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+
+    signoutbutton: {
+        backgroundColor: colors.lightred,
+        borderwidth: 1,
         borderRadius: 40,
         width: "60%",
         height: 60,
@@ -120,7 +143,7 @@ const styles = StyleSheet.create({
     },
 
     navbar: {
-        backgroundColor: '#EDECEA',
+        backgroundColor: colors.bone,
         position: 'absolute',
         bottom: 0,
         left: 0,
@@ -205,7 +228,7 @@ const styles = StyleSheet.create({
     signupinputs: {
         borderRadius: 10,
         borderWidth: 1,
-        borderColor: '#E4DFDF',
+        borderColor: colors.lightgrey,
         height: 56,
         padding: 15,
         marginTop: 3,
@@ -220,7 +243,7 @@ const styles = StyleSheet.create({
     },
 
     switchtext: {
-        color: '#CE4257',
+        color: colors.lightred,
         fontSize: 16,
         marginTop: 20,
     },
@@ -240,7 +263,7 @@ const styles = StyleSheet.create({
 
     newsongline: {
         height: .5,
-        backgroundColor: 'lightgrey',
+        backgroundColor: colors.lightgrey,
         marginTop: 8,
         width: "120%",
         marginLeft: "-10%",
@@ -269,7 +292,7 @@ const styles = StyleSheet.create({
     },
 
     buttontext: {
-        color: '#B79992',
+        color: colors.lightred,
         fontSize: 20,
         fontWeight: 'bold'
     },
@@ -282,7 +305,7 @@ const styles = StyleSheet.create({
 
     addnotesbutton: {
         height: 40,
-        borderColor: 'lightgrey',
+        borderColor: colors.lightgrey,
         borderRadius: 12,
         flexDirection: 'row',
         padding: 8,
@@ -299,7 +322,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         color: 'white',
         flexDirection: 'row',
-        backgroundColor: '#D4A25B',
+        backgroundColor: colors.lightorange,
     },
 
     savesongbuttonactive: {
@@ -311,7 +334,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         color: 'white',
         flexDirection: 'row',
-        backgroundColor: 'orange',
+        backgroundColor: colors.orange,
     },
 
     addnotes: {
@@ -319,7 +342,7 @@ const styles = StyleSheet.create({
         lineHeight: 40,
         height: 40,
         alignItems: 'center',
-        color: 'darkgrey',
+        color: colors.darkgrey,
         justifyContent: 'center',
         fontSize: 16,
     },
@@ -342,7 +365,7 @@ const styles = StyleSheet.create({
         color: 'white',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: 'red'
+        backgroundColor: colors.red
     }
 });
 
