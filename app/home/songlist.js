@@ -9,7 +9,6 @@ const SongList = () => {
     const [songDetails, setSongDetails] = useState([]);
     const [unsubscribe, setUnsubscribe] = useState(null);
 
-
     const deleteSong = async (title) => {
         try {
             const currentUser = auth().currentUser;
@@ -59,42 +58,51 @@ const SongList = () => {
     // get songlist from backend and listen for real-time updates
     useEffect(() => {
         const currentUser = auth().currentUser;
-        const songsCollection = firestore().collection('songs');
-        const userSongsRef = firestore()
+        if (!currentUser) {
+            console.error('No user is currently signed in');
+            return;
+        }
+
+        const userDocRef = firestore()
             .collection('users')
-            .where('uid', '==', currentUser.uid)
-            .get()
-            .then(async querySnapshot => {
-                if (!querySnapshot.empty) {
-                    // Assuming the query returns a single document:
-                    const userDoc = querySnapshot.docs[0]; // Get the first document
-                    const userSongList = userDoc.data().songs;
-                    console.log("User document found:", userSongList);
+            .where('uid', '==', currentUser.uid);
 
-                    // get song list from doc id list (userSongList)
-                    const songPromises = userSongList.map(id => songsCollection.doc(id).get());
-                    const songDocs = await Promise.all(songPromises);
+        const unsubscribeListener = userDocRef.onSnapshot(async (querySnapshot) => {
+            if (!querySnapshot.empty) {
+                const userDoc = querySnapshot.docs[0];
+                const userSongList = userDoc.data().songs;
 
-                    // set song details
-                    const songsList = songDocs.map(doc => {
-                        const songData = doc.data();
-                        return {
-                            id: doc.id,
-                            title: songData.title,
-                            tempo: songData.tempo,
-                            artist: songData.artist,
-                            notes: songData.notes
-                        };
-                    });
+                const songsCollection = firestore().collection('songs');
+                const songPromises = userSongList.map(id => songsCollection.doc(id).get());
+                const songDocs = await Promise.all(songPromises);
 
-                    setSongDetails(songsList);
-                } else {
-                    console.log("No matching user document found.");
-                }
-            })
-            .catch(error => {
-                console.error("Error fetching user document: ", error);
-            });
+                const songsList = songDocs.map(doc => {
+                    const songData = doc.data();
+                    return {
+                        id: doc.id,
+                        title: songData.title,
+                        tempo: songData.tempo,
+                        artist: songData.artist,
+                        notes: songData.notes
+                    };
+                });
+
+                setSongDetails(songsList);
+            } else {
+                console.log("No matching user document found.");
+                setSongDetails([]);
+            }
+        }, (error) => {
+            console.error("Error fetching user document: ", error);
+        });
+
+        setUnsubscribe(() => unsubscribeListener);
+
+        return () => {
+            if (unsubscribe) {
+                unsubscribe();
+            }
+        };
     }, []);
 
     console.log("songlist: ", songDetails);
