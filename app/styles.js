@@ -109,11 +109,18 @@ const styles = StyleSheet.create({
         zIndex: 999, // Ensure it's above other content but below the navbar
     },
 
+    youremail: {
+        justifyContent: 'center',
+        alignItems: 'flex-start',
+        width: "100%",
+        marginBottom: 20,
+    },
+
     signuptext: {
         fontSize: 24,
         fontWeight: 'bold',
         color: "white",
-        marginBottom: 20,
+        marginBottom: 8,
     },
 
     signupbutton: {
@@ -123,6 +130,7 @@ const styles = StyleSheet.create({
         height: 60,
         color: "white",
         fontSize: 16,
+        marginTop: 20,
         justifyContent: 'center',
         alignItems: 'center',
     },
@@ -244,6 +252,7 @@ const styles = StyleSheet.create({
         paddingVertical: 80,
         paddingHorizontal: 20,
         flex: 1,
+        height: "100%",
         // justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: colors.lightred
@@ -263,7 +272,7 @@ const styles = StyleSheet.create({
     welcometext: {
         fontSize: 35,
         color: "white",
-        marginBottom: 100,
+        marginBottom: 60,
     },
 
     addsonginputs: {
