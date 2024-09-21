@@ -117,7 +117,7 @@ const styles = StyleSheet.create({
     },
 
     signuptext: {
-        fontSize: 24,
+        fontSize: 30,
         fontWeight: 'bold',
         color: "white",
         marginBottom: 8,
@@ -130,7 +130,6 @@ const styles = StyleSheet.create({
         height: 60,
         color: "white",
         fontSize: 16,
-        marginTop: 20,
         justifyContent: 'center',
         alignItems: 'center',
     },
@@ -232,24 +231,26 @@ const styles = StyleSheet.create({
 
     signupinputs: {
         borderRadius: 10,
-        borderWidth: 1,
+        backgroundColor: colors.red,
+        // borderWidth: 1,
         borderColor: colors.lightgrey,
         height: 56,
+        fontSize: 16,
         padding: 15,
         marginTop: 3,
         width: "100%"
     },
 
     logocontainer: {
-        height: 100,
-        width: 100,
+        height: 60,
+        width: 60,
         justifyContent: 'center',
         alignItems: 'center',
         margin: 10,
     },
 
     signupcontainer: {
-        paddingVertical: 80,
+        paddingVertical: 50,
         paddingHorizontal: 20,
         flex: 1,
         height: "100%",
@@ -265,14 +266,14 @@ const styles = StyleSheet.create({
 
     switchtext: {
         color: colors.lightorange,
-        fontSize: 16,
+        fontSize: 18,
         marginTop: 20,
     },
 
     welcometext: {
-        fontSize: 35,
+        fontSize: 40,
         color: "white",
-        marginBottom: 60,
+        marginBottom: 20,
     },
 
     addsonginputs: {
