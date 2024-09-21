@@ -1,6 +1,6 @@
 import firestore from '@react-native-firebase/firestore';
 import { useRoute } from '@react-navigation/native';
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Alert, Text, View } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { Modalize } from 'react-native-modalize';
@@ -60,7 +60,7 @@ const Home = () => {
     }
 
     return (
-        <GestureHandlerRootView style={{ flex: 1 }} onLayout={onLayoutRootView}>
+        <GestureHandlerRootView style={{ flex: 1 }}>
             <View style={{ backgroundColor: '#F9F5F1', flexGrow: 1 }}>
                 <View style={styles.fullscreen}>
                     <View style={styles.topbar}>

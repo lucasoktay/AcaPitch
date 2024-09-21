@@ -108,6 +108,17 @@ const styles = StyleSheet.create({
         zIndex: 999, // Ensure it's above other content but below the navbar
     },
 
+    signinbutton: {
+        margin: 40,
+        height: 64,
+        width: 200,
+        borderWidth: 1,
+        borderRadius: 20,
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'flex-start',
+    },
+
     navbar: {
         backgroundColor: '#EDECEA',
         position: 'absolute',
