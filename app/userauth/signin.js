@@ -1,7 +1,10 @@
+import { faMicrophoneLines } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react';
 import { Text, TextInput, View } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import colors from '../colors';
 import styles from '../styles';
 import SignInButton from './signinbutton';
 import SwitchToSignUp from './switchtosignup';
@@ -12,35 +15,42 @@ const SignIn = () => {
     const [password, setPassword] = useState('');
     const navigation = useNavigation();
 
-    // function onAuthStateChanged(user) {
-    //     setUser(user);
-    //     if (initializing) setInitializing(false);
-    // }
-
-    // useEffect(() => {
-    //     const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
-    //     return subscriber; // unsubscribe on unmount
-    // }, []);
-
     return (
         <GestureHandlerRootView style={{ flex: 1 }}>
-            <View style={styles.signupcontainer}>
-                <Text style={styles.welcometext}>AcaPitch</Text>
-                <TextInput
-                    style={styles.signupinputs}
-                    placeholder="Email"
-                    value={email}
-                    onChangeText={setEmail}
-                    keyboardType="email-address"
-                    autoCapitalize="none"
-                />
-                <TextInput
-                    style={styles.signupinputs}
-                    placeholder="Password"
-                    value={password}
-                    onChangeText={setPassword}
-                    secureTextEntry
-                />
+            <View style={styles.signincontainer}>
+                <View style={styles.logocontainer}>
+                    <FontAwesomeIcon icon={faMicrophoneLines} size={70} color={colors.orange} />
+                </View>
+                <Text style={styles.welcometext}>Welcome back!</Text>
+                <View style={styles.signupinnercontainer}>
+                    <Text style={styles.signuptext}>Sign In</Text>
+                    <Text style={{ color: "white", marginBottom: 20, fontSize: 18 }}>Add your email and password.</Text>
+                </View>
+                <View style={styles.youremail}>
+                    <Text style={{ color: "white", fontSize: 16 }}>YOUR EMAIL</Text>
+                    <TextInput
+                        style={styles.signininputs}
+                        placeholder="Email"
+                        color="white"
+                        placeholderTextColor={"white"}
+                        value={email}
+                        onChangeText={setEmail}
+                        keyboardType="email-address"
+                        autoCapitalize="none"
+                    />
+                </View>
+                <View style={styles.youremail}>
+                    <Text style={{ color: "white", fontSize: 16 }}>YOUR PASSWORD</Text>
+                    <TextInput
+                        style={styles.signininputs}
+                        placeholder="Password"
+                        color="white"
+                        placeholderTextColor={"white"}
+                        value={password}
+                        onChangeText={setPassword}
+                        secureTextEntry
+                    />
+                </View>
                 <SignInButton email={email} password={password} />
                 <SwitchToSignUp />
             </View>

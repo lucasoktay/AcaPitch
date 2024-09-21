@@ -241,6 +241,18 @@ const styles = StyleSheet.create({
         width: "100%"
     },
 
+    signininputs: {
+        borderRadius: 10,
+        backgroundColor: colors.lightred,
+        // borderWidth: 1,
+        borderColor: colors.lightgrey,
+        height: 56,
+        fontSize: 16,
+        padding: 15,
+        marginTop: 3,
+        width: "100%"
+    },
+
     logocontainer: {
         height: 60,
         width: 60,
@@ -259,6 +271,16 @@ const styles = StyleSheet.create({
         backgroundColor: colors.lightred
     },
 
+    signincontainer: {
+        paddingVertical: 50,
+        paddingHorizontal: 20,
+        flex: 1,
+        height: "100%",
+        // justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: colors.red
+    },
+
     signupinnercontainer: {
         width: "100%",
         justifyContent: 'center',
@@ -267,7 +289,7 @@ const styles = StyleSheet.create({
     switchtext: {
         color: colors.lightorange,
         fontSize: 18,
-        marginTop: 20,
+        marginTop: 10,
     },
 
     welcometext: {
