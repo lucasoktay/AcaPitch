@@ -1,15 +1,5 @@
 import { StyleSheet } from "react-native";
-
-const colors = {
-    lightorange: "#FF9B54",
-    orange: "#FF7F51",
-    lightred: "#CE4257",
-    red: "#720026",
-    darkred: "#4F000B",
-    darkgrey: "#444444",
-    lightgrey: "#E4DFDF",
-    bone: "#EDECEA",
-};
+import colors from "./colors";
 
 const styles = StyleSheet.create({
     fullscreen: {
@@ -119,8 +109,15 @@ const styles = StyleSheet.create({
         zIndex: 999, // Ensure it's above other content but below the navbar
     },
 
+    signuptext: {
+        fontSize: 24,
+        fontWeight: 'bold',
+        color: "white",
+        marginBottom: 20,
+    },
+
     signupbutton: {
-        backgroundColor: colors.lightred,
+        backgroundColor: colors.orange,
         borderRadius: 40,
         width: "60%",
         height: 60,
@@ -232,26 +229,41 @@ const styles = StyleSheet.create({
         height: 56,
         padding: 15,
         marginTop: 3,
-        width: "80%"
+        width: "100%"
+    },
+
+    logocontainer: {
+        height: 100,
+        width: 100,
+        justifyContent: 'center',
+        alignItems: 'center',
+        margin: 10,
     },
 
     signupcontainer: {
-        rowGap: 20,
+        paddingVertical: 80,
+        paddingHorizontal: 20,
         flex: 1,
-        justifyContent: 'center',
+        // justifyContent: 'center',
         alignItems: 'center',
+        backgroundColor: colors.lightred
+    },
+
+    signupinnercontainer: {
+        width: "100%",
+        justifyContent: 'center',
     },
 
     switchtext: {
-        color: colors.lightred,
+        color: colors.lightorange,
         fontSize: 16,
         marginTop: 20,
     },
 
     welcometext: {
         fontSize: 35,
-        // fontStyle: 'italic',
-        marginBottom: 20,
+        color: "white",
+        marginBottom: 100,
     },
 
     addsonginputs: {

@@ -1,3 +1,5 @@
+import { faMicrophoneLines } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import auth from '@react-native-firebase/auth';
 import { useNavigation } from '@react-navigation/native';
 import * as Font from 'expo-font';
@@ -5,6 +7,7 @@ import { SplashScreen } from 'expo-router';
 import React, { useCallback, useEffect, useState } from 'react';
 import { Text, TextInput, View } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import colors from '../colors';
 import styles from '../styles';
 import SignUpButton from './signupbutton';
 import SwitchToSignIn from './switchtosignin';
@@ -66,10 +69,18 @@ const SignUp = () => {
     return (
         <GestureHandlerRootView style={{ flex: 1 }} onLayout={onLayoutRootView}>
             <View style={styles.signupcontainer}>
+                <View style={styles.logocontainer}>
+                    <FontAwesomeIcon icon={faMicrophoneLines} size={70} color={colors.orange} />
+                </View>
                 <Text style={styles.welcometext}>AcaPitch</Text>
+                <View style={styles.signupinnercontainer}>
+                    <Text style={styles.signuptext}>Sign Up</Text>
+                    <Text style={{ color: "white" }}>Add your email and password.</Text>
+                </View>
                 <TextInput
                     style={styles.signupinputs}
                     placeholder="Email"
+                    placeholderTextColor={colors.orange}
                     value={email}
                     onChangeText={setEmail}
                     keyboardType="email-address"
@@ -78,6 +89,7 @@ const SignUp = () => {
                 <TextInput
                     style={styles.signupinputs}
                     placeholder="Password"
+                    placeholderTextColor={colors.orange}
                     value={password}
                     onChangeText={setPassword}
                     secureTextEntry
