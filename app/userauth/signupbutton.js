@@ -15,7 +15,8 @@ const SignUpButton = ({ email, password }) => {
 
                 userCollection.add({
                     email: email,
-                    password: password
+                    password: password,
+                    uid: auth().currentUser.uid
                 })
             })
             .catch(error => {

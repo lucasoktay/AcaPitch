@@ -1,3 +1,4 @@
+import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
 import { useRoute } from '@react-navigation/native';
 import React, { useEffect, useRef, useState } from 'react';
@@ -16,7 +17,7 @@ import SongList from './songlist.js';
 const Home = () => {
     const [noteMessage, setNoteMessage] = useState("Notes");
     const [sound, setSound] = useState();
-
+    const userCollection = firestore().collection('users');
     const songsCollection = firestore().collection('songs');
     const modalizeRef = useRef(null);
     const route = useRoute();
@@ -37,26 +38,57 @@ const Home = () => {
         await PlaySound(note, setSound);
     }
 
-    const handleSaveButtonPress = ({ title, artist, tempo }) => {
+    const handleSaveButtonPress = async ({ title, artist, tempo }) => {
         if (!savedNotes || !title) {
             if (title) {
-                Alert.alert("Add some notes first!")
+                Alert.alert("Add some notes first!");
             } else if (savedNotes) {
-                Alert.alert("Please enter a title.")
+                Alert.alert("Please enter a title.");
             } else {
-                Alert.alert("Please enter a title and add notes, or swipe down to cancel.")
+                Alert.alert("Please enter a title and add notes, or swipe down to cancel.");
             }
-        } else {
-            songsCollection.add({
+            return;
+        }
+
+        try {
+            const currentUser = auth().currentUser;
+            if (!currentUser) {
+                Alert.alert("Error", "No user is currently signed in.");
+                return;
+            }
+
+            // Add the new song to the songs collection
+            const newSongRef = await songsCollection.add({
                 title: title,
                 artist: artist,
                 tempo: tempo,
                 notes: savedNotes
-            })
+            });
+
+            console.log('New song added with ID:', newSongRef.id);
+
+            // Update the user's document to include the new song ID
+            const userQuerySnapshot = await userCollection
+                .where('uid', '==', currentUser.uid)
+                .get();
+
+            if (!userQuerySnapshot.empty) {
+                const userDoc = userQuerySnapshot.docs[0];
+                await userDoc.ref.update({
+                    songs: firestore.FieldValue.arrayUnion(newSongRef.id)
+                });
+                console.log('Song ID added to user\'s songs list');
+            } else {
+                console.error('User document not found');
+                Alert.alert("Error", "Failed to update user's song list.");
+            }
 
             modalizeRef.current?.close();
-        }
 
+        } catch (error) {
+            console.error('Error saving song:', error);
+            Alert.alert("Error", "Failed to save the song. Please try again.");
+        }
     }
 
     return (
