@@ -2,9 +2,9 @@ import auth from '@react-native-firebase/auth';
 import { Pressable, Text } from 'react-native';
 import styles from '../styles';
 
-const SignInButton = ({ email, password }) => {
+const SignUpButton = ({ email, password }) => {
 
-    handleSignIn = () => {
+    handleSignUp = () => {
 
         auth()
             .createUserWithEmailAndPassword(email, password)
@@ -25,11 +25,11 @@ const SignInButton = ({ email, password }) => {
     }
 
     return (
-        <Pressable style={styles.signinbutton} onPress={() => handleSignIn()}>
+        <Pressable style={styles.signupbutton} onPress={() => handleSignUp()}>
             <Text>Sign In</Text>
         </Pressable>
     )
 
 }
 
-export default SignInButton
+export default SignUpButton

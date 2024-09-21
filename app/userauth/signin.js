@@ -1,19 +1,21 @@
 import auth from '@react-native-firebase/auth';
 import { useNavigation } from '@react-navigation/native';
 import * as Font from 'expo-font';
+import { SplashScreen } from 'expo-router';
 import React, { useCallback, useEffect, useState } from 'react';
-import { Text, View } from 'react-native';
+import { Text, TextInput, View } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import SignInButton from './signinbutton';
+import styles from '../styles';
+import SignUpButton from './signinbutton';
 
 const SignIn = () => {
     const [appIsReady, setAppIsReady] = useState(false);
-    // Set an initializing state whilst Firebase connects
     const [initializing, setInitializing] = useState(true);
     const [user, setUser] = useState();
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
     const navigation = useNavigation();
 
-    // Handle user state changes
     function onAuthStateChanged(user) {
         setUser(user);
         if (initializing) setInitializing(false);
@@ -23,7 +25,6 @@ const SignIn = () => {
         const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
         return subscriber; // unsubscribe on unmount
     }, []);
-
 
     useEffect(() => {
         async function prepare() {
@@ -37,7 +38,6 @@ const SignIn = () => {
             } catch (e) {
                 console.warn(e);
             } finally {
-                // Tell the application to render
                 setAppIsReady(true);
             }
         }
@@ -51,6 +51,10 @@ const SignIn = () => {
         }
     }, [appIsReady]);
 
+    if (!appIsReady || initializing) {
+        return null;
+    }
+
     if (user) {
         console.log('User is signed in');
         navigation.navigate('Home')
@@ -58,17 +62,26 @@ const SignIn = () => {
         console.log('User is signed out');
     }
 
-    if (!appIsReady) {
-        return null;
-    }
-
-    if (initializing) return null;
-
     return (
         <GestureHandlerRootView style={{ flex: 1 }} onLayout={onLayoutRootView}>
-            <View>
-                <Text>Welcome</Text>
-                <SignInButton email={"testemail@gmail.com"} password={"123456"} />
+            <View style={styles.signincontainer}>
+                <Text style={styles.welcometext}>AcaPitch</Text>
+                <TextInput
+                    style={styles.inputfield}
+                    placeholder="Email"
+                    value={email}
+                    onChangeText={setEmail}
+                    keyboardType="email-address"
+                    autoCapitalize="none"
+                />
+                <TextInput
+                    style={styles.inputfield}
+                    placeholder="Password"
+                    value={password}
+                    onChangeText={setPassword}
+                    secureTextEntry
+                />
+                <SignUpButton email={email} password={password} />
             </View>
         </GestureHandlerRootView>
     );

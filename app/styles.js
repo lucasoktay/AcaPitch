@@ -108,7 +108,7 @@ const styles = StyleSheet.create({
         zIndex: 999, // Ensure it's above other content but below the navbar
     },
 
-    signinbutton: {
+    signupbutton: {
         margin: 40,
         height: 64,
         width: 200,
@@ -200,6 +200,18 @@ const styles = StyleSheet.create({
         // padding: 8,
         color: 'black',
         fontSize: 18,
+    },
+
+    signincontainer: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        padding: 20,
+    },
+    welcometext: {
+        fontSize: 24,
+        marginBottom: 20,
+        // fontFamily: 'MontserratSemiBold',
     },
 
     addsonginputs: {
