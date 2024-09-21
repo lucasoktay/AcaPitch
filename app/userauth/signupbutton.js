@@ -1,8 +1,10 @@
 import auth from '@react-native-firebase/auth';
+import firestore from '@react-native-firebase/firestore';
 import { Pressable, Text } from 'react-native';
 import styles from '../styles';
 
 const SignUpButton = ({ email, password }) => {
+    const userCollection = firestore().collection('users');
 
     handleSignUp = () => {
 
@@ -22,6 +24,11 @@ const SignUpButton = ({ email, password }) => {
 
                 console.error(error);
             });
+
+        userCollection.add({
+            email: email,
+            password: password
+        })
     }
 
     return (
