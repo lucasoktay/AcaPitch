@@ -109,13 +109,12 @@ const styles = StyleSheet.create({
     },
 
     signupbutton: {
-        backgroundColor: '#3D56F0',
+        backgroundColor: '#CE4257',
         borderRadius: 40,
-        width: 271,
-        height: 54,
+        width: "60%",
+        height: 60,
         color: "white",
         fontSize: 16,
-        margin: 10,
         justifyContent: 'center',
         alignItems: 'center',
     },
@@ -213,11 +212,17 @@ const styles = StyleSheet.create({
         width: "80%"
     },
 
-    signincontainer: {
+    signupcontainer: {
         rowGap: 20,
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
+    },
+
+    switchtext: {
+        color: '#CE4257',
+        fontSize: 16,
+        marginTop: 20,
     },
 
     welcometext: {

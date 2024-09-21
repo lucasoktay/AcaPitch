@@ -33,7 +33,7 @@ const SignUpButton = ({ email, password }) => {
 
     return (
         <Pressable style={styles.signupbutton} onPress={() => handleSignUp()}>
-            <Text>Sign Up</Text>
+            <Text style={{ fontSize: 20, color: "white" }}>SIGN UP</Text>
         </Pressable>
     )
 

@@ -8,6 +8,7 @@ import NewSong from './newsong/newsong.js';
 import PianoComponent from './piano/piano.js';
 import Settings from './settings/settings.js';
 import SignIn from './userauth/signin.js';
+import SignUp from './userauth/signup.js';
 
 
 SplashScreen.preventAutoHideAsync();
@@ -21,6 +22,7 @@ const MyStack = () => {
                 headerShown: false,
                 orientation: 'portrait',
             }}>
+                <Stack.Screen name="SignUp" component={SignUp} />
                 <Stack.Screen name="SignIn" component={SignIn} />
                 <Stack.Screen name="Home" component={Home} />
                 <Stack.Screen
