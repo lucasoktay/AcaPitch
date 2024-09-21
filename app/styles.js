@@ -109,14 +109,15 @@ const styles = StyleSheet.create({
     },
 
     signupbutton: {
-        margin: 40,
-        height: 64,
-        width: 200,
-        borderWidth: 1,
-        borderRadius: 20,
-        flexDirection: 'row',
+        backgroundColor: '#3D56F0',
+        borderRadius: 40,
+        width: 271,
+        height: 54,
+        color: "white",
+        fontSize: 16,
+        margin: 10,
+        justifyContent: 'center',
         alignItems: 'center',
-        justifyContent: 'flex-start',
     },
 
     navbar: {
@@ -202,16 +203,27 @@ const styles = StyleSheet.create({
         fontSize: 18,
     },
 
+    signupinputs: {
+        borderRadius: 10,
+        borderWidth: 1,
+        borderColor: '#E4DFDF',
+        height: 56,
+        padding: 15,
+        marginTop: 3,
+        width: "80%"
+    },
+
     signincontainer: {
+        rowGap: 20,
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        padding: 20,
     },
+
     welcometext: {
-        fontSize: 24,
+        fontSize: 35,
+        // fontStyle: 'italic',
         marginBottom: 20,
-        // fontFamily: 'MontserratSemiBold',
     },
 
     addsonginputs: {

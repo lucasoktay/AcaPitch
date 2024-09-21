@@ -67,7 +67,7 @@ const SignIn = () => {
             <View style={styles.signincontainer}>
                 <Text style={styles.welcometext}>AcaPitch</Text>
                 <TextInput
-                    style={styles.inputfield}
+                    style={styles.signupinputs}
                     placeholder="Email"
                     value={email}
                     onChangeText={setEmail}
@@ -75,7 +75,7 @@ const SignIn = () => {
                     autoCapitalize="none"
                 />
                 <TextInput
-                    style={styles.inputfield}
+                    style={styles.signupinputs}
                     placeholder="Password"
                     value={password}
                     onChangeText={setPassword}
