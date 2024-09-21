@@ -12,6 +12,11 @@ const SignUpButton = ({ email, password }) => {
             .createUserWithEmailAndPassword(email, password)
             .then(() => {
                 console.log('User account created & signed in!');
+
+                userCollection.add({
+                    email: email,
+                    password: password
+                })
             })
             .catch(error => {
                 if (error.code === 'auth/email-already-in-use') {
@@ -24,11 +29,6 @@ const SignUpButton = ({ email, password }) => {
 
                 console.error(error);
             });
-
-        userCollection.add({
-            email: email,
-            password: password
-        })
     }
 
     return (
