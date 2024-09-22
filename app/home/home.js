@@ -10,7 +10,7 @@ import NewSong from '../newsong/newsong.js';
 import PlaySound from '../piano/newmakesound.js';
 import styles from '../styles.js';
 import PlusButton from './plusbutton.js';
-import SearchBar from './searchbar.js';
+// import SearchBar from './searchbar.js';
 import SettingsIcon from './settingsicon.js';
 import SongList from './songlist.js';
 
@@ -96,7 +96,7 @@ const Home = () => {
             <View style={{ backgroundColor: "white", flexGrow: 1 }}>
                 <View style={styles.fullscreen}>
                     <View style={styles.topbar}>
-                        <SearchBar />
+                        {/* <SearchBar /> */}
                         <SettingsIcon />
                     </View>
 

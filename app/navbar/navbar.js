@@ -1,5 +1,6 @@
 import { useNavigation } from '@react-navigation/native';
 import { View } from "react-native";
+import colors from '../colors.js';
 import styles from "../styles.js";
 import HomeIcon from "./homeicon";
 import PianoIcon from "./pianoicon";
@@ -9,8 +10,8 @@ const NavBar = () => {
     const navigation = useNavigation();
     const idx = navigation.getState().index;
     console.log(idx);
-    const pianoColor = idx === 2 ? '#DF7B43' : '#444444';
-    const homeColor = idx === 1 ? '#DF7B43' : '#444444';
+    const pianoColor = idx === 2 ? colors.lightred : colors.darkgrey;
+    const homeColor = idx === 1 ? colors.lightred : colors.darkgrey;
 
 
     return (

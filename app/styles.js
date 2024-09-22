@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
 
     topbar: {
         flexDirection: 'row',
-        justifyContent: 'space-between',
+        justifyContent: 'flex-end',
         flexGrow: 0
     },
 
@@ -81,7 +81,6 @@ const styles = StyleSheet.create({
 
     song: {
         fontSize: 20,
-        color: colors.darkgrey
     },
 
     songListScrollView: {
@@ -110,12 +109,13 @@ const styles = StyleSheet.create({
         left: 0,
         right: 0,
         height: 64,
-        borderWidth: 1,
         borderRadius: 20,
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'flex-start',
         paddingLeft: 20,
+        backgroundColor: "white",
+        ...shadow,
         zIndex: 999, // Ensure it's above other content but below the navbar
     },
 
@@ -158,7 +158,7 @@ const styles = StyleSheet.create({
     },
 
     navbar: {
-        backgroundColor: colors.bone,
+        backgroundColor: "#fffff1",
         position: 'absolute',
         bottom: 0,
         left: 0,
@@ -183,6 +183,7 @@ const styles = StyleSheet.create({
         borderWidth: 2,
         height: 40,
         width: 40,
+        // borderColor: colors.lightred,
         justifyContent: 'center',
         alignItems: 'center',
         flexGrow: 0,

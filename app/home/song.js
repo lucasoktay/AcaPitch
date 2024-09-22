@@ -62,12 +62,12 @@ const Song = ({ title, tempo, artist, notes, onDelete }) => {
                         </Pressable>
                         <View >
                             <Text style={styles.song} numberOfLines={1}>{title}</Text>
-                            <Text numberOfLines={1} style={{ color: "#444444" }}>{artist}</Text>
+                            <Text numberOfLines={1}>{artist}</Text>
                         </View>
                     </View>
                     <View style={styles.songinfo}>
-                        <Text numberOfLines={1} style={{ color: "#444444" }}>{tempo}</Text>
-                        <Text numberOfLines={1} style={{ color: "#444444" }}>{formatnotes}</Text>
+                        <Text numberOfLines={1}>{tempo}</Text>
+                        <Text numberOfLines={1} >{formatnotes}</Text>
                     </View>
                 </View>
             </Swipeable>

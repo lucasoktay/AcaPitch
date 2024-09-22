@@ -11,7 +11,7 @@ const PlayIcon = () => {
                     icon={faPlay}
                     size={22}
                     style={{ marginLeft: 4 }}
-                    color="#444444"
+                // color={colors.lightred}
                 />
             </View>
         </View>
