@@ -101,11 +101,9 @@ const Home = () => {
                     </View>
 
                     <Text style={[styles.yoursongs]}>Your Songs</Text>
-                    <View style={styles.topline} />
 
                     <SongList />
 
-                    <View style={styles.bottomline} />
                     <PlusButton onPlusButtonPress={handlePlusButtonPress} />
 
                 </View>

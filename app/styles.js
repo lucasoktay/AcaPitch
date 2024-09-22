@@ -48,8 +48,9 @@ const styles = StyleSheet.create({
     },
 
     yoursongs: {
-        fontSize: 24,
+        fontSize: 22,
         marginTop: 24,
+        paddingHorizontal: 15,
         marginBottom: 8,
         fontWeight: '500',
         flexGrow: 0,
@@ -79,7 +80,7 @@ const styles = StyleSheet.create({
     },
 
     song: {
-        fontSize: 22,
+        fontSize: 20,
         color: colors.darkgrey
     },
 
@@ -91,7 +92,7 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         overflow: 'scroll',
         flex: 1,
-        paddingBottom: 95,
+        // paddingBottom: 95,
     },
 
     songinfo: {
@@ -200,7 +201,7 @@ const styles = StyleSheet.create({
         borderWidth: .5,
         borderColor: 'black',
         position: 'absolute',
-        bottom: 175,
+        bottom: 100,
         left: 10,
         right: 10
     },
