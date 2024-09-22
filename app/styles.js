@@ -1,6 +1,13 @@
 import { StyleSheet } from "react-native";
 import colors from "./colors";
 
+const shadow = {
+    shadowColor: "black",
+    shadowOpacity: .25,
+    shadowRadius: 5,
+    shadowOffset: { height: 2 }
+};
+
 const styles = StyleSheet.create({
     fullscreen: {
         flex: 1,
@@ -49,17 +56,19 @@ const styles = StyleSheet.create({
     },
 
     songwrapper: {
-        borderWidth: 1,
         height: 64,
-        borderRadius: 20,
-        overflow: 'hidden',
+        marginHorizontal: 15,
+        borderWidth: .2,
+        borderColor: colors.lightgrey,
+        borderRadius: 15,
         flexGrow: 0,
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
         padding: 8,
         marginVertical: 8,
-        borderColor: colors.darkgrey
+        backgroundColor: 'white',
+        ...shadow
     },
 
     songwrapperleft: {

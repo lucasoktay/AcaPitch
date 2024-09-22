@@ -112,6 +112,9 @@ const SongList = () => {
             <ScrollView
                 showsVerticalScrollIndicator={false}
                 showsHorizontalScrollIndicator={false}
+                contentContainerStyle={{
+                    paddingTop: 16
+                }}
             >
                 {songDetails.map(({ title, tempo, artist, notes }, index) => (
                     <Song key={index} title={title} tempo={tempo} artist={artist} notes={notes} onDelete={deleteSong} />

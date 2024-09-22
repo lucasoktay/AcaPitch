@@ -93,7 +93,7 @@ const Home = () => {
 
     return (
         <GestureHandlerRootView style={{ flex: 1 }}>
-            <View style={{ backgroundColor: '#F9F5F1', flexGrow: 1 }}>
+            <View style={{ backgroundColor: "white", flexGrow: 1 }}>
                 <View style={styles.fullscreen}>
                     <View style={styles.topbar}>
                         <SearchBar />

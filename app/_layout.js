@@ -23,11 +23,14 @@ const MyStack = () => {
                 orientation: 'portrait',
             }}>
                 <Stack.Screen name="SignUp" component={SignUp} />
-                <Stack.Screen name="SignIn"
+                <Stack.Screen
+                    name="SignIn"
                     component={SignIn}
                     options={{ animation: "slide_from_right" }}
                 />
-                <Stack.Screen name="Home" component={Home} />
+                <Stack.Screen
+                    name="Home"
+                    component={Home} />
                 <Stack.Screen
                     name="Piano"
                     component={PianoComponent}
