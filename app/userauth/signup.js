@@ -1,10 +1,10 @@
 import { faMicrophoneLines } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import auth from '@react-native-firebase/auth';
-import { useNavigation } from '@react-navigation/native';
+import { useFocusEffect, useNavigation } from '@react-navigation/native';
 import * as Font from 'expo-font';
 import { SplashScreen } from 'expo-router';
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { Text, TextInput, View } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import colors from '../colors';
@@ -19,6 +19,7 @@ const SignUp = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const navigation = useNavigation();
+    const firstInputRef = useRef(null);
 
     function onAuthStateChanged(user) {
         setUser(user);
@@ -55,6 +56,14 @@ const SignUp = () => {
         }
     }, [appIsReady]);
 
+    useFocusEffect(
+        useCallback(() => {
+            if (appIsReady && firstInputRef.current) {
+                firstInputRef.current.focus(); // Focus the input every time the screen is focused
+            }
+        }, [appIsReady])
+    );
+
     if (!appIsReady || initializing) {
         return null;
     }
@@ -88,6 +97,7 @@ const SignUp = () => {
                         onChangeText={setEmail}
                         keyboardType="email-address"
                         autoCapitalize="none"
+                        ref={firstInputRef}
                     />
                 </View>
                 <View style={styles.youremail}>

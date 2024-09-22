@@ -1,7 +1,7 @@
 import { faMicrophoneLines } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { useNavigation } from '@react-navigation/native';
-import React, { useState } from 'react';
+import { useFocusEffect, useNavigation } from '@react-navigation/native';
+import React, { useCallback, useRef, useState } from 'react';
 import { Text, TextInput, View } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import colors from '../colors';
@@ -14,6 +14,13 @@ const SignIn = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const navigation = useNavigation();
+    const firstInputRef = useRef(null);
+
+    useFocusEffect(
+        useCallback(() => {
+            firstInputRef.current.focus(); // Focus the input every time the screen is focused
+        }, [])
+    );
 
     return (
         <GestureHandlerRootView style={{ flex: 1 }}>
@@ -30,6 +37,7 @@ const SignIn = () => {
                     <Text style={{ color: "white", fontSize: 16 }}>YOUR EMAIL</Text>
                     <TextInput
                         style={styles.signininputs}
+                        ref={firstInputRef}
                         placeholder="Email"
                         color="white"
                         placeholderTextColor={"white"}
