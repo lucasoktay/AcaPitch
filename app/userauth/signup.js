@@ -89,6 +89,7 @@ const SignUp = () => {
                 <View style={styles.youremail}>
                     <Text style={{ color: "white", fontSize: 16 }}>YOUR EMAIL</Text>
                     <TextInput
+                        textContentType="emailAddress"
                         style={styles.signupinputs}
                         placeholder="Email"
                         color="white"
@@ -103,6 +104,7 @@ const SignUp = () => {
                 <View style={styles.youremail}>
                     <Text style={{ color: "white", fontSize: 16 }}>YOUR PASSWORD</Text>
                     <TextInput
+                        textContentType="password"
                         style={styles.signupinputs}
                         placeholder="Password"
                         color="white"

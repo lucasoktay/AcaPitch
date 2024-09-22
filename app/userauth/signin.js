@@ -22,6 +22,11 @@ const SignIn = () => {
         }, [])
     );
 
+    const clearFields = () => {
+        setEmail('');
+        setPassword('');
+    };
+
     return (
         <GestureHandlerRootView style={{ flex: 1 }}>
             <View style={styles.signincontainer}>
@@ -36,6 +41,7 @@ const SignIn = () => {
                 <View style={styles.youremail}>
                     <Text style={{ color: "white", fontSize: 16 }}>YOUR EMAIL</Text>
                     <TextInput
+                        textContentType="emailAddress"
                         style={styles.signininputs}
                         ref={firstInputRef}
                         placeholder="Email"
@@ -50,6 +56,7 @@ const SignIn = () => {
                 <View style={styles.youremail}>
                     <Text style={{ color: "white", fontSize: 16 }}>YOUR PASSWORD</Text>
                     <TextInput
+                        textContentType="password"
                         style={styles.signininputs}
                         placeholder="Password"
                         color="white"
@@ -59,7 +66,7 @@ const SignIn = () => {
                         secureTextEntry
                     />
                 </View>
-                <SignInButton email={email} password={password} />
+                <SignInButton email={email} password={password} clearFields={clearFields} />
                 <SwitchToSignUp />
             </View>
         </GestureHandlerRootView>

@@ -3,10 +3,11 @@ import firestore from '@react-native-firebase/firestore';
 import { Pressable, Text } from 'react-native';
 import styles from '../styles';
 
-const SignInButton = ({ email, password }) => {
+const SignInButton = ({ email, password, clearFields }) => {
     const userCollection = firestore().collection('users');
 
     handleSignIn = () => {
+        clearFields();
 
         auth()
             .signInWithEmailAndPassword(email, password)
