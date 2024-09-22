@@ -13,6 +13,7 @@ const styles = StyleSheet.create({
         flex: 1,
         paddingTop: 60,
         paddingBottom: 80,
+        backgroundColor: colors.greyred,
     },
 
     fullscreensettings: {
@@ -202,7 +203,7 @@ const styles = StyleSheet.create({
     },
 
     navbar: {
-        backgroundColor: colors.greyred,
+        backgroundColor: "#F8F1F4",
         position: 'absolute',
         bottom: 0,
         left: 0,
@@ -253,7 +254,8 @@ const styles = StyleSheet.create({
 
     fullscreenpiano: {
         height: "90%",
-        marginTop: '5%'
+        marginTop: '5%',
+        backgroundColor: colors.greyred,
     },
 
     pianoscrollview: {
@@ -464,7 +466,7 @@ const styles = StyleSheet.create({
         color: 'white',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: colors.red
+        backgroundColor: colors.lightred
     }
 });
 
