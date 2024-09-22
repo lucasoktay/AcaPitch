@@ -12,8 +12,33 @@ const styles = StyleSheet.create({
     fullscreen: {
         flex: 1,
         paddingTop: 60,
-        // paddingHorizontal: 20,
         paddingBottom: 80,
+    },
+
+    fullscreensettings: {
+        // backgroundColor: colors.red,
+        flex: 1,
+        paddingTop: 60,
+        paddingHorizontal: 20,
+    },
+
+    topbarsettings: {
+        alignItems: 'center',
+        flexDirection: 'row',
+        justifyContent: 'center',
+        marginBottom: 20,
+        height: 40,
+    },
+
+    backbutton: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        position: "absolute",
+        height: 40,
+        width: 40,
+        zIndex: 1,
+        left: 20,
+        top: 60,
     },
 
     searchbar: {

@@ -1,14 +1,18 @@
 import { Text, View } from "react-native";
+import styles from "../styles";
 import BackButton from "./backbutton";
 import SignOutButton from "./signoutbutton";
-import styles from "./styles";
 
 const Settings = () => {
 
     return (
-        <View style={styles.fullscreen}>
+        <View style={styles.fullscreensettings}>
             <BackButton />
-            <Text>Settings</Text>
+            <View style={styles.topbarsettings}>
+                <View style={styles.settingstextwrapper}>
+                    <Text style={{ fontSize: 20 }}>Settings</Text>
+                </View>
+            </View>
             <SignOutButton />
         </View>
     )
