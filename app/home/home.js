@@ -102,7 +102,9 @@ const Home = () => {
 
                     <Text style={[styles.yoursongs]}>Your Songs</Text>
 
-                    <SongList />
+                    <View style={{ height: 600 }}>
+                        <SongList />
+                    </View>
 
                     <PlusButton onPlusButtonPress={handlePlusButtonPress} />
 

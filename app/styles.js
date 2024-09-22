@@ -106,7 +106,7 @@ const styles = StyleSheet.create({
 
     plusbutton: {
         position: 'absolute',
-        bottom: 15,
+        bottom: -80,
         left: 0,
         right: 0,
         height: 64,
@@ -201,7 +201,7 @@ const styles = StyleSheet.create({
         borderWidth: .5,
         borderColor: 'black',
         position: 'absolute',
-        bottom: 100,
+        bottom: 0,
         left: 10,
         right: 10
     },
