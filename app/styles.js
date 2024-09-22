@@ -16,10 +16,11 @@ const styles = StyleSheet.create({
     },
 
     fullscreensettings: {
-        // backgroundColor: colors.red,
+        backgroundColor: colors.greyred,
         flex: 1,
         paddingTop: 60,
         paddingHorizontal: 20,
+        alignItems: 'center',
     },
 
     topbarsettings: {
@@ -39,6 +40,21 @@ const styles = StyleSheet.create({
         zIndex: 1,
         left: 20,
         top: 60,
+    },
+
+    themesbutton: {
+        flexDirection: 'row',
+        borderRadius: 10,
+        alignItems: 'center',
+        width: "100%",
+        height: 50,
+        marginVertical: 10,
+        backgroundColor: "white"
+    },
+
+    themesicon: {
+        marginHorizontal: 16,
+        marginVertical: 8,
     },
 
     searchbar: {
@@ -172,6 +188,8 @@ const styles = StyleSheet.create({
     },
 
     signoutbutton: {
+        position: 'absolute',
+        bottom: 60,
         backgroundColor: colors.lightred,
         borderwidth: 1,
         borderRadius: 40,
@@ -184,7 +202,7 @@ const styles = StyleSheet.create({
     },
 
     navbar: {
-        backgroundColor: "#f8f8f8",
+        backgroundColor: colors.greyred,
         position: 'absolute',
         bottom: 0,
         left: 0,

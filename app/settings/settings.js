@@ -2,6 +2,8 @@ import { Text, View } from "react-native";
 import styles from "../styles";
 import BackButton from "./backbutton";
 import SignOutButton from "./signoutbutton";
+import ThemesButton from "./themesoption";
+// import ThemesButton from "./themesbutton";
 
 const Settings = () => {
 
@@ -13,9 +15,10 @@ const Settings = () => {
                     <Text style={{ fontSize: 20 }}>Settings</Text>
                 </View>
             </View>
+            <ThemesButton />
             <SignOutButton />
         </View>
     )
 }
 
-export default Settings
+export default Settings;

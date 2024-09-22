@@ -7,6 +7,7 @@ import Home from './home/home.js';
 import NewSong from './newsong/newsong.js';
 import PianoComponent from './piano/piano.js';
 import Settings from './settings/settings.js';
+import ThemesComponent from './themes/themes.js';
 import SignIn from './userauth/signin.js';
 import SignUp from './userauth/signup.js';
 
@@ -37,6 +38,11 @@ const MyStack = () => {
                     options={{
                         orientation: 'landscape',
                     }}
+                />
+                <Stack.Screen
+                    name="Themes"
+                    component={ThemesComponent}
+                    options={{ animation: "slide_from_right" }}
                 />
                 <Stack.Screen
                     name="Settings"
