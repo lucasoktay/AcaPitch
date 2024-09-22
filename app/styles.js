@@ -11,9 +11,9 @@ const shadow = {
 const styles = StyleSheet.create({
     fullscreen: {
         flex: 1,
-        paddingBottom: 80,
         paddingTop: 60,
-        paddingHorizontal: 20,
+        // paddingHorizontal: 20,
+        paddingBottom: 80,
     },
 
     searchbar: {
@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
     },
 
     settingsicon: {
-        // borderWidth: 1,
+        marginRight: 20,
         height: 40,
         width: 40,
         borderRadius: 20,
@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
     yoursongs: {
         fontSize: 22,
         marginTop: 24,
-        paddingHorizontal: 15,
+        marginHorizontal: 20,
         marginBottom: 8,
         fontWeight: '500',
         flexGrow: 0,
@@ -68,6 +68,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         padding: 8,
         marginVertical: 8,
+        marginHorizontal: 20,
         backgroundColor: 'white',
         ...shadow
     },
@@ -105,9 +106,9 @@ const styles = StyleSheet.create({
 
     plusbutton: {
         position: 'absolute',
-        bottom: -80,
-        left: 0,
-        right: 0,
+        bottom: 90,
+        left: 20,
+        right: 20,
         height: 64,
         borderRadius: 20,
         flexDirection: 'row',
@@ -116,7 +117,7 @@ const styles = StyleSheet.create({
         paddingLeft: 20,
         backgroundColor: "white",
         ...shadow,
-        zIndex: 999, // Ensure it's above other content but below the navbar
+        zIndex: 999
     },
 
     youremail: {
@@ -377,7 +378,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         color: 'white',
         flexDirection: 'row',
-        backgroundColor: colors.lightorange,
+        backgroundColor: colors.grey,
     },
 
     savesongbuttonactive: {
@@ -389,7 +390,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         color: 'white',
         flexDirection: 'row',
-        backgroundColor: colors.orange,
+        backgroundColor: colors.lightred,
     },
 
     addnotes: {

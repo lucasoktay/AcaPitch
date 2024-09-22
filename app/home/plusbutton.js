@@ -9,14 +9,12 @@ const PlusButton = ({ onPlusButtonPress }) => {
     // const navigation = useNavigation();
 
     return (
-        <View>
-            <Pressable onPress={onPlusButtonPress}>
-                <View style={styles.plusbutton}>
-                    <FontAwesomeIcon icon={faPlus} size={32} style={{ marginRight: 16, color: colors.lightred }} />
-                    <Text style={styles.song} numberOfLines={1}>Add Song</Text>
-                </View>
-            </Pressable>
-        </View>
+        <Pressable onPress={onPlusButtonPress} style={styles.plusbutton}>
+            <View style={{ flexDirection: "row", alignItems: "center" }}>
+                <FontAwesomeIcon icon={faPlus} size={32} style={{ marginRight: 16, color: colors.lightred }} />
+                <Text style={styles.song} numberOfLines={1}>Add Song</Text>
+            </View>
+        </Pressable>
     )
 }
 

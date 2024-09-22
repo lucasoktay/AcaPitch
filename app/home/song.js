@@ -1,6 +1,6 @@
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Animated, Pressable, Text, View } from "react-native";
 import { Swipeable } from 'react-native-gesture-handler';
 import PlaySound from "../piano/newmakesound.js";
@@ -10,6 +10,7 @@ import PlayIcon from "./playicon";
 const Song = ({ title, tempo, artist, notes, onDelete }) => {
 
     const [sound, setSound] = useState();
+    const swipeableRef = useRef(null);
 
     const renderRightActions = (progress, dragX) => {
         const trans = dragX.interpolate({
@@ -19,10 +20,13 @@ const Song = ({ title, tempo, artist, notes, onDelete }) => {
         });
 
         return (
-            <View style={{ justifyContent: 'center', height: "100%" }} >
+            <View style={{ justifyContent: 'center', height: "100%", marginRight: 20 }} >
                 <Animated.View style={{ transform: [{ translateX: trans }] }}>
                     <Pressable
-                        onPress={() => onDelete(title)}
+                        onPress={() => {
+                            swipeableRef.current.close();
+                            onDelete(title)
+                        }}
                         style={styles.deletesongbutton}
                     >
                         <FontAwesomeIcon icon={faTrash} size={24} />
@@ -54,7 +58,7 @@ const Song = ({ title, tempo, artist, notes, onDelete }) => {
 
     if (artist != "") {
         return (
-            <Swipeable renderRightActions={renderRightActions}>
+            <Swipeable ref={swipeableRef} renderRightActions={renderRightActions}>
                 <View style={styles.songwrapper}>
                     <View style={styles.songwrapperleft}>
                         <Pressable onPress={playNotes}>
@@ -74,7 +78,7 @@ const Song = ({ title, tempo, artist, notes, onDelete }) => {
         )
     } else {
         return (
-            <Swipeable renderRightActions={renderRightActions}>
+            <Swipeable ref={swipeableRef} renderRightActions={renderRightActions}>
                 <View style={styles.songwrapper}>
                     <View style={styles.songwrapperleft}>
                         <Pressable onPress={playNotes}>

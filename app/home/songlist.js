@@ -102,19 +102,9 @@ const SongList = () => {
     const deleteSong = async (title) => {
         try {
             const currentUser = auth().currentUser;
-            if (!currentUser) {
-                console.error('No user is currently signed in');
-                return;
-            }
 
-            // Find the song document by title
             const songDoc = songDetails.find(song => song.title === title);
-            if (!songDoc) {
-                console.error('Song not found');
-                return;
-            }
 
-            // Delete the document from the songs collection
             await firestore().collection('songs').doc(songDoc.id).delete();
 
             // Update the user's document to remove the song ID
@@ -136,9 +126,6 @@ const SongList = () => {
             } else {
                 console.error('User document not found');
             }
-
-            // Update the local state to remove the deleted song
-            setSongDetails(songDetails.filter(song => song.title !== title));
 
         } catch (error) {
             console.error('Error deleting song:', error);
