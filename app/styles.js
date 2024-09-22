@@ -159,7 +159,7 @@ const styles = StyleSheet.create({
     },
 
     navbar: {
-        backgroundColor: "#fffff1",
+        backgroundColor: "#f8f8f8",
         position: 'absolute',
         bottom: 0,
         left: 0,
