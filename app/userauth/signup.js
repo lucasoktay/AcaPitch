@@ -75,11 +75,16 @@ const SignUp = () => {
         console.log('User is signed out');
     }
 
+    const clearFields = () => {
+        setEmail('');
+        setPassword('');
+    };
+
     return (
         <GestureHandlerRootView style={{ flex: 1 }} onLayout={onLayoutRootView}>
             <View style={styles.signupcontainer}>
                 <View style={styles.logocontainer}>
-                    <FontAwesomeIcon icon={faMicrophoneLines} size={70} color={colors.orange} />
+                    <FontAwesomeIcon icon={faMicrophoneLines} size={60} color={colors.orange} />
                 </View>
                 <Text style={styles.welcometext}>AcaPitch</Text>
                 <View style={styles.signupinnercontainer}>
@@ -114,7 +119,7 @@ const SignUp = () => {
                         secureTextEntry
                     />
                 </View>
-                <SignUpButton email={email} password={password} />
+                <SignUpButton email={email} password={password} clearFields={clearFields} />
                 <SwitchToSignIn />
             </View>
         </GestureHandlerRootView>

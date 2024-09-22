@@ -114,6 +114,7 @@ const styles = StyleSheet.create({
         alignItems: 'flex-start',
         width: "100%",
         marginBottom: 20,
+        marginTop: 10
     },
 
     signuptext: {
@@ -231,8 +232,7 @@ const styles = StyleSheet.create({
 
     signupinputs: {
         borderRadius: 10,
-        backgroundColor: colors.red,
-        // borderWidth: 1,
+        backgroundColor: colors.lightred,
         borderColor: colors.lightgrey,
         height: 56,
         fontSize: 16,
@@ -258,7 +258,7 @@ const styles = StyleSheet.create({
         width: 60,
         justifyContent: 'center',
         alignItems: 'center',
-        margin: 10,
+        margin: 4,
     },
 
     signupcontainer: {
@@ -268,7 +268,7 @@ const styles = StyleSheet.create({
         height: "100%",
         // justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: colors.lightred
+        backgroundColor: colors.red
     },
 
     signincontainer: {

@@ -16,11 +16,15 @@ const SignInButton = ({ email, password, clearFields }) => {
             })
             .catch(error => {
                 if (error.code === 'auth/wrong-password') {
-                    console.log('That password is incorrect!');
+                    Alert.alert('That password is incorrect!')
                 }
 
                 if (error.code === 'auth/user-not-found') {
-                    console.log('That email address is not found!');
+                    Alert.alert('That email address is not found!')
+                }
+
+                if (error.code === 'auth/invalid-email') {
+                    Alert.alert('That email address is invalid!');
                 }
 
                 console.error(error);

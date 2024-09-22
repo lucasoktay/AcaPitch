@@ -31,7 +31,7 @@ const SignIn = () => {
         <GestureHandlerRootView style={{ flex: 1 }}>
             <View style={styles.signincontainer}>
                 <View style={styles.logocontainer}>
-                    <FontAwesomeIcon icon={faMicrophoneLines} size={70} color={colors.orange} />
+                    <FontAwesomeIcon icon={faMicrophoneLines} size={60} color={colors.orange} />
                 </View>
                 <Text style={styles.welcometext}>Welcome back!</Text>
                 <View style={styles.signupinnercontainer}>
