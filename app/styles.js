@@ -385,15 +385,16 @@ const styles = StyleSheet.create({
     },
 
     bottombutton: {
+        backgroundColor: 'white',
         justifyContent: 'center',
         alignItems: 'center',
         height: 40,
         borderRadius: 10,
-        marginBottom: 8
+        marginBottom: 8,
+        ...shadow,
     },
 
     buttontext: {
-        color: colors.lightred,
         fontSize: 20,
         fontWeight: 'bold'
     },

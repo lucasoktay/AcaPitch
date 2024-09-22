@@ -1,6 +1,7 @@
 import { useNavigation } from '@react-navigation/native';
 import { useState } from 'react';
 import { Alert, View } from 'react-native';
+import colors from '../colors.js';
 import PlaySound from '../piano/newmakesound.js';
 import styles from '../styles.js';
 import BottomButtons from './bottombuttons.js';
@@ -50,7 +51,7 @@ const AddNotes = () => {
     };
 
     return (
-        <View style={{ backgroundColor: '#B79992', height: "100%" }}>
+        <View style={{ backgroundColor: colors.greyred, height: "100%" }}>
             <View style={styles.newsongscreen}>
                 <View style={{ width: "100%", alignItems: 'center' }}>
                     <InputPiano

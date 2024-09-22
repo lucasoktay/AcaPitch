@@ -1,21 +1,21 @@
 import { useNavigation } from '@react-navigation/native';
 import { useEffect, useState } from 'react';
 import { Pressable, Text, View } from "react-native";
+import colors from '../colors';
 import styles from '../styles';
 
 const BottomButtons = ({ areNotesAdded, isKeyPressed, onAddButtonPress, onSaveButtonPress }) => {
 
     const navigation = useNavigation();
-
-    const [addButtonColor, setAddButtonColor] = useState('gray');
-    const [saveButtonColor, setSaveButtonColor] = useState('gray');
+    const [addButtonText, setAddButtonText] = useState(colors.lightgrey);
+    const [saveButtonText, setSaveButtonText] = useState(colors.lightgrey);
 
     useEffect(() => {
-        setAddButtonColor(isKeyPressed ? 'blue' : 'gray');
+        setAddButtonText(isKeyPressed ? colors.orange : colors.grey);
     }, [isKeyPressed]);
 
     useEffect(() => {
-        setSaveButtonColor(areNotesAdded ? 'blue' : 'gray');
+        setSaveButtonText(areNotesAdded ? colors.orange : colors.grey);
     }, [areNotesAdded]);
 
     return (
@@ -23,9 +23,9 @@ const BottomButtons = ({ areNotesAdded, isKeyPressed, onAddButtonPress, onSaveBu
 
             <Pressable
                 onPress={onAddButtonPress}
-                style={[styles.bottombutton, { width: '100%', backgroundColor: addButtonColor }]}
+                style={[styles.bottombutton, { width: '100%' }]}
             >
-                <Text style={styles.buttontext}>
+                <Text style={[styles.buttontext, { color: addButtonText }]}>
                     ADD NOTE
                 </Text>
             </Pressable>
@@ -34,15 +34,15 @@ const BottomButtons = ({ areNotesAdded, isKeyPressed, onAddButtonPress, onSaveBu
 
                 <Pressable
                     onPress={onSaveButtonPress}
-                    style={[styles.bottombutton, { width: '60%', backgroundColor: saveButtonColor }]}>
-                    <Text style={styles.buttontext}>
+                    style={[styles.bottombutton, { width: '60%' }]}>
+                    <Text style={[styles.buttontext, { color: saveButtonText }]}>
                         SAVE
                     </Text>
                 </Pressable>
                 <Pressable
                     onPress={() => navigation.navigate('Home')}
-                    style={[styles.bottombutton, { width: '38%', backgroundColor: '#832E2E' }]}>
-                    <Text style={styles.buttontextactive}>
+                    style={[styles.bottombutton, { width: '38%' }]}>
+                    <Text style={[styles.buttontextactive, { color: colors.lightred }]}>
                         CANCEL
                     </Text>
                 </Pressable>
