@@ -189,6 +189,17 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
 
+    signupbuttoninactive: {
+        backgroundColor: colors.grey,
+        borderRadius: 40,
+        width: "60%",
+        height: 60,
+        color: "white",
+        fontSize: 16,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+
     signoutbutton: {
         position: 'absolute',
         bottom: 60,

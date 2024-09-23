@@ -32,11 +32,19 @@ const SignInButton = ({ email, password, clearFields }) => {
             );
     }
 
-    return (
-        <Pressable style={styles.signupbutton} onPress={() => handleSignIn()}>
-            <Text style={{ fontSize: 22, color: "white" }}>SIGN IN</Text>
-        </Pressable>
-    )
+    if (email && password) {
+        return (
+            <Pressable style={styles.signupbutton} onPress={() => handleSignIn()}>
+                <Text style={{ fontSize: 22, color: "white" }}>SIGN IN</Text>
+            </Pressable>
+        )
+    } else {
+        return (
+            <Pressable style={styles.signupbuttoninactive} onPress={() => handleSignIn()}>
+                <Text style={{ fontSize: 22, color: "white" }}>SIGN IN</Text>
+            </Pressable>
+        )
+    }
 
 }
 
