@@ -1,10 +1,10 @@
-import { faMicrophoneLines } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+// import { faMicrophoneLines } from '@fortawesome/free-solid-svg-icons';
+// import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { useFocusEffect, useNavigation } from '@react-navigation/native';
 import React, { useCallback, useRef, useState } from 'react';
 import { Text, TextInput, View } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import colors from '../colors';
+// import colors from '../colors';
 import styles from '../styles';
 import SignInButton from './signinbutton';
 import SwitchToSignUp from './switchtosignup';
@@ -30,10 +30,10 @@ const SignIn = () => {
     return (
         <GestureHandlerRootView style={{ flex: 1 }}>
             <View style={styles.signincontainer}>
-                <View style={styles.logocontainer}>
+                {/* <View style={styles.logocontainer}>
                     <FontAwesomeIcon icon={faMicrophoneLines} size={60} color={colors.orange} />
                 </View>
-                <Text style={styles.welcometext}>Welcome back!</Text>
+                <Text style={styles.welcometext}>Welcome back!</Text> */}
                 <View style={styles.signupinnercontainer}>
                     <Text style={styles.signuptext}>Sign In</Text>
                     <Text style={{ color: "white", marginBottom: 20, fontSize: 18 }}>Add your email and password.</Text>

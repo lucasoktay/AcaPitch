@@ -1,5 +1,5 @@
-import { faMicrophoneLines } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+// import { faMicrophoneLines } from '@fortawesome/free-solid-svg-icons';
+// import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import auth from '@react-native-firebase/auth';
 import { useFocusEffect, useNavigation } from '@react-navigation/native';
 import * as Font from 'expo-font';
@@ -7,7 +7,7 @@ import { SplashScreen } from 'expo-router';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { Text, TextInput, View } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import colors from '../colors';
+// import colors from '../colors';
 import styles from '../styles';
 import SignUpButton from './signupbutton';
 import SwitchToSignIn from './switchtosignin';
@@ -83,10 +83,10 @@ const SignUp = () => {
     return (
         <GestureHandlerRootView style={{ flex: 1 }} onLayout={onLayoutRootView}>
             <View style={styles.signupcontainer}>
-                <View style={styles.logocontainer}>
+                {/* <View style={styles.logocontainer}>
                     <FontAwesomeIcon icon={faMicrophoneLines} size={60} color={colors.orange} />
                 </View>
-                <Text style={styles.welcometext}>AcaPitch</Text>
+                <Text style={styles.welcometext}>AcaPitch</Text> */}
                 <View style={styles.signupinnercontainer}>
                     <Text style={styles.signuptext}>Sign Up</Text>
                     <Text style={{ color: "white", marginBottom: 20, fontSize: 18 }}>Add your email and password.</Text>
