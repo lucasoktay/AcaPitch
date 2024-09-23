@@ -14,6 +14,7 @@ const styles = StyleSheet.create({
     noteLabel: {
         color: 'black',
         fontSize: 12,
+        fontFamily: 'RubikRegular',
         textAlign: 'center',
     },
 });

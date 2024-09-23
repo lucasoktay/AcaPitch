@@ -36,10 +36,10 @@ const SignIn = () => {
                 <Text style={styles.welcometext}>Welcome back!</Text> */}
                 <View style={styles.signupinnercontainer}>
                     <Text style={styles.signuptext}>Sign In</Text>
-                    <Text style={{ color: "white", marginBottom: 20, fontSize: 18 }}>Add your email and password.</Text>
+                    <Text style={{ color: "white", marginBottom: 20, fontSize: 18, fontFamily: 'RubikRegular' }}>Add your email and password.</Text>
                 </View>
                 <View style={styles.youremail}>
-                    <Text style={{ color: "white", fontSize: 16 }}>YOUR EMAIL</Text>
+                    <Text style={{ color: "white", fontSize: 16, fontFamily: 'RubikRegular' }}>YOUR EMAIL</Text>
                     <TextInput
                         textContentType="emailAddress"
                         style={styles.signininputs}

@@ -12,7 +12,7 @@ const Settings = () => {
             <BackButton />
             <View style={styles.topbarsettings}>
                 <View style={styles.settingstextwrapper}>
-                    <Text style={{ fontSize: 20 }}>Settings</Text>
+                    <Text style={{ fontSize: 20, fontFamily: 'RubikRegular' }}>Settings</Text>
                 </View>
             </View>
             <ThemesButton />

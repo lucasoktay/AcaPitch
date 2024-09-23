@@ -89,10 +89,10 @@ const SignUp = () => {
                 <Text style={styles.welcometext}>AcaPitch</Text> */}
                 <View style={styles.signupinnercontainer}>
                     <Text style={styles.signuptext}>Sign Up</Text>
-                    <Text style={{ color: "white", marginBottom: 20, fontSize: 18 }}>Add your email and password.</Text>
+                    <Text style={{ color: "white", marginBottom: 20, fontSize: 18, fontFamily: 'RubikRegular' }}>Add your email and password.</Text>
                 </View>
                 <View style={styles.youremail}>
-                    <Text style={{ color: "white", fontSize: 16 }}>YOUR EMAIL</Text>
+                    <Text style={{ color: "white", fontSize: 16, fontFamily: 'RubikRegular' }}>YOUR EMAIL</Text>
                     <TextInput
                         textContentType="emailAddress"
                         style={styles.signupinputs}
@@ -107,7 +107,7 @@ const SignUp = () => {
                     />
                 </View>
                 <View style={styles.youremail}>
-                    <Text style={{ color: "white", fontSize: 16 }}>YOUR PASSWORD</Text>
+                    <Text style={{ color: "white", fontSize: 16, fontFamily: 'RubikRegular' }}>YOUR PASSWORD</Text>
                     <TextInput
                         textContentType="password"
                         style={styles.signupinputs}

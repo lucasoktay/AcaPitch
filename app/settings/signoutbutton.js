@@ -12,7 +12,7 @@ const SignOutButton = () => {
     }
     return (
         <Pressable style={styles.signoutbutton} onPress={() => handleSignOut()}>
-            <Text style={{ color: "white", fontSize: 20 }}>Sign Out</Text>
+            <Text style={{ color: "white", fontSize: 20, fontFamily: 'RubikRegular' }}>Sign Out</Text>
         </Pressable>
     )
 }

@@ -13,7 +13,6 @@ const NavBar = () => {
     const pianoColor = currentRoute === 'Piano' ? colors.lightred : colors.darkgrey;
     const homeColor = currentRoute === 'Home' ? colors.lightred : colors.darkgrey;
 
-
     return (
         <View style={styles.navbar}>
             <HomeIcon homeColor={homeColor} />

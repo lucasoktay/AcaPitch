@@ -96,6 +96,7 @@ const styles = StyleSheet.create({
         marginBottom: 8,
         fontWeight: '500',
         flexGrow: 0,
+        fontFamily: 'RubikRegular'
     },
 
     songwrapper: {
@@ -124,6 +125,7 @@ const styles = StyleSheet.create({
 
     song: {
         fontSize: 20,
+        fontFamily: 'RubikRegular'
     },
 
     songListScrollView: {
@@ -173,6 +175,7 @@ const styles = StyleSheet.create({
     signuptext: {
         fontSize: 30,
         fontWeight: 'bold',
+        fontFamily: 'RubikRegular',
         color: "white",
         marginBottom: 8,
         marginTop: 25
@@ -185,6 +188,7 @@ const styles = StyleSheet.create({
         height: 60,
         color: "white",
         fontSize: 16,
+        fontFamily: 'RubikRegular',
         justifyContent: 'center',
         alignItems: 'center',
     },
@@ -196,6 +200,7 @@ const styles = StyleSheet.create({
         height: 60,
         color: "white",
         fontSize: 16,
+        fontFamily: 'RubikRegular',
         justifyContent: 'center',
         alignItems: 'center',
     },
@@ -210,6 +215,7 @@ const styles = StyleSheet.create({
         height: 60,
         color: "white",
         fontSize: 16,
+        fontFamily: 'RubikRegular',
         justifyContent: 'center',
         alignItems: 'center',
     },
@@ -297,6 +303,7 @@ const styles = StyleSheet.create({
         // padding: 8,
         color: 'black',
         fontSize: 18,
+        fontFamily: 'RubikRegular',
     },
 
     signupinputs: {
@@ -305,6 +312,7 @@ const styles = StyleSheet.create({
         borderColor: colors.lightgrey,
         height: 56,
         fontSize: 16,
+        fontFamily: 'RubikRegular',
         padding: 15,
         marginTop: 3,
         width: "100%"
@@ -317,6 +325,7 @@ const styles = StyleSheet.create({
         borderColor: colors.lightgrey,
         height: 56,
         fontSize: 16,
+        fontFamily: 'RubikRegular',
         padding: 15,
         marginTop: 3,
         width: "100%"
@@ -358,11 +367,13 @@ const styles = StyleSheet.create({
     switchtext: {
         color: colors.lightorange,
         fontSize: 18,
+        fontFamily: 'RubikRegular',
         marginTop: 10,
     },
 
     welcometext: {
         fontSize: 40,
+        fontFamily: 'RubikRegular',
         color: "white",
         marginBottom: 20,
     },
@@ -408,6 +419,7 @@ const styles = StyleSheet.create({
 
     noteinfo: {
         fontSize: 22,
+        fontFamily: 'RubikRegular',
         width: "82%",
         marginTop: 20,
         // color: colors.orange
@@ -415,12 +427,14 @@ const styles = StyleSheet.create({
 
     buttontext: {
         fontSize: 20,
+        fontFamily: 'RubikRegular',
         fontWeight: 'bold'
     },
 
     buttontextactive: {
         color: 'white',
         fontSize: 20,
+        fontFamily: 'RubikRegular',
         fontWeight: 'bold'
     },
 
@@ -466,6 +480,7 @@ const styles = StyleSheet.create({
         color: colors.darkgrey,
         justifyContent: 'center',
         fontSize: 16,
+        fontFamily: 'RubikRegular',
     },
 
     savesong: {
@@ -476,6 +491,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         color: 'white',
         fontSize: 16,
+        fontFamily: 'RubikRegular',
     },
 
     deletesongbutton: {

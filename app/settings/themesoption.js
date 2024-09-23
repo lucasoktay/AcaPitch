@@ -11,7 +11,7 @@ const ThemesButton = () => {
     return (
         <Pressable style={styles.themesbutton} onPress={() => navigation.navigate('Themes')}>
             <FontAwesomeIcon style={styles.themesicon} icon={faPalette} size={20} color={colors.lightred} />
-            <Text style={{ fontSize: 20 }}>Theme</Text>
+            <Text style={{ fontSize: 20, fontFamily: 'RubikRegular' }}>Theme</Text>
             <FontAwesomeIcon style={{ marginLeft: 240 }} icon={faChevronRight} color={colors.darkgrey} size={16} />
         </Pressable>
     )

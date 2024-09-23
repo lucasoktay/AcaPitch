@@ -6,7 +6,7 @@ const ThemesComponent = () => {
         <View>
             <BackButton />
             <View style={{ justifyContent: 'center', alignItems: 'center', marginTop: 60, height: 40 }}>
-                <Text style={{ fontSize: 24 }}>Coming soon!</Text>
+                <Text style={{ fontSize: 24, fontFamily: 'RubikRegular' }}>Coming soon!</Text>
             </View>
         </View>
     )
