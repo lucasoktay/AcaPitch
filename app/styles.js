@@ -178,7 +178,7 @@ const styles = StyleSheet.create({
         fontFamily: 'RubikRegular',
         color: "white",
         marginBottom: 8,
-        marginTop: 25
+        marginTop: 20
     },
 
     signupbutton: {
@@ -277,7 +277,7 @@ const styles = StyleSheet.create({
     },
 
     pianoscrollview: {
-        marginTop: 30,
+        marginTop: 10,
         marginBottom: 20,
         height: 200,
         flexGrow: 1,
@@ -421,7 +421,7 @@ const styles = StyleSheet.create({
         fontSize: 22,
         fontFamily: 'RubikRegular',
         width: "82%",
-        marginTop: 20,
+        marginTop: 10,
         // color: colors.orange
     },
 

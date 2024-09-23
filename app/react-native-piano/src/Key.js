@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { StyleSheet, View } from 'react-native';
+import colors from '../../colors';
 import MidiNumbers from './MidiNumbers';
 
 class Key extends Component {
@@ -126,7 +127,7 @@ const styles = StyleSheet.create({
     zIndex: 1,
   },
   ReactPiano__Key__active: {
-    backgroundColor: '#3ac8da',
+    backgroundColor: colors.lightred,
   },
   ReactPiano__NoteLabelContainer: {
     flex: 1,
