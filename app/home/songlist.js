@@ -87,13 +87,13 @@ const SongList = () => {
 
             Animated.timing(topLineOpacity, {
                 toValue: showTopLine,
-                duration: 200,
+                duration: 1,
                 useNativeDriver: true,
             }).start();
 
             Animated.timing(bottomLineOpacity, {
                 toValue: showBottomLine,
-                duration: 200,
+                duration: 1,
                 useNativeDriver: true,
             }).start();
         }
