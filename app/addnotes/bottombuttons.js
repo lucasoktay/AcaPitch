@@ -4,7 +4,7 @@ import { Pressable, Text, View } from "react-native";
 import colors from '../colors';
 import styles from '../styles';
 
-const BottomButtons = ({ areNotesAdded, isKeyPressed, onAddButtonPress, onSaveButtonPress }) => {
+const BottomButtons = ({ areNotesAdded, isKeyPressed, onSaveButtonPress }) => {
 
     const navigation = useNavigation();
     const [addButtonText, setAddButtonText] = useState(colors.lightgrey);
@@ -20,15 +20,6 @@ const BottomButtons = ({ areNotesAdded, isKeyPressed, onAddButtonPress, onSaveBu
 
     return (
         <View style={{ flexDirection: 'column', justifyContent: 'center', alignItems: 'center', width: 760 }}>
-
-            <Pressable
-                onPress={onAddButtonPress}
-                style={[styles.bottombutton, { width: '100%' }]}
-            >
-                <Text style={[styles.buttontext, { color: addButtonText }]}>
-                    ADD NOTE
-                </Text>
-            </Pressable>
 
             <View style={styles.bottombuttons}>
 

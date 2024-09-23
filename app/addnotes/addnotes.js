@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/native';
 import { useState } from 'react';
-import { Alert, View } from 'react-native';
+import { Alert, Text, View } from 'react-native';
 import colors from '../colors.js';
 import PlaySound from '../piano/newmakesound.js';
 import styles from '../styles.js';
@@ -22,7 +22,7 @@ const AddNotes = () => {
 
     const handlePlayNote = async (note) => {
         setIsKeyPressed(true);
-        setPianoData(note);
+        setNoteData([...noteData, note]);
         await PlaySound(note, setSound);
     };
 
@@ -31,16 +31,6 @@ const AddNotes = () => {
         // Add any additional logic for stopping the note
     };
 
-    const handleAddButtonPress = () => {
-        if (!isKeyPressed) {
-            return;
-        }
-
-        setIsKeyPressed(false);
-        setNoteData([...noteData, pianoData]);
-        setAreNotesAdded(true);
-        // console.log('noteData: ' + noteData);
-    };
 
     const handleSaveButtonPress = () => {
         if (!areNotesAdded) {
@@ -62,9 +52,10 @@ const AddNotes = () => {
                     <BottomButtons
                         isKeyPressed={isKeyPressed}
                         areNotesAdded={areNotesAdded}
-                        onAddButtonPress={handleAddButtonPress}
+                        // onAddButtonPress={handleAddButtonPress}
                         onSaveButtonPress={handleSaveButtonPress}
                     />
+                    <Text style={styles.noteinfo}> Notes: {noteData.join(", ")} </Text>
                 </View>
             </View>
         </View>

@@ -394,6 +394,13 @@ const styles = StyleSheet.create({
         ...shadow,
     },
 
+    noteinfo: {
+        fontSize: 22,
+        width: "82%",
+        marginTop: 20,
+        // color: colors.orange
+    },
+
     buttontext: {
         fontSize: 20,
         fontWeight: 'bold'
