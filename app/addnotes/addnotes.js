@@ -22,9 +22,15 @@ const AddNotes = () => {
 
     const handlePlayNote = async (note) => {
         setIsKeyPressed(true);
+        setAreNotesAdded(true);
         setNoteData([...noteData, note]);
         await PlaySound(note, setSound);
     };
+
+    const handleClearNotes = () => {
+        setNoteData([]);
+        setAreNotesAdded(false);
+    }
 
     const handleStopNote = () => {
         // console.log('pianoData: ' + pianoData)
@@ -37,6 +43,7 @@ const AddNotes = () => {
             Alert.alert('Add notes or press cancel.');
         } else {
             navigation.navigate('Home', { savedNotes: noteData });
+            setNoteData([]);
         }
     };
 
@@ -52,7 +59,7 @@ const AddNotes = () => {
                     <BottomButtons
                         isKeyPressed={isKeyPressed}
                         areNotesAdded={areNotesAdded}
-                        // onAddButtonPress={handleAddButtonPress}
+                        onClearButtonPress={handleClearNotes}
                         onSaveButtonPress={handleSaveButtonPress}
                     />
                     <Text style={styles.noteinfo}> Notes: {noteData.join(", ")} </Text>

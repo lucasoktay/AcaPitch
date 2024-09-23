@@ -4,15 +4,10 @@ import { Pressable, Text, View } from "react-native";
 import colors from '../colors';
 import styles from '../styles';
 
-const BottomButtons = ({ areNotesAdded, isKeyPressed, onSaveButtonPress }) => {
+const BottomButtons = ({ areNotesAdded, onSaveButtonPress, onClearButtonPress }) => {
 
     const navigation = useNavigation();
-    const [addButtonText, setAddButtonText] = useState(colors.lightgrey);
     const [saveButtonText, setSaveButtonText] = useState(colors.lightgrey);
-
-    useEffect(() => {
-        setAddButtonText(isKeyPressed ? colors.orange : colors.grey);
-    }, [isKeyPressed]);
 
     useEffect(() => {
         setSaveButtonText(areNotesAdded ? colors.orange : colors.grey);
@@ -21,18 +16,25 @@ const BottomButtons = ({ areNotesAdded, isKeyPressed, onSaveButtonPress }) => {
     return (
         <View style={{ flexDirection: 'column', justifyContent: 'center', alignItems: 'center', width: 760 }}>
 
-            <View style={styles.bottombuttons}>
+            <Pressable
+                onPress={onClearButtonPress}
+                style={[styles.bottombutton, { width: '100%' }]}>
+                <Text style={[styles.buttontext, { color: colors.orange }]}>
+                    CLEAR
+                </Text>
+            </Pressable>
 
+            <View style={styles.bottombuttons}>
                 <Pressable
                     onPress={onSaveButtonPress}
-                    style={[styles.bottombutton, { width: '60%' }]}>
+                    style={[styles.bottombutton, { width: '49%' }]}>
                     <Text style={[styles.buttontext, { color: saveButtonText }]}>
                         SAVE
                     </Text>
                 </Pressable>
                 <Pressable
                     onPress={() => navigation.navigate('Home')}
-                    style={[styles.bottombutton, { width: '38%' }]}>
+                    style={[styles.bottombutton, { width: '49%' }]}>
                     <Text style={[styles.buttontextactive, { color: colors.lightred }]}>
                         CANCEL
                     </Text>
