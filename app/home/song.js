@@ -3,16 +3,16 @@ import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { useRef, useState } from "react";
 import { Animated, Pressable, Text, View } from "react-native";
 import { Swipeable } from 'react-native-gesture-handler';
-import PlaySound from "../piano/newmakesound.js";
+import PlaySound, { stopSound } from "../piano/newmakesound.js";
 import styles from "../styles";
 import PlayIcon from "./playicon";
 import StopIcon from "./stopicon.js";
 
 const Song = ({ title, tempo, artist, notes, onDelete }) => {
 
-    const [sound, setSound] = useState();
     const [isPlaying, setIsPlaying] = useState(false);
-    const [stopFlag, setStopFlag] = useState(false);
+    const stopFlagRef = useRef(false); // Use a ref for the stop flag
+    const soundsRef = useRef([]); // Use a ref to store the array of sounds
     const swipeableRef = useRef(null);
 
     const renderRightActions = (progress, dragX) => {
@@ -42,25 +42,29 @@ const Song = ({ title, tempo, artist, notes, onDelete }) => {
     const sleep = (delay) => new Promise((resolve) => setTimeout(resolve, delay))
 
     const makeSound = (note) => {
-        PlaySound(note, setSound);
+        PlaySound(note, (sound) => {
+            soundsRef.current.push(sound); // Add the sound to the array
+        });
     };
 
     const playNotes = async () => {
         if (isPlaying) {
-            setStopFlag(true); // Set the stop flag to true
-            sound.stop(); // Stop the current sound
+            stopFlagRef.current = true; // Set the stop flag to true
+            soundsRef.current.forEach(sound => stopSound(sound)); // Stop all sounds
+            soundsRef.current = []; // Clear the array of sounds
             setIsPlaying(false);
             return;
         }
 
         setIsPlaying(true);
-        setStopFlag(false);
+        stopFlagRef.current = false; // Reset the stop flag
         for (let i = 0; i < notes.length; i++) {
-            if (stopFlag) break;
+            if (stopFlagRef.current) break;
             makeSound(notes[i]);
             await sleep(550);
         }
         setIsPlaying(false);
+        soundsRef.current = []; // Clear the array of sounds after playing
     }
 
     const formatnotes = notes.join(", ");
@@ -95,7 +99,7 @@ const Song = ({ title, tempo, artist, notes, onDelete }) => {
                 <View style={styles.songwrapper}>
                     <View style={styles.songwrapperleft}>
                         <Pressable onPress={playNotes}>
-                            <PlayIcon />
+                            {isPlaying ? <StopIcon /> : <PlayIcon />}
                         </Pressable>
                         <View >
                             <Text style={styles.song} numberOfLines={1}>{title}</Text>
