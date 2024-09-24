@@ -6,10 +6,13 @@ import { Swipeable } from 'react-native-gesture-handler';
 import PlaySound from "../piano/newmakesound.js";
 import styles from "../styles";
 import PlayIcon from "./playicon";
+import StopIcon from "./stopicon.js";
 
 const Song = ({ title, tempo, artist, notes, onDelete }) => {
 
     const [sound, setSound] = useState();
+    const [isPlaying, setIsPlaying] = useState(false);
+    const [stopFlag, setStopFlag] = useState(false);
     const swipeableRef = useRef(null);
 
     const renderRightActions = (progress, dragX) => {
@@ -43,11 +46,21 @@ const Song = ({ title, tempo, artist, notes, onDelete }) => {
     };
 
     const playNotes = async () => {
-        // for loop
+        if (isPlaying) {
+            setStopFlag(true); // Set the stop flag to true
+            sound.stop(); // Stop the current sound
+            setIsPlaying(false);
+            return;
+        }
+
+        setIsPlaying(true);
+        setStopFlag(false);
         for (let i = 0; i < notes.length; i++) {
+            if (stopFlag) break;
             makeSound(notes[i]);
             await sleep(550);
         }
+        setIsPlaying(false);
     }
 
     const formatnotes = notes.join(", ");
@@ -62,7 +75,7 @@ const Song = ({ title, tempo, artist, notes, onDelete }) => {
                 <View style={styles.songwrapper}>
                     <View style={styles.songwrapperleft}>
                         <Pressable onPress={playNotes}>
-                            <PlayIcon />
+                            {isPlaying ? <StopIcon /> : <PlayIcon />}
                         </Pressable>
                         <View >
                             <Text style={styles.song} numberOfLines={1}>{title}</Text>

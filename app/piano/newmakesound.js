@@ -45,6 +45,14 @@ export default async function PlaySound(note, setSound) {
     }
 }
 
+export async function stopSound(sound) {
+    if (sound) {
+        console.log('Stopping Sound');
+        await sound.stopAsync();
+        await sound.unloadAsync();
+    }
+}
+
 // Helper function to map note to the corresponding sound file
 function getSoundFile(note) {
     // Use explicit strings as keys in the soundFiles dictionary
