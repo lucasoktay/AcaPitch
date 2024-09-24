@@ -1,14 +1,17 @@
+import { useEffect, useState } from 'react';
 import { ScrollView, View } from "react-native";
 import { Piano } from '../react-native-piano/index.js';
-// import { instrument } from 'react-native-soundfont';
-import { useState } from 'react';
 import styles from "../styles.js";
 
-
-
-const InputPiano = ({ addedNotes, onPlayNoteInput, onStopNoteInput }) => {
+const InputPiano = ({ addedNotes, onPlayNoteInput, onStopNoteInput, activeKey, resetActiveKey }) => {
     const [isScrolling, setIsScrolling] = useState(false);
     const [currentNote, setCurrentNote] = useState(null);
+
+    useEffect(() => {
+        if (activeKey === null) {
+            setCurrentNote(null);
+        }
+    }, [activeKey]);
 
     const handleTouchStart = (midiNumber) => {
         setIsScrolling(false);
