@@ -1,21 +1,31 @@
 import { ScrollView, View } from "react-native";
 import { Piano } from '../react-native-piano/index.js';
 // import { instrument } from 'react-native-soundfont';
+import { useState } from 'react';
 import styles from "../styles.js";
 
 
 
 const InputPiano = ({ addedNotes, onPlayNoteInput, onStopNoteInput }) => {
+    const [isScrolling, setIsScrolling] = useState(false);
+    const [currentNote, setCurrentNote] = useState(null);
 
-    const handleStopNote = () => {
-        onStopNoteInput();
-        // console.log(pianoData);
-    }
+    const handleTouchStart = (midiNumber) => {
+        setIsScrolling(false);
+        setCurrentNote(midiNumber);
+    };
 
-    const handlePlayNote = (midiNumber) => {
-        onPlayNoteInput(midiNumber);
-        // console.log(pianoData);
-    }
+    const handleTouchMove = () => {
+        setIsScrolling(true);
+    };
+
+    const handleTouchEnd = async () => {
+        if (!isScrolling && currentNote !== null) {
+            onPlayNoteInput(currentNote);
+        }
+        setCurrentNote(null);
+    };
+
     return (
         <ScrollView
             horizontal={true}
@@ -23,13 +33,14 @@ const InputPiano = ({ addedNotes, onPlayNoteInput, onStopNoteInput }) => {
             showsVerticalScrollIndicator={false}
             showsHorizontalScrollIndicator={false}
             contentOffset={{ x: 700, y: 0 }}
+            onTouchMove={handleTouchMove}
         >
             <View style={styles.pianowrapper}>
                 <Piano
                     noteRange={{ first: 'c1', last: 'c7' }}
                     style={styles.piano}
-                    onPlayNoteInput={midiNumber => handlePlayNote(midiNumber)}
-                    onStopNoteInput={midiNumber => handleStopNote()}
+                    onPlayNoteInput={midiNumber => handleTouchStart(midiNumber)}
+                    onStopNoteInput={midiNumber => handleTouchEnd()}
                     addedNotes={addedNotes}
                 />
             </View>
@@ -37,4 +48,4 @@ const InputPiano = ({ addedNotes, onPlayNoteInput, onStopNoteInput }) => {
     )
 }
 
-export default InputPiano
+export default InputPiano;
