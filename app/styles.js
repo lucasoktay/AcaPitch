@@ -383,7 +383,7 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-start',
         alignItems: 'flex-start',
         padding: 20,
-        backgroundColor: colors.lightred,
+        backgroundColor: colors.greyred,
     },
     modalContainer: {
         flex: 1,

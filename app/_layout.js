@@ -22,11 +22,15 @@ const MyStack = () => {
                 animation: 'none',
                 headerShown: false,
                 orientation: 'portrait',
+                keyboardShouldPersistTaps: 'always',
             }}>
                 <Stack.Screen name="SignUp" component={SignUp} />
                 <Stack.Screen
                     name="Home"
-                    component={Home} />
+                    component={Home}
+                    options={{
+                        keyboardShouldPersistTaps: 'always',
+                    }} />
                 <Stack.Screen
                     name="Piano"
                     component={PianoComponent}
