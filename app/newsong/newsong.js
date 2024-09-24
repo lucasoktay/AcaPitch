@@ -1,11 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { KeyboardAvoidingView, Platform, ScrollView, View } from 'react-native';
+import { KeyboardAvoidingView, Platform, View } from 'react-native';
 import styles from '../styles.js';
 import AddNotesButton from './addnotesbutton.js';
 import InputField from './inputfield.js';
 import SaveSongButton from './savesongbutton.js';
 
-const NewSong = ({ onSaveButtonPress, noteMessage, noteList }) => {
+const NewSong = ({ onSaveButtonPress, onAddNotesButtonPress, noteMessage, noteList }) => {
     const [areNotes, setAreNotes] = useState(false);
     const [isTitle, setIsTitle] = useState(false);
     const [title, setTitle] = useState('');
@@ -43,7 +43,7 @@ const NewSong = ({ onSaveButtonPress, noteMessage, noteList }) => {
             style={{ flex: 1 }}
             behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
         >
-            <ScrollView contentContainerStyle={styles.addsonginputs} keyboardShouldPersistTaps="always">
+            <View style={styles.addsonginputs} keyboardShouldPersistTaps='always' keyboardDismissMode='none'>
                 <InputField
                     name={'Title'}
                     ref={firstInputRef}
@@ -64,10 +64,10 @@ const NewSong = ({ onSaveButtonPress, noteMessage, noteList }) => {
                 <View style={styles.newsongline} />
 
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between', width: "100%", height: 60, alignItems: 'center', marginBottom: -20 }}>
-                    <AddNotesButton noteMessage={noteMessage} noteList={noteList} />
+                    <AddNotesButton noteMessage={noteMessage} onAddNotesButtonPress={onAddNotesButtonPress} noteList={noteList} />
                     <SaveSongButton onSaveButtonPress={handleSaveButtonPress} areNotes={areNotes} isTitle={isTitle} />
                 </View>
-            </ScrollView>
+            </View>
         </KeyboardAvoidingView>
     );
 }

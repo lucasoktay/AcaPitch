@@ -383,6 +383,20 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-start',
         alignItems: 'flex-start',
         padding: 20,
+        backgroundColor: colors.lightred,
+    },
+    modalContainer: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: 'rgba(0,0,0,0.5)',
+    },
+    modalContent: {
+        width: '90%',
+        maxHeight: '80%',
+        backgroundColor: 'white',
+        borderRadius: 20,
+        padding: 20,
     },
 
     newsongline: {

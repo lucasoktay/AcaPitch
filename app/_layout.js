@@ -57,14 +57,17 @@ const MyStack = () => {
                         orientation: 'landscape'
                     }}
                 />
-                <Stack.Screen
+                <Stack.Group screenOptions={{ presentation: 'modal' }}>
+                    <Stack.Screen name="NewSong" component={NewSong} />
+                </Stack.Group>
+                {/* <Stack.Screen
                     name="New Song"
                     component={NewSong}
                     options={{
                         animation: "slide_from_bottom",
-                        orientation: 'portrait'
+                        orientation: 'portrait',
                     }}
-                />
+                /> */}
             </Stack.Navigator>
         </NavigationContainer>
     );

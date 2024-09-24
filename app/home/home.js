@@ -11,10 +11,12 @@ import PlaySound from '../piano/newmakesound.js';
 import styles from '../styles.js';
 import PlusButton from './plusbutton.js';
 // import SearchBar from './searchbar.js';
+import { useNavigation } from '@react-navigation/native';
 import SettingsIcon from './settingsicon.js';
 import SongList from './songlist.js';
 
 const Home = () => {
+    const [modalVisible, setModalVisible] = useState(false);
     const [noteMessage, setNoteMessage] = useState("Notes");
     const [sound, setSound] = useState();
     const userCollection = firestore().collection('users');
@@ -22,6 +24,7 @@ const Home = () => {
     const modalizeRef = useRef(null);
     const route = useRoute();
     const { savedNotes } = route.params || {};
+    const navigation = useNavigation();
 
     useEffect(() => {
         if (savedNotes) {
@@ -31,11 +34,17 @@ const Home = () => {
 
     const handlePlusButtonPress = () => {
         setNoteMessage("Notes");
+        // setModalVisible(true);
         modalizeRef.current?.open();
     }
 
     const handlePlaySound = async (note) => {
         await PlaySound(note, setSound);
+    }
+
+    const handleAddNotesButtonPress = () => {
+        setModalVisible(false);
+        navigation.navigate('Add Notes');
     }
 
     const handleSaveButtonPress = async ({ title, artist, tempo }) => {
@@ -84,6 +93,7 @@ const Home = () => {
             }
 
             modalizeRef.current?.close();
+            // setModalVisible(false);
 
         } catch (error) {
             console.error('Error saving song:', error);
@@ -114,8 +124,18 @@ const Home = () => {
                     ref={modalizeRef}
                     modalStyle={{ borderRadius: 20, overflow: 'hidden' }}
                     adjustToContentHeight={true}
+                    keyboardDismissMode='none'
+                    keyboardAvoidingBehavior='padding'
                 >
-                    <NewSong onSaveButtonPress={handleSaveButtonPress} noteMessage={noteMessage} noteList={savedNotes} />
+                    {/* <Modal
+                    animationType="slide"
+                    transparent={true}
+                    visible={modalVisible}
+                    hasBackDrop={true}
+                    onBackdropPress={() => setModalVisible(false)}
+                > */}
+                    <NewSong onSaveButtonPress={handleSaveButtonPress} onAddNotesButtonPress={handleAddNotesButtonPress} noteMessage={noteMessage} noteList={savedNotes} />
+                    {/* </Modal> */}
                 </Modalize>
             </View>
         </GestureHandlerRootView>

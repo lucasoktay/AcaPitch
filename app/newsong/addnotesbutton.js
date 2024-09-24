@@ -4,13 +4,13 @@ import { useNavigation } from "@react-navigation/native";
 import { Pressable, Text, View } from "react-native";
 import styles from "../styles";
 
-const AddNotesButton = ({ noteMessage, noteList }) => {
+const AddNotesButton = ({ noteMessage, noteList, onAddNotesButtonPress }) => {
     const navigation = useNavigation();
 
     console.log(noteList);
 
     return (
-        <Pressable onPress={() => navigation.navigate('Add Notes')}>
+        <Pressable onPress={onAddNotesButtonPress}>
             <View style={styles.addnotesbutton}>
                 <FontAwesomeIcon icon={faMusic} size={20} color='darkgrey' />
                 <Text style={styles.addnotes}>
