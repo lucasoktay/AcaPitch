@@ -34,7 +34,6 @@ const Home = () => {
 
     const handlePlusButtonPress = () => {
         setNoteMessage("Notes");
-        // setModalVisible(true);
         modalizeRef.current?.open();
     }
 
@@ -43,8 +42,6 @@ const Home = () => {
     }
 
     const handleAddNotesButtonPress = () => {
-        // modalizeRef.current?.close();
-        // setModalVisible(false);
         navigation.navigate('Add Notes');
     }
 
@@ -94,7 +91,6 @@ const Home = () => {
             }
 
             modalizeRef.current?.close();
-            // setModalVisible(false);
 
         } catch (error) {
             console.error('Error saving song:', error);
