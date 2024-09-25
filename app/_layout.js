@@ -17,20 +17,17 @@ SplashScreen.preventAutoHideAsync();
 const Stack = createNativeStackNavigator();
 const MyStack = () => {
     return (
-        <NavigationContainer independent="true">
+        <NavigationContainer independent="true" keyboardShouldPersistTaps="always">
             <Stack.Navigator screenOptions={{
                 animation: 'none',
                 headerShown: false,
                 orientation: 'portrait',
-                keyboardShouldPersistTaps: 'always',
-            }}>
+            }} keyboardShouldPersistTaps="always">
                 <Stack.Screen name="SignUp" component={SignUp} />
                 <Stack.Screen
                     name="Home"
                     component={Home}
-                    options={{
-                        keyboardShouldPersistTaps: 'always',
-                    }} />
+                    keyboardShouldPersistTaps="always" />
                 <Stack.Screen
                     name="Piano"
                     component={PianoComponent}
@@ -61,17 +58,7 @@ const MyStack = () => {
                         orientation: 'landscape'
                     }}
                 />
-                <Stack.Group screenOptions={{ presentation: 'modal' }}>
-                    <Stack.Screen name="NewSong" component={NewSong} />
-                </Stack.Group>
-                {/* <Stack.Screen
-                    name="New Song"
-                    component={NewSong}
-                    options={{
-                        animation: "slide_from_bottom",
-                        orientation: 'portrait',
-                    }}
-                /> */}
+                <Stack.Screen name="NewSong" component={NewSong} keyboardShouldPersistTaps="always" />
             </Stack.Navigator>
         </NavigationContainer>
     );

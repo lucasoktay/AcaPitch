@@ -42,8 +42,9 @@ const NewSong = ({ onSaveButtonPress, onAddNotesButtonPress, noteMessage, noteLi
         <KeyboardAvoidingView
             style={{ flex: 1 }}
             behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+            keyboardShouldPersistTaps="always"
         >
-            <View style={styles.addsonginputs} keyboardShouldPersistTaps='always' keyboardDismissMode='none'>
+            <View style={styles.addsonginputs} keyboardShouldPersistTaps="always">
                 <InputField
                     name={'Title'}
                     ref={firstInputRef}
@@ -63,9 +64,9 @@ const NewSong = ({ onSaveButtonPress, onAddNotesButtonPress, noteMessage, noteLi
 
                 <View style={styles.newsongline} />
 
-                <View style={{ flexDirection: 'row', justifyContent: 'space-between', width: "100%", height: 60, alignItems: 'center', marginBottom: -20 }}>
-                    <AddNotesButton noteMessage={noteMessage} onAddNotesButtonPress={onAddNotesButtonPress} noteList={noteList} />
-                    <SaveSongButton onSaveButtonPress={handleSaveButtonPress} areNotes={areNotes} isTitle={isTitle} />
+                <View style={{ flexDirection: 'row', justifyContent: 'space-between', width: "100%", height: 60, alignItems: 'center', marginBottom: -20 }} keyboardShouldPersistTaps="always">
+                    <AddNotesButton noteMessage={noteMessage} onAddNotesButtonPress={onAddNotesButtonPress} noteList={noteList} keyboardShouldPersistTaps="always" />
+                    <SaveSongButton onSaveButtonPress={handleSaveButtonPress} areNotes={areNotes} isTitle={isTitle} keyboardShouldPersistTaps="always" />
                 </View>
             </View>
         </KeyboardAvoidingView>

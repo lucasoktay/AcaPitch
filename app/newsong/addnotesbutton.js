@@ -10,7 +10,7 @@ const AddNotesButton = ({ noteMessage, noteList, onAddNotesButtonPress }) => {
     console.log(noteList);
 
     return (
-        <Pressable onPress={onAddNotesButtonPress}>
+        <Pressable onPress={onAddNotesButtonPress} keyboardShouldPersistTaps="always">
             <View style={styles.addnotesbutton}>
                 <FontAwesomeIcon icon={faMusic} size={20} color='darkgrey' />
                 <Text style={styles.addnotes}>
