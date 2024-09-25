@@ -43,7 +43,7 @@ const AddNotes = () => {
             Alert.alert('Add notes or press cancel.');
         } else {
             navigation.navigate('Home', { savedNotes: noteData });
-            setNoteData([]);
+            // setNoteData([]);
         }
     };
 

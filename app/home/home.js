@@ -3,7 +3,7 @@ import firestore from '@react-native-firebase/firestore';
 import { useRoute } from '@react-navigation/native';
 import React, { useEffect, useRef, useState } from 'react';
 import { Alert, Text, View } from 'react-native';
-import { GestureHandlerRootView, TapGestureHandler } from 'react-native-gesture-handler';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { Modalize } from 'react-native-modalize';
 import NavBar from '../navbar/navbar.js';
 import NewSong from '../newsong/newsong.js';
@@ -12,7 +12,6 @@ import styles from '../styles.js';
 import PlusButton from './plusbutton.js';
 // import SearchBar from './searchbar.js';
 import { useNavigation } from '@react-navigation/native';
-import { ScrollView } from 'react-native';
 import SettingsIcon from './settingsicon.js';
 import SongList from './songlist.js';
 
@@ -44,7 +43,7 @@ const Home = () => {
     }
 
     const handleAddNotesButtonPress = () => {
-        modalizeRef.current?.close();
+        // modalizeRef.current?.close();
         // setModalVisible(false);
         navigation.navigate('Add Notes');
     }
@@ -127,19 +126,7 @@ const Home = () => {
                     modalStyle={{ borderRadius: 20, overflow: 'hidden' }}
                     adjustToContentHeight={true}
                 >
-                    {/* <Modal
-                    animationType="slide"
-                    transparent={true}
-                    visible={modalVisible}
-                    hasBackDrop={true}
-                    onBackdropPress={() => setModalVisible(false)}
-                > */}
-                    <TapGestureHandler>
-                        <ScrollView contentContainerStyle={{ flexGrow: 1 }} keyboardShouldPersistTaps="always">
-                            <NewSong onSaveButtonPress={handleSaveButtonPress} onAddNotesButtonPress={handleAddNotesButtonPress} noteMessage={noteMessage} noteList={savedNotes} />
-                        </ScrollView>
-                    </TapGestureHandler>
-                    {/* </Modal> */}
+                    <NewSong onSaveButtonPress={handleSaveButtonPress} onAddNotesButtonPress={handleAddNotesButtonPress} noteMessage={noteMessage} noteList={savedNotes} />
                 </Modalize>
             </View>
         </GestureHandlerRootView>
