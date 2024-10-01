@@ -1,4 +1,4 @@
-import * as ScreenOrientation from 'expo-screen-orientation';
+
 import { useRef, useState } from 'react';
 import { ScrollView, View } from "react-native";
 import NavBar from "../navbar/navbar";
@@ -13,18 +13,6 @@ const PianoComponent = () => {
     const [currentNote, setCurrentNote] = useState(null);
     const [sound, setSound] = useState();
     const scrollViewRef = useRef(null);
-
-    useEffect(() => {
-        const lockOrientation = async () => {
-            await ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.LANDSCAPE);
-        };
-
-        lockOrientation();
-
-        return () => {
-            ScreenOrientation.unlockAsync();
-        };
-    }, []);
 
     const handlePlayNote = async (note) => {
         setPianoData(pianoData => [...pianoData, note]);
