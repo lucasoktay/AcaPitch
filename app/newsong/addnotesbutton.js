@@ -1,7 +1,7 @@
 import { faMusic } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { useNavigation } from "@react-navigation/native";
-import { Pressable, Text, View } from "react-native";
+import { Text, TouchableOpacity, View } from "react-native";
 import styles from "../styles";
 
 const AddNotesButton = ({ noteMessage, noteList, onAddNotesButtonPress }) => {
@@ -10,14 +10,14 @@ const AddNotesButton = ({ noteMessage, noteList, onAddNotesButtonPress }) => {
     console.log(noteList);
 
     return (
-        <Pressable onPress={onAddNotesButtonPress} keyboardShouldPersistTaps="always">
+        <TouchableOpacity onPress={onAddNotesButtonPress} keyboardShouldPersistTaps="handled">
             <View style={styles.addnotesbutton}>
                 <FontAwesomeIcon icon={faMusic} size={20} color='darkgrey' />
                 <Text style={styles.addnotes}>
                     {noteMessage}: {noteList && Array.isArray(noteList) && noteList.length > 0 ? noteList.join(', ') : 'None'}
                 </Text>
             </View>
-        </Pressable>
+        </TouchableOpacity>
     )
 }
 

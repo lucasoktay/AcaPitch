@@ -99,8 +99,8 @@ const Home = () => {
     }
 
     return (
-        <GestureHandlerRootView style={{ flex: 1 }} keyboardShouldPersistTaps="always">
-            <View style={{ backgroundColor: "white", flexGrow: 1 }} keyboardShouldPersistTaps="always">
+        <GestureHandlerRootView style={{ flex: 1 }} keyboardShouldPersistTaps="handled">
+            <View style={{ backgroundColor: "white", flexGrow: 1 }} keyboardShouldPersistTaps="handled">
                 <View style={styles.fullscreen}>
                     <View style={styles.topbar}>
                         {/* <SearchBar /> */}
@@ -121,9 +121,9 @@ const Home = () => {
                     ref={modalizeRef}
                     modalStyle={{ borderRadius: 20, overflow: 'hidden' }}
                     adjustToContentHeight={true}
-                    keyboardShouldPersistTaps="always"
+                    keyboardShouldPersistTaps="handled"
                 >
-                    <NewSong onSaveButtonPress={handleSaveButtonPress} onAddNotesButtonPress={handleAddNotesButtonPress} noteMessage={noteMessage} noteList={savedNotes} keyboardShouldPersistTaps="always" />
+                    <NewSong onSaveButtonPress={handleSaveButtonPress} onAddNotesButtonPress={handleAddNotesButtonPress} noteMessage={noteMessage} noteList={savedNotes} keyboardShouldPersistTaps="handled" />
                 </Modalize>
             </View>
         </GestureHandlerRootView>
