@@ -34,7 +34,6 @@ const MyStack = () => {
                     component={PianoComponent}
                     options={{
                         orientation: 'landscape',
-                        animation: 'fade'
                     }}
                 />
                 <Stack.Screen
