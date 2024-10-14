@@ -1,6 +1,6 @@
-import { Audio, InterruptionModeAndroid, InterruptionModeIOS } from 'expo-av';
+import { Audio } from 'expo-av';
 
-export default async function PlaySound(note, setSound, soundFiles) {
+export default async function PlaySound(note, setSound, loadedSounds) {
     const nextLetter = { 'A': 'B', 'B': 'C', 'C': 'D', 'D': 'E', 'E': 'F', 'F': 'G', 'G': 'A' };
 
     const checkSharp = (note) => {
@@ -10,10 +10,9 @@ export default async function PlaySound(note, setSound, soundFiles) {
         return note;
     }
 
-    const soundFile = soundFiles[checkSharp(note)]
-
-    if (!soundFile) {
-        console.error(`Sound file for note ${note} not found.`);
+    const sound = loadedSounds[checkSharp(note)];
+    if (!sound) {
+        console.error(`Sound for note ${note} not found.`);
         return;
     }
 
@@ -22,18 +21,15 @@ export default async function PlaySound(note, setSound, soundFiles) {
             playsInSilentModeIOS: true,
             staysActiveInBackground: true,
             shouldDuckAndroid: true,
-            interruptionModeIOS: InterruptionModeIOS.DoNotMix,
-            interruptionModeAndroid: InterruptionModeAndroid.DoNotMix,
         });
 
-        const { sound } = await Audio.Sound.createAsync(
-            soundFile,
-            { shouldPlay: false, volume: 1.0 }
-        );
         setSound(sound);
 
         console.log('Playing Sound:', note);
-        await sound.playAsync();
+        console.log('Sound object:', sound);
+        await sound.replayAsync();
+        const status = await sound.getStatusAsync();
+        console.log('Sound status:', status);
 
         return sound;
     } catch (error) {
@@ -47,9 +43,4 @@ export async function stopSound(sound) {
         await sound.stopAsync();
         await sound.unloadAsync();
     }
-}
-
-
-function getSoundFile(note) {
-    return;
 }
