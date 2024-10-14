@@ -12,7 +12,6 @@ const SignUpButton = ({ email, password, clearFields }) => {
         auth()
             .createUserWithEmailAndPassword(email, password)
             .then(() => {
-                console.log('User account created & signed in!');
 
                 userCollection.add({
                     email: email,

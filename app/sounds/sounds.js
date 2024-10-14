@@ -98,7 +98,6 @@ async function loadSounds() {
     });
 
     await Promise.all(loadPromises);
-    console.log('Sounds loaded:', loadedSounds);
 }
 
 export { loadSounds, loadedSounds };

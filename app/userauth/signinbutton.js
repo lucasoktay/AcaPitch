@@ -12,7 +12,6 @@ const SignInButton = ({ email, password, clearFields }) => {
         auth()
             .signInWithEmailAndPassword(email, password)
             .then(() => {
-                console.log('Returning user signed in!');
             })
             .catch(error => {
                 if (error.code === 'auth/wrong-password') {

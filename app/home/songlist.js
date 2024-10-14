@@ -47,7 +47,6 @@ const SongList = () => {
 
                 setSongDetails(songsList);
             } else {
-                console.log("No matching user document found.");
                 setSongDetails([]);
             }
         }, (error) => {
@@ -75,7 +74,6 @@ const SongList = () => {
                 outputRange: [1, 1, 1]
             })
 
-            console.log("height: ", contentHeight)
             if (contentHeight < 581) {
                 showBottomLine = scrollY.interpolate({
                     inputRange: [contentHeight - 600, 0, 1],
@@ -122,7 +120,6 @@ const SongList = () => {
                     songs: updatedSongs
                 });
 
-                console.log('Song removed from user\'s list');
             } else {
                 console.error('User document not found');
             }

@@ -9,7 +9,6 @@ import PianoIcon from "./pianoicon";
 const NavBar = () => {
     const navigation = useNavigation();
     const currentRoute = navigation.getState().routes[navigation.getState().index].name;
-    console.log(currentRoute);
     const pianoColor = currentRoute === 'Piano' ? colors.lightred : colors.darkgrey;
     const homeColor = currentRoute === 'Home' ? colors.lightred : colors.darkgrey;
 

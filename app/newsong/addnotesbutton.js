@@ -7,8 +7,6 @@ import styles from "../styles";
 const AddNotesButton = ({ noteMessage, noteList, onAddNotesButtonPress }) => {
     const navigation = useNavigation();
 
-    console.log(noteList);
-
     return (
         <TouchableOpacity onPress={onAddNotesButtonPress} keyboardShouldPersistTaps="handled">
             <View style={styles.addnotesbutton}>

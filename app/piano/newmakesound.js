@@ -4,6 +4,7 @@ export default async function PlaySound(note, setSound, loadedSounds) {
     const nextLetter = { 'A': 'B', 'B': 'C', 'C': 'D', 'D': 'E', 'E': 'F', 'F': 'G', 'G': 'A' };
 
     const checkSharp = (note) => {
+        console.log(note);
         if (note.length === 3 && note[1] === '#') {
             note = nextLetter[note[0]] + 'b' + note[2];
         }
@@ -24,22 +25,16 @@ export default async function PlaySound(note, setSound, loadedSounds) {
         });
 
         setSound(sound);
-
-        console.log('Playing Sound:', note);
-        console.log('Sound object:', sound);
         await sound.replayAsync();
         const status = await sound.getStatusAsync();
-        console.log('Sound status:', status);
 
         return sound;
     } catch (error) {
-        console.error('Error playing sound:', error);
     }
 }
 
 export async function stopSound(sound) {
     if (sound) {
-        console.log('Stopping Sound');
         await sound.stopAsync();
         await sound.unloadAsync();
     }

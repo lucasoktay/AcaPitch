@@ -72,8 +72,6 @@ const Home = () => {
                 notes: savedNotes
             });
 
-            console.log('New song added with ID:', newSongRef.id);
-
             // Update the user's document to include the new song ID
             const userQuerySnapshot = await userCollection
                 .where('uid', '==', currentUser.uid)
@@ -84,7 +82,6 @@ const Home = () => {
                 await userDoc.ref.update({
                     songs: firestore.FieldValue.arrayUnion(newSongRef.id)
                 });
-                console.log('Song ID added to user\'s songs list');
             } else {
                 console.error('User document not found');
                 Alert.alert("Error", "Failed to update user's song list.");

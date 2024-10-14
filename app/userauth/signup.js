@@ -69,10 +69,8 @@ const SignUp = () => {
     }
 
     if (user) {
-        console.log('User is signed in');
         navigation.navigate('Home')
     } else {
-        console.log('User is signed out');
     }
 
     const clearFields = () => {

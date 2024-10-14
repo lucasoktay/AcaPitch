@@ -33,8 +33,6 @@ const AddNotes = () => {
     }
 
     const handleStopNote = () => {
-        // console.log('pianoData: ' + pianoData)
-        // Add any additional logic for stopping the note
     };
 
 
