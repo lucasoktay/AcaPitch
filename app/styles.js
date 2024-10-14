@@ -2,9 +2,9 @@ import { StyleSheet } from "react-native";
 import colors from "./colors";
 
 const shadow = {
-    shadowColor: "black",
-    shadowOpacity: .25,
-    shadowRadius: 5,
+    shadowColor: colors.grey,
+    shadowOpacity: .2,
+    shadowRadius: 6,
     shadowOffset: { height: 2 }
 };
 
@@ -13,7 +13,6 @@ const styles = StyleSheet.create({
         flex: 1,
         paddingTop: 60,
         paddingBottom: 80,
-        backgroundColor: colors.greyred,
     },
 
     fullscreensettings: {
@@ -103,8 +102,8 @@ const styles = StyleSheet.create({
         height: 64,
         marginHorizontal: 15,
         borderWidth: .2,
-        borderColor: colors.lightgrey,
-        borderRadius: 15,
+        borderColor: colors.mediumlightgrey,
+        borderRadius: 10,
         flexGrow: 0,
         flexDirection: 'row',
         alignItems: 'center',
@@ -221,7 +220,7 @@ const styles = StyleSheet.create({
     },
 
     navbar: {
-        backgroundColor: "#F8F1F4",
+        backgroundColor: colors.navbar,
         position: 'absolute',
         bottom: 0,
         left: 0,
