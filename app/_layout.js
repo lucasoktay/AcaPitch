@@ -1,9 +1,9 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { SplashScreen } from 'expo-router';
 import React, { useEffect, useState } from 'react';
 import AddNotes from './addnotes/addnotes.js';
 import Home from './home/home.js';
+import LoadingScreen from './loading/loadingscreen.js';
 import NewSong from './newsong/newsong.js';
 import PlaySound from './piano/newmakesound.js';
 import PianoComponent from './piano/piano.js';
@@ -17,8 +17,6 @@ const MyStack = () => {
     const [soundsLoaded, setSoundsLoaded] = useState(false);
     const [sound, setSound] = useState();
 
-    SplashScreen.preventAutoHideAsync();
-
     useEffect(() => {
         const loadAllSounds = async () => {
             try {
@@ -27,18 +25,15 @@ const MyStack = () => {
                 console.log('Sounds loaded successfully');
             } catch (error) {
                 console.error('Failed to load sounds:', error);
-                // Optionally, you can show an error message to the user here
             }
         };
 
         loadAllSounds();
     }, []);
 
-    useEffect(() => {
-        if (soundsLoaded) {
-            SplashScreen.hideAsync();
-        }
-    }, [soundsLoaded]);
+    if (!soundsLoaded) {
+        return <LoadingScreen />;
+    }
 
     const handlePlaySound = async (note) => {
         await PlaySound(note, setSound, loadedSounds);
