@@ -5,7 +5,8 @@ import { Animated, ScrollView, View } from 'react-native';
 import styles from '../styles';
 import Song from './song';
 
-const SongList = () => {
+const SongList = ({ handlePlaySound }) => {
+    // console.log("loaded sounds songlist: ", loadedSounds);
     const [songDetails, setSongDetails] = useState([]);
     const [unsubscribe, setUnsubscribe] = useState(null);
     const [topLineOpacity] = useState(new Animated.Value(0));
@@ -81,8 +82,6 @@ const SongList = () => {
                 });
             }
 
-
-
             Animated.timing(topLineOpacity, {
                 toValue: showTopLine,
                 duration: 1,
@@ -148,7 +147,17 @@ const SongList = () => {
                 onContentSizeChange={(width, height) => setContentHeight(height)}
             >
                 {songDetails.map(({ title, tempo, artist, notes }, index) => (
-                    <Song key={index} title={title} tempo={tempo} artist={artist} notes={notes} onDelete={deleteSong} />
+                    <Song
+                        key={index}
+                        title={title}
+                        tempo={tempo}
+                        artist={artist}
+                        notes={notes}
+                        onDelete={deleteSong}
+                        // soundsLoaded={soundsLoaded}
+                        handlePlaySound={handlePlaySound}
+                    // loadedSounds={loadedSounds}
+                    />
                 ))}
             </ScrollView>
 

@@ -21,6 +21,8 @@ const PianoComponent = () => {
             setSoundsLoaded(true);
         };
 
+        console.log("hello!!")
+
         loadAllSounds();
     }, []);
 

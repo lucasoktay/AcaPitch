@@ -8,6 +8,7 @@ import { Modalize } from 'react-native-modalize';
 import NavBar from '../navbar/navbar.js';
 import NewSong from '../newsong/newsong.js';
 import PlaySound from '../piano/newmakesound.js';
+import { loadSounds, loadedSounds } from '../sounds/sounds.js';
 import styles from '../styles.js';
 import PlusButton from './plusbutton.js';
 // import SearchBar from './searchbar.js';
@@ -19,12 +20,22 @@ const Home = () => {
     const [modalVisible, setModalVisible] = useState(false);
     const [noteMessage, setNoteMessage] = useState("Notes");
     const [sound, setSound] = useState();
+    const [soundsLoaded, setSoundsLoaded] = useState(false);
     const userCollection = firestore().collection('users');
     const songsCollection = firestore().collection('songs');
     const modalizeRef = useRef(null);
     const route = useRoute();
     const { savedNotes } = route.params || {};
     const navigation = useNavigation();
+
+    useEffect(() => {
+        const loadAllSounds = async () => {
+            await loadSounds();
+            setSoundsLoaded(true);
+        };
+
+        loadAllSounds();
+    }, []);
 
     useEffect(() => {
         if (savedNotes) {
@@ -38,7 +49,7 @@ const Home = () => {
     }
 
     const handlePlaySound = async (note) => {
-        await PlaySound(note, setSound);
+        await PlaySound(note, setSound, loadedSounds);
     }
 
     const handleAddNotesButtonPress = () => {
@@ -107,7 +118,7 @@ const Home = () => {
                     <Text style={[styles.yoursongs]}>Your Songs</Text>
 
                     <View style={{ height: 600 }}>
-                        <SongList />
+                        <SongList handlePlaySound={handlePlaySound} />
                     </View>
 
                     <PlusButton onPlusButtonPress={handlePlusButtonPress} />
