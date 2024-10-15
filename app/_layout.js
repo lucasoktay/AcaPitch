@@ -73,12 +73,13 @@ const MyStack = () => {
                 />
                 <Stack.Screen
                     name="Add Notes"
-                    component={AddNotes}
                     options={{
                         animation: "none",
                         orientation: 'landscape'
                     }}
-                />
+                >
+                    {props => <AddNotes {...props} handlePlaySound={handlePlaySound} />}
+                </Stack.Screen>
                 <Stack.Screen name="NewSong" component={NewSong} keyboardShouldPersistTaps="handled" />
             </Stack.Navigator>
         </NavigationContainer>

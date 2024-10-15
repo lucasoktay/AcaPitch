@@ -2,12 +2,11 @@ import { useNavigation } from '@react-navigation/native';
 import { useState } from 'react';
 import { Alert, Text, View } from 'react-native';
 import colors from '../colors.js';
-import PlaySound from '../piano/newmakesound.js';
 import styles from '../styles.js';
 import BottomButtons from './bottombuttons.js';
 import InputPiano from './inputpiano.js';
 
-const AddNotes = () => {
+const AddNotes = ({ handlePlaySound }) => {
     const navigation = useNavigation();
 
     const [isKeyPressed, setIsKeyPressed] = useState(false);
@@ -22,7 +21,7 @@ const AddNotes = () => {
         setIsKeyPressed(true);
         setAreNotesAdded(true);
         setNoteData([...noteData, note]);
-        await PlaySound(note, setSound);
+        handlePlaySound(note);
     };
 
     const handleClearNotes = () => {
