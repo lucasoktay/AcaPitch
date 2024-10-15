@@ -1,5 +1,3 @@
-// import { faMicrophoneLines } from '@fortawesome/free-solid-svg-icons';
-// import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import auth from '@react-native-firebase/auth';
 import { useFocusEffect, useNavigation } from '@react-navigation/native';
 import * as Font from 'expo-font';
@@ -7,12 +5,11 @@ import { SplashScreen } from 'expo-router';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { Text, TextInput, View } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
-// import colors from '../colors';
 import styles from '../styles';
 import SignUpButton from './signupbutton';
 import SwitchToSignIn from './switchtosignin';
 
-const SignUp = () => {
+const SignUp = ({ soundsLoaded }) => {
     const [appIsReady, setAppIsReady] = useState(false);
     const [initializing, setInitializing] = useState(true);
     const [user, setUser] = useState();
@@ -44,6 +41,7 @@ const SignUp = () => {
                 console.warn(e);
             } finally {
                 setAppIsReady(true);
+                console.log('Fonts loaded successfully');
             }
         }
 
@@ -51,26 +49,31 @@ const SignUp = () => {
     }, []);
 
     const onLayoutRootView = useCallback(async () => {
-        if (appIsReady) {
+        if (appIsReady && soundsLoaded) {
             await SplashScreen.hideAsync();
+            console.log('Splash screen hidden');
         }
-    }, [appIsReady]);
+    }, [appIsReady, soundsLoaded]);
 
     useFocusEffect(
         useCallback(() => {
-            if (appIsReady && firstInputRef.current) {
+            if (appIsReady && soundsLoaded && firstInputRef.current) {
                 firstInputRef.current.focus(); // Focus the input every time the screen is focused
             }
-        }, [appIsReady])
+        }, [appIsReady, soundsLoaded])
     );
 
-    if (!appIsReady || initializing) {
-        return null;
-    }
+    useEffect(() => {
+        if (appIsReady && soundsLoaded && !initializing) {
+            if (user) {
+                console.log('Navigating to Home');
+                navigation.navigate('Home');
+            }
+        }
+    }, [appIsReady, soundsLoaded, initializing, user, navigation]);
 
-    if (user) {
-        navigation.navigate('Home')
-    } else {
+    if (!appIsReady || initializing || !soundsLoaded) {
+        return null;
     }
 
     const clearFields = () => {
@@ -81,10 +84,6 @@ const SignUp = () => {
     return (
         <GestureHandlerRootView style={{ flex: 1 }} onLayout={onLayoutRootView}>
             <View style={styles.signupcontainer}>
-                {/* <View style={styles.logocontainer}>
-                    <FontAwesomeIcon icon={faMicrophoneLines} size={60} color={colors.orange} />
-                </View>
-                <Text style={styles.welcometext}>AcaPitch</Text> */}
                 <View style={styles.signupinnercontainer}>
                     <Text style={styles.signuptext}>Sign Up</Text>
                     <Text style={{ color: "white", marginBottom: 20, fontSize: 18, fontFamily: 'RubikRegular' }}>Add your email and password.</Text>

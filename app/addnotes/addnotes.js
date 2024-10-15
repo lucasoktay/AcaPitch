@@ -18,8 +18,6 @@ const AddNotes = () => {
 
     const [noteData, setNoteData] = useState([]);
 
-    const [sound, setSound] = useState();
-
     const handlePlayNote = async (note) => {
         setIsKeyPressed(true);
         setAreNotesAdded(true);

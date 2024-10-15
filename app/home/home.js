@@ -1,41 +1,27 @@
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
-import { useRoute } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 import React, { useEffect, useRef, useState } from 'react';
 import { Alert, Text, View } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { Modalize } from 'react-native-modalize';
 import NavBar from '../navbar/navbar.js';
 import NewSong from '../newsong/newsong.js';
-import PlaySound from '../piano/newmakesound.js';
-import { loadSounds, loadedSounds } from '../sounds/sounds.js';
 import styles from '../styles.js';
 import PlusButton from './plusbutton.js';
-// import SearchBar from './searchbar.js';
-import { useNavigation } from '@react-navigation/native';
 import SettingsIcon from './settingsicon.js';
 import SongList from './songlist.js';
 
-const Home = () => {
+const Home = ({ handlePlaySound }) => {
     const [modalVisible, setModalVisible] = useState(false);
     const [noteMessage, setNoteMessage] = useState("Notes");
     const [sound, setSound] = useState();
-    const [soundsLoaded, setSoundsLoaded] = useState(false);
     const userCollection = firestore().collection('users');
     const songsCollection = firestore().collection('songs');
     const modalizeRef = useRef(null);
     const route = useRoute();
     const { savedNotes } = route.params || {};
     const navigation = useNavigation();
-
-    useEffect(() => {
-        const loadAllSounds = async () => {
-            await loadSounds();
-            setSoundsLoaded(true);
-        };
-
-        loadAllSounds();
-    }, []);
 
     useEffect(() => {
         if (savedNotes) {
@@ -46,10 +32,6 @@ const Home = () => {
     const handlePlusButtonPress = () => {
         setNoteMessage("Notes");
         modalizeRef.current?.open();
-    }
-
-    const handlePlaySound = async (note) => {
-        await PlaySound(note, setSound, loadedSounds);
     }
 
     const handleAddNotesButtonPress = () => {

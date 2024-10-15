@@ -1,34 +1,34 @@
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { ScrollView, View } from "react-native";
 import NavBar from "../navbar/navbar";
 import { Piano } from '../react-native-piano/index.js';
-import { loadSounds, loadedSounds } from '../sounds/sounds.js';
+// import { loadSounds, loadedSounds } from '../sounds/sounds.js';
 import styles from "../styles.js";
-import PlaySound from './newmakesound.js';
 import NoteLabel from './notelabel.js'; // Import the NoteLabel component
 
-const PianoComponent = () => {
+const PianoComponent = ({ handlePlaySound }) => {
     const [pianoData, setPianoData] = useState([]);
     const [isScrolling, setIsScrolling] = useState(false);
     const [currentNote, setCurrentNote] = useState(null);
     const [sound, setSound] = useState();
-    const [soundsLoaded, setSoundsLoaded] = useState(false);
+    // const [soundsLoaded, setSoundsLoaded] = useState(false);
     const scrollViewRef = useRef(null);
 
-    useEffect(() => {
-        const loadAllSounds = async () => {
-            await loadSounds();
-            setSoundsLoaded(true);
-        };
+    // useEffect(() => {
+    //     const loadAllSounds = async () => {
+    //         await loadSounds();
+    //         setSoundsLoaded(true);
+    //     };
 
-        console.log("hello!!")
+    //     console.log("hello!!")
 
-        loadAllSounds();
-    }, []);
+    //     loadAllSounds();
+    // }, []);
 
     const handlePlayNote = async (note) => {
         setPianoData(pianoData => [...pianoData, note]);
-        await PlaySound(note, setSound, loadedSounds);
+        handlePlaySound(note);
+        // await PlaySound(note, setSound, loadedSounds);
     };
 
     const handleStopNote = () => {
@@ -46,7 +46,7 @@ const PianoComponent = () => {
 
     const handleTouchEnd = async () => {
         if (!isScrolling && currentNote !== null) {
-            await handlePlayNote(currentNote);
+            await handlePlaySound(currentNote);
         }
         setCurrentNote(null);
     };
