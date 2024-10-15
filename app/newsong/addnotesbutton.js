@@ -7,12 +7,16 @@ import styles from "../styles";
 const AddNotesButton = ({ noteMessage, noteList, onAddNotesButtonPress }) => {
     const navigation = useNavigation();
 
+    const truncatedNoteList = noteList && Array.isArray(noteList) && noteList.length > 6
+        ? noteList.slice(0, 6).concat('...')
+        : noteList;
+
     return (
         <TouchableOpacity onPress={onAddNotesButtonPress} keyboardShouldPersistTaps="handled">
             <View style={styles.addnotesbutton}>
                 <FontAwesomeIcon icon={faMusic} size={20} color='darkgrey' />
                 <Text style={styles.addnotes}>
-                    {noteMessage}: {noteList && Array.isArray(noteList) && noteList.length > 0 ? noteList.join(', ') : 'None'}
+                    {noteMessage}: {noteList && Array.isArray(noteList) && noteList.length > 0 ? truncatedNoteList.join(', ') : 'None'}
                 </Text>
             </View>
         </TouchableOpacity>

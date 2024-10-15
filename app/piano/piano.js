@@ -11,24 +11,11 @@ const PianoComponent = ({ handlePlaySound }) => {
     const [isScrolling, setIsScrolling] = useState(false);
     const [currentNote, setCurrentNote] = useState(null);
     const [sound, setSound] = useState();
-    // const [soundsLoaded, setSoundsLoaded] = useState(false);
     const scrollViewRef = useRef(null);
-
-    // useEffect(() => {
-    //     const loadAllSounds = async () => {
-    //         await loadSounds();
-    //         setSoundsLoaded(true);
-    //     };
-
-    //     console.log("hello!!")
-
-    //     loadAllSounds();
-    // }, []);
 
     const handlePlayNote = async (note) => {
         setPianoData(pianoData => [...pianoData, note]);
         handlePlaySound(note);
-        // await PlaySound(note, setSound, loadedSounds);
     };
 
     const handleStopNote = () => {
@@ -55,7 +42,6 @@ const PianoComponent = ({ handlePlaySound }) => {
         <View style={{ backgroundColor: '#F9F5F1', flexGrow: 1 }}>
             <View style={styles.fullscreenpiano}>
                 <ScrollView
-                    // ref={scrollViewRef}
                     horizontal={true}
                     style={styles.pianoscrollview}
                     showsVerticalScrollIndicator={false}

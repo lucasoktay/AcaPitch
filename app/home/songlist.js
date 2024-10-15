@@ -37,6 +37,9 @@ const SongList = ({ handlePlaySound }) => {
 
                 const songsList = songDocs.map(doc => {
                     const songData = doc.data();
+                    if (songData === undefined) {
+                        console.log(doc.id)
+                    }
                     return {
                         id: doc.id,
                         title: songData.title,
@@ -154,9 +157,7 @@ const SongList = ({ handlePlaySound }) => {
                         artist={artist}
                         notes={notes}
                         onDelete={deleteSong}
-                        // soundsLoaded={soundsLoaded}
                         handlePlaySound={handlePlaySound}
-                    // loadedSounds={loadedSounds}
                     />
                 ))}
             </ScrollView>
