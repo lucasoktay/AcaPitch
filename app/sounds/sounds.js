@@ -77,19 +77,51 @@ const soundFiles = {
 };
 
 const loadedSounds = {};
+const BATCH_SIZE = 1; // Number of sounds to load in each batch
+const TIMEOUT_DURATION = 500; // half a second
 
 async function loadSounds() {
-    const loadPromises = Object.entries(soundFiles).map(async ([note, soundFile]) => {
-        console.log('loading note:', note);
-        const { sound } = await Audio.Sound.createAsync(
-            soundFile,
-            { shouldPlay: false, volume: 1.0 }
-        );
-        console.log('loaded note:', note);
-        loadedSounds[note] = sound;
+    const soundEntries = Object.entries(soundFiles);
+
+    for (let i = 0; i < soundEntries.length; i += BATCH_SIZE) {
+        const batch = soundEntries.slice(i, i + BATCH_SIZE);
+        let success = false;
+
+        while (!success) {
+            try {
+                // console.log("new batch:");
+                await Promise.race([
+                    loadBatch(batch),
+                    timeout(TIMEOUT_DURATION)
+                ]);
+                success = true;
+            } catch (error) {
+                console.error('Batch loading timed out, retrying...', error);
+            }
+        }
+    }
+}
+
+async function loadBatch(batch) {
+    const loadPromises = batch.map(async ([note, soundFile]) => {
+        if (!loadedSounds[note]) {
+            // console.log('loading note:', note);
+            const { sound } = await Audio.Sound.createAsync(
+                soundFile,
+                { shouldPlay: false, volume: 1.0 }
+            );
+            // console.log('loaded note:', note);
+            loadedSounds[note] = sound;
+        }
     });
 
     await Promise.all(loadPromises);
+}
+
+function timeout(ms) {
+    return new Promise((_, reject) => {
+        setTimeout(() => reject(new Error('Timeout')), ms);
+    });
 }
 
 export { loadSounds, loadedSounds };

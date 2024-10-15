@@ -65,7 +65,6 @@ const Song = ({ title, tempo, artist, notes, onDelete, handlePlaySound }) => {
         for (let i = 0; i < notes.length; i++) {
             if (stopFlagRef.current) break;
             await makeSound(notes[i]);
-            console.log("made sound")
             await sleep(550);
         }
         setIsPlaying(false);

@@ -21,25 +21,12 @@ const MyStack = () => {
 
     useEffect(() => {
         const loadAllSounds = async () => {
-            const maxRetries = 3;
-            let attempts = 0;
-            let success = false;
-
-            while (attempts < maxRetries && !success) {
-                try {
-                    await loadSounds();
-                    success = true;
-                } catch (error) {
-                    attempts += 1;
-                    console.error(`Attempt ${attempts} to load sounds failed:`, error);
-                }
-            }
-
-            if (success) {
+            try {
+                await loadSounds();
                 setSoundsLoaded(true);
                 console.log('Sounds loaded successfully');
-            } else {
-                console.error('Failed to load all sounds after maximum retries.');
+            } catch (error) {
+                console.error('Failed to load sounds:', error);
                 // Optionally, you can show an error message to the user here
             }
         };
