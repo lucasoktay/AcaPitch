@@ -32,6 +32,7 @@ const PianoComponent = ({ handlePlaySound }) => {
     };
 
     const handleTouchEnd = async () => {
+        console.log(isScrolling)
         if (!isScrolling && currentNote !== null) {
             await handlePlaySound(currentNote);
         }

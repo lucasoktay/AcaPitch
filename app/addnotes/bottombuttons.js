@@ -26,20 +26,19 @@ const BottomButtons = ({ areNotesAdded, onSaveButtonPress, onClearButtonPress })
 
             <View style={styles.bottombuttons}>
                 <Pressable
-                    onPress={onSaveButtonPress}
-                    style={[styles.bottombutton, { width: '49%' }]}>
-                    <Text style={[styles.buttontext, { color: saveButtonText }]}>
-                        SAVE
-                    </Text>
-                </Pressable>
-                <Pressable
                     onPress={() => navigation.navigate('Home')}
                     style={[styles.bottombutton, { width: '49%' }]}>
                     <Text style={[styles.buttontextactive, { color: colors.lightred }]}>
                         CANCEL
                     </Text>
                 </Pressable>
-
+                <Pressable
+                    onPress={onSaveButtonPress}
+                    style={[styles.bottombutton, { width: '49%' }]}>
+                    <Text style={[styles.buttontext, { color: saveButtonText }]}>
+                        SAVE
+                    </Text>
+                </Pressable>
             </View>
         </View>
     )
