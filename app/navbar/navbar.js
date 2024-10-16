@@ -15,7 +15,7 @@ const NavBar = () => {
             const state = navigation.getState();
             const routeName = state.routes[state.index].name;
             setCurrentRoute(routeName);
-            console.log(routeName);
+            // console.log(routeName);
         }, [navigation])
     );
 
