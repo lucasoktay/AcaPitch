@@ -13,6 +13,7 @@ const styles = StyleSheet.create({
         flex: 1,
         paddingTop: 60,
         paddingBottom: 80,
+        backgroundColor: colors.greyred,
     },
 
     fullscreensettings: {
@@ -147,7 +148,7 @@ const styles = StyleSheet.create({
         padding: 8,
         marginVertical: 8,
         marginHorizontal: 20,
-        backgroundColor: 'white',
+        backgroundColor: "white",
         ...shadow
     },
 
