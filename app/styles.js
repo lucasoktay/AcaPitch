@@ -98,6 +98,42 @@ const styles = StyleSheet.create({
         fontFamily: 'RubikRegular'
     },
 
+
+    loadingscreen: {
+        height: '100%',
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: colors.loadingbackground
+    },
+
+    loadingcontainer: {
+        borderRadius: 100,
+
+    },
+
+    loadingwelcometext: {
+        fontSize: 40,
+        fontFamily: 'RubikRegular',
+        color: colors.loadingyellow,
+        marginBottom: 100
+    },
+
+
+    loadingsignuptext: {
+        fontSize: 30,
+        fontWeight: 'bold',
+        position: 'absolute',
+        bottom: 60,
+        fontFamily: 'RubikRegular',
+        color: "white",
+    },
+
+
+    loadingimage: {
+        height: 200,
+        width: 200,
+    },
+
     songwrapper: {
         height: 64,
         marginHorizontal: 15,
@@ -254,17 +290,17 @@ const styles = StyleSheet.create({
     },
 
     topline: {
-        width: '104%',
+        width: '95%',
         borderWidth: .5,
+        marginLeft: "2.5%",
         borderColor: 'black',
-        marginLeft: '-2%',
     },
 
     bottomline: {
         borderWidth: .5,
         borderColor: 'black',
         position: 'absolute',
-        bottom: 0,
+        bottom: "0%",
         left: 10,
         right: 10
     },

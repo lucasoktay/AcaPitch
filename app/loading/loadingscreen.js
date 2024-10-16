@@ -1,11 +1,16 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { Image, Text, View } from 'react-native';
+import styles from '../styles';
 
 const LoadingScreen = () => {
 
     return (
-        <View>
-            <Text>Poop</Text>
+        <View style={styles.loadingscreen}>
+            <View style={styles.loadingcontainer}>
+                <Image style={styles.loadingimage} source={require('../../assets/images/icon.png')} />
+            </View>
+            <Text style={styles.loadingwelcometext}>AcaPitch</Text>
+
         </View >
     );
 }

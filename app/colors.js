@@ -10,7 +10,10 @@ const colors = {
     bone: "#EDECEA",
     grey: "grey",
     greyred: "#F8F5F4",
-    navbar: "#fffbfb"
+    navbar: "#fffbfb",
+
+    loadingbackground: "#74323c",
+    loadingyellow: "#eeaf5c",
 };
 
 export default colors;
