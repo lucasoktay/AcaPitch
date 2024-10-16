@@ -12,7 +12,7 @@ const AddNotesButton = ({ noteMessage, noteList, onAddNotesButtonPress }) => {
         : noteList;
 
     return (
-        <TouchableOpacity onPress={onAddNotesButtonPress} keyboardShouldPersistTaps="handled">
+        <TouchableOpacity onPress={onAddNotesButtonPress}>
             <View style={styles.addnotesbutton}>
                 <FontAwesomeIcon icon={faMusic} size={20} color='darkgrey' />
                 <Text style={styles.addnotes}>

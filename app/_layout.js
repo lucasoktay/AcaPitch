@@ -41,12 +41,12 @@ const MyStack = () => {
 
     const Stack = createNativeStackNavigator();
     return (
-        <NavigationContainer independent="true" keyboardShouldPersistTaps="handled">
+        <NavigationContainer independent="true">
             <Stack.Navigator screenOptions={{
                 animation: 'none',
                 headerShown: false,
                 orientation: 'portrait',
-            }} keyboardShouldPersistTaps="handled">
+            }}>
                 <Stack.Screen name="SignUp">
                     {props => <SignUp {...props} soundsLoaded={soundsLoaded} />}
                 </Stack.Screen>
@@ -80,7 +80,7 @@ const MyStack = () => {
                 >
                     {props => <AddNotes {...props} handlePlaySound={handlePlaySound} />}
                 </Stack.Screen>
-                <Stack.Screen name="NewSong" component={NewSong} keyboardShouldPersistTaps="handled" />
+                <Stack.Screen name="NewSong" component={NewSong} />
             </Stack.Navigator>
         </NavigationContainer>
     );
