@@ -87,7 +87,7 @@ const SongList = ({ handlePlaySound }) => {
 
             Animated.timing(topLineOpacity, {
                 toValue: showTopLine,
-                duration: 100,
+                duration: 1,
                 useNativeDriver: true,
             }).start();
 
