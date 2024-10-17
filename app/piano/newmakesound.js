@@ -1,15 +1,6 @@
 import { Audio } from 'expo-av';
 
 export default async function PlaySound(note, setSound, loadedSounds) {
-    // const nextLetter = { 'A': 'B', 'B': 'C', 'C': 'D', 'D': 'E', 'E': 'F', 'F': 'G', 'G': 'A' };
-
-    // const checkSharp = (note) => {
-    //     console.log(note);
-    //     if (note.length === 3 && note[1] === '#') {
-    //         note = nextLetter[note[0]] + 'b' + note[2];
-    //     }
-    //     return note;
-    // }
 
     const sound = loadedSounds[note];
     if (!sound) {
@@ -25,11 +16,13 @@ export default async function PlaySound(note, setSound, loadedSounds) {
         });
 
         setSound(sound);
+        await sound.setVolumeAsync(1.0); // Set volume to maximum (1.0)
         await sound.replayAsync();
         const status = await sound.getStatusAsync();
 
         return sound;
     } catch (error) {
+        console.error('Error playing sound:', error);
     }
 }
 
