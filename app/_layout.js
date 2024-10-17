@@ -50,7 +50,7 @@ const MyStack = () => {
                 <Stack.Screen name="SignUp">
                     {props => <SignUp {...props} soundsLoaded={soundsLoaded} />}
                 </Stack.Screen>
-                <Stack.Screen name="Home">
+                <Stack.Screen name="Home" options={{ gestureEnabled: false }}>
                     {props => <Home {...props} handlePlaySound={handlePlaySound} />}
                 </Stack.Screen>
                 <Stack.Screen name="Piano" options={{ orientation: 'landscape' }}>
