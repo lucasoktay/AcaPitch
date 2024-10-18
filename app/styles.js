@@ -147,7 +147,9 @@ const styles = StyleSheet.create({
         height: 64,
         marginHorizontal: 15,
         borderWidth: .2,
-        borderColor: colors.mediumlightgrey,
+        borderTopWidth: .1,
+        borderBottomWidth: .1,
+        borderColor: colors.lightred,
         borderRadius: 10,
         flexGrow: 0,
         flexDirection: 'row',
@@ -204,6 +206,8 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-start',
         paddingLeft: 20,
         backgroundColor: "white",
+        borderWidth: .2,
+        borderColor: colors.lightred,
         ...plusshadow,
         zIndex: 999
     },
@@ -469,6 +473,8 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
         justifyContent: 'center',
         alignItems: 'center',
+        borderWidth: .2,
+        borderColor: colors.lightred,
         height: 40,
         borderRadius: 10,
         marginBottom: 8,
@@ -573,7 +579,7 @@ const styles = StyleSheet.create({
         color: 'white',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: "white"
+        backgroundColor: 'white',
     }
 });
 
