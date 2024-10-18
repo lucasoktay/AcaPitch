@@ -34,10 +34,7 @@ const PianoComponent = ({ handlePlaySound, handlePlayNoteAddNote }) => {
         if (event.nativeEvent.state === State.END) {
             if (currentNote !== null) {
                 await handlePlayNote(currentNote);
-                if (currentRoute === 'Add Notes') {
-                    console.log('adding note: ', currentNote);
-                    handlePlayNoteAddNote(currentNote);
-                }
+                { handlePlayNoteAddNote && handlePlayNoteAddNote(currentNote); }
             }
         }
     };

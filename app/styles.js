@@ -146,9 +146,8 @@ const styles = StyleSheet.create({
     songwrapper: {
         height: 64,
         marginHorizontal: 15,
-        borderWidth: .2,
-        borderTopWidth: .1,
-        borderBottomWidth: .1,
+        borderWidth: .1,
+        borderLeftWidth: .4,
         borderColor: colors.lightred,
         borderRadius: 10,
         flexGrow: 0,
