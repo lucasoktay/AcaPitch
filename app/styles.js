@@ -302,12 +302,12 @@ const styles = StyleSheet.create({
         width: '95%',
         borderWidth: .5,
         marginLeft: "2.5%",
-        borderColor: 'black',
+        borderColor: colors.lightgrey,
     },
 
     bottomline: {
         borderWidth: .5,
-        borderColor: 'black',
+        borderColor: colors.mediumlightgrey,
         position: 'absolute',
         bottom: "0%",
         left: 10,
