@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react';
 import { ScrollView, View } from "react-native";
 import { GestureHandlerRootView, PanGestureHandler, State, TapGestureHandler } from 'react-native-gesture-handler';
-import NavBar from "../navbar/navbar";
+// import NavBar from "../navbar/navbar";
 import { Piano } from '../react-native-piano/index.js';
 import styles from "../styles.js";
 import NoteLabel from './notelabel.js'; // Import the NoteLabel component
@@ -70,7 +70,7 @@ const PianoComponent = ({ handlePlaySound }) => {
                         </ScrollView>
                     </PanGestureHandler>
                 </View>
-                <NavBar />
+                {/* <NavBar /> */}
             </View>
         </GestureHandlerRootView>
     );

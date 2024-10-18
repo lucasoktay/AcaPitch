@@ -475,6 +475,16 @@ const styles = StyleSheet.create({
         ...shadow,
     },
 
+    bottombuttonactive: {
+        backgroundColor: 'white',
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: 40,
+        borderRadius: 10,
+        marginBottom: 8,
+        ...plusshadow,
+    },
+
     noteinfo: {
         fontSize: 22,
         fontFamily: 'RubikRegular',

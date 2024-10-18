@@ -8,9 +8,11 @@ const BottomButtons = ({ areNotesAdded, onSaveButtonPress, onClearButtonPress })
 
     const navigation = useNavigation();
     const [saveButtonText, setSaveButtonText] = useState(colors.lightgrey);
+    const [saveStyle, setSaveStyle] = useState(styles.bottombutton);
 
     useEffect(() => {
         setSaveButtonText(areNotesAdded ? colors.orange : colors.grey);
+        setSaveStyle(areNotesAdded ? styles.bottombuttonactive : styles.bottombutton);
     }, [areNotesAdded]);
 
     return (
@@ -34,13 +36,13 @@ const BottomButtons = ({ areNotesAdded, onSaveButtonPress, onClearButtonPress })
                 </Pressable>
                 <Pressable
                     onPress={onSaveButtonPress}
-                    style={[styles.bottombutton, { width: '49%' }]}>
+                    style={[saveStyle, { width: '49%' }]}>
                     <Text style={[styles.buttontext, { color: saveButtonText }]}>
                         SAVE
                     </Text>
                 </Pressable>
             </View>
-        </View>
+        </View >
     )
 }
 
