@@ -2,9 +2,10 @@ import { useNavigation } from '@react-navigation/native';
 import { useState } from 'react';
 import { Alert, Text, View } from 'react-native';
 import colors from '../colors.js';
+import PianoComponent from '../piano/piano.js';
 import styles from '../styles.js';
 import BottomButtons from './bottombuttons.js';
-import InputPiano from './inputpiano.js';
+// import InputPiano from './inputpiano.js';
 
 const AddNotes = ({ handlePlaySound }) => {
     const navigation = useNavigation();
@@ -21,7 +22,7 @@ const AddNotes = ({ handlePlaySound }) => {
         setIsKeyPressed(true);
         setAreNotesAdded(true);
         setNoteData([...noteData, note]);
-        handlePlaySound(note);
+        // handlePlaySound(note);
     };
 
     const handleClearNotes = () => {
@@ -46,11 +47,14 @@ const AddNotes = ({ handlePlaySound }) => {
         <View style={{ backgroundColor: colors.greyred, height: "100%" }}>
             <View style={styles.newsongscreen}>
                 <View style={{ width: "100%", alignItems: 'center' }}>
-                    <InputPiano
+                    <View style={{ marginTop: -51, height: 270 }}>
+                        <PianoComponent handlePlaySound={handlePlaySound} handlePlayNoteAddNote={handlePlayNote} />
+                    </View>
+                    {/* <InputPiano
                         onPlayNoteInput={handlePlayNote}
                         onStopNoteInput={handleStopNote}
                         addedNotes={noteData}
-                    />
+                    /> */}
                     <BottomButtons
                         isKeyPressed={isKeyPressed}
                         areNotesAdded={areNotesAdded}
@@ -60,7 +64,7 @@ const AddNotes = ({ handlePlaySound }) => {
                     <Text style={styles.noteinfo}> Notes: {noteData.join(", ")} </Text>
                 </View>
             </View>
-        </View>
+        </View >
     );
 }
 

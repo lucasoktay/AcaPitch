@@ -26,7 +26,7 @@ const InputPiano = ({ addedNotes, onPlayNoteInput, onStopNoteInput, activeKey, r
         if (!isScrolling && currentNote !== null) {
             onPlayNoteInput(currentNote);
         }
-        setCurrentNote(null);
+        // setCurrentNote(null);
     };
 
     return (

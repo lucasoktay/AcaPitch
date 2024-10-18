@@ -1,17 +1,21 @@
+import { useNavigation } from '@react-navigation/native';
 import { useRef, useState } from 'react';
 import { ScrollView, View } from "react-native";
 import { GestureHandlerRootView, PanGestureHandler, State, TapGestureHandler } from 'react-native-gesture-handler';
-// import NavBar from "../navbar/navbar";
+import NavBar from "../navbar/navbar";
 import { Piano } from '../react-native-piano/index.js';
 import styles from "../styles.js";
-import NoteLabel from './notelabel.js'; // Import the NoteLabel component
+import NoteLabel from './notelabel.js';
 
-const PianoComponent = ({ handlePlaySound }) => {
+const PianoComponent = ({ handlePlaySound, handlePlayNoteAddNote }) => {
     const [pianoData, setPianoData] = useState([]);
     const [currentNote, setCurrentNote] = useState(null);
     const scrollViewRef = useRef(null);
     const panRef = useRef(null);
     const tapRef = useRef(null);
+
+    const navigation = useNavigation();
+    const currentRoute = navigation.getState().routes[navigation.getState().index].name;
 
     const handlePlayNote = async (note) => {
         setPianoData(pianoData => [...pianoData, note]);
@@ -19,7 +23,6 @@ const PianoComponent = ({ handlePlaySound }) => {
     };
 
     handleTouchStart = (midiNumber) => {
-        console.log('Touch start');
         setCurrentNote(midiNumber);
     }
 
@@ -30,7 +33,11 @@ const PianoComponent = ({ handlePlaySound }) => {
     const handleTapGestureEvent = async (event) => {
         if (event.nativeEvent.state === State.END) {
             if (currentNote !== null) {
-                await handlePlaySound(currentNote);
+                await handlePlayNote(currentNote);
+                if (currentRoute === 'Add Notes') {
+                    console.log('adding note: ', currentNote);
+                    handlePlayNoteAddNote(currentNote);
+                }
             }
         }
     };
@@ -70,7 +77,7 @@ const PianoComponent = ({ handlePlaySound }) => {
                         </ScrollView>
                     </PanGestureHandler>
                 </View>
-                {/* <NavBar /> */}
+                {currentRoute === 'Piano' && <NavBar />}
             </View>
         </GestureHandlerRootView>
     );
