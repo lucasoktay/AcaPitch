@@ -129,9 +129,10 @@ const styles = StyleSheet.create({
     height: 120,
     backgroundColor: '#555',
     borderColor: 'transparent',
-    borderWidth: 1,
+    // borderWidth: 1,
     borderBottomLeftRadius: 4,
     borderBottomRightRadius: 4,
+    overflow: 'hidden',
     zIndex: 1,
   },
   ReactPiano__NoteLabelContainer: {
