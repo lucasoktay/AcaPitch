@@ -37,6 +37,12 @@ class Piano extends Component {
 
   setActiveKey = (midiNumber) => {
     this.setState({ activeKey: midiNumber });
+    // if no other key is pressed for 0.5 seconds, set activeKey to null
+    // setTimeout(() => {
+    //   if (this.state.activeKey === midiNumber) {
+    //     this.setState({ activeKey: null });
+    //   }
+    // }, 800);
   };
 
   getNaturalKeyCount() {

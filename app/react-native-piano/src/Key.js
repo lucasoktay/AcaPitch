@@ -1,7 +1,8 @@
+import { LinearGradient } from 'expo-linear-gradient';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { StyleSheet, View } from 'react-native';
-import colors from '../../colors';
+import colors from '../../colors.js';
 import MidiNumbers from './MidiNumbers';
 
 class Key extends Component {
@@ -77,24 +78,31 @@ class Key extends Component {
     const noteName = MidiNumbers.midiToNoteName(midiNumber);
     const isAddedNote = addedNotes && addedNotes.includes(noteName);
 
+    const keyStyle = [
+      styles.ReactPiano__Key,
+      accidental ? styles.ReactPiano__Key__accidental : styles.ReactPiano__Key__natural,
+      {
+        left: ratioToPercentage(this.getRelativeKeyPosition(midiNumber) * naturalKeyWidth),
+        width: ratioToPercentage(
+          accidental ? accidentalWidthRatio * naturalKeyWidth : naturalKeyWidth,
+        ),
+        backgroundColor: isAddedNote ? 'grey' : (accidental ? '#555' : '#f6f5f3'), // Apply grey background for added notes
+      },
+    ];
+
     return (
       <View
-        style={[
-          styles.ReactPiano__Key,
-          accidental ? styles.ReactPiano__Key__accidental : styles.ReactPiano__Key__natural,
-          {
-            left: ratioToPercentage(this.getRelativeKeyPosition(midiNumber) * naturalKeyWidth),
-            width: ratioToPercentage(
-              accidental ? accidentalWidthRatio * naturalKeyWidth : naturalKeyWidth,
-            ),
-            backgroundColor: isAddedNote ? 'grey' : (accidental ? '#555' : '#f6f5f3'), // Apply grey background for added notes
-          },
-          isActive && styles.ReactPiano__Key__active,
-        ]}
+        style={keyStyle}
         onTouchStart={useTouchEvents ? this.onPlayNoteInput : null}
         onTouchCancel={useTouchEvents ? this.onStopNoteInput : null}
         onTouchEnd={useTouchEvents ? this.onStopNoteInput : null}
       >
+        {isActive ? (
+          <LinearGradient
+            colors={[colors.orange, colors.lightred]}
+            style={StyleSheet.absoluteFill}
+          />
+        ) : null}
         <View style={styles.ReactPiano__NoteLabelContainer}>{children}</View>
       </View>
     );
@@ -125,9 +133,6 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: 4,
     borderBottomRightRadius: 4,
     zIndex: 1,
-  },
-  ReactPiano__Key__active: {
-    backgroundColor: colors.lightred,
   },
   ReactPiano__NoteLabelContainer: {
     flex: 1,
