@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { useRef, useState } from "react";
 import { Animated, Pressable, Text, View } from "react-native";
 import { Swipeable } from 'react-native-gesture-handler';
+import colors from "../colors.js";
 import { stopSound } from "../piano/newmakesound.js";
 import styles from "../styles";
 import PlayIcon from "./playicon";
@@ -33,7 +34,7 @@ const Song = ({ title, tempo, artist, notes, onDelete, handlePlaySound }) => {
                         }}
                         style={styles.deletesongbutton}
                     >
-                        <FontAwesomeIcon icon={faTrash} size={24} />
+                        <FontAwesomeIcon color={colors.lightred} icon={faTrash} size={24} />
                     </Pressable>
                 </Animated.View>
             </View >
@@ -87,12 +88,12 @@ const Song = ({ title, tempo, artist, notes, onDelete, handlePlaySound }) => {
                         </Pressable>
                         <View >
                             <Text style={styles.song} numberOfLines={1}>{title}</Text>
-                            <Text numberOfLines={1}>{artist}</Text>
+                            <Text style={{ fontSize: 14 }} numberOfLines={1}>{artist}</Text>
                         </View>
                     </View>
                     <View style={styles.songinfo}>
-                        <Text numberOfLines={1}>{tempo}</Text>
-                        <Text numberOfLines={1} >{formatnotes}</Text>
+                        <Text style={{ fontSize: 13 }} numberOfLines={1}>{tempo}</Text>
+                        <Text style={{ fontSize: 13 }} numberOfLines={1} >{formatnotes}</Text>
                     </View>
                 </View>
             </Swipeable>
@@ -110,8 +111,8 @@ const Song = ({ title, tempo, artist, notes, onDelete, handlePlaySound }) => {
                         </View>
                     </View>
                     <View style={styles.songinfo}>
-                        <Text numberOfLines={1} style={{ color: "#444444" }}>{tempo}</Text>
-                        <Text numberOfLines={1} style={{ color: "#444444" }}>{formatnotes}</Text>
+                        <Text style={{ fontSize: 13 }} numberOfLines={1}>{tempo}</Text>
+                        <Text style={{ fontSize: 13 }} numberOfLines={1}>{formatnotes}</Text>
                     </View>
                 </View>
             </Swipeable>

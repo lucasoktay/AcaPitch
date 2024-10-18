@@ -43,8 +43,8 @@ const NewSong = ({ onSaveButtonPress, onAddNotesButtonPress, noteMessage, noteLi
             behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
 
         >
-
             <View style={styles.addsonginputs}>
+
                 <InputField
                     name={'Title'}
                     ref={firstInputRef}
@@ -62,11 +62,13 @@ const NewSong = ({ onSaveButtonPress, onAddNotesButtonPress, noteMessage, noteLi
                     fontSize={16}
                 />
 
+
                 <View style={styles.newsongline} />
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between', width: "100%", height: 60, alignItems: 'center', marginBottom: -20 }}>
                     <AddNotesButton noteMessage={noteMessage} onAddNotesButtonPress={onAddNotesButtonPress} noteList={noteList} />
                     <SaveSongButton onSaveButtonPress={handleSaveButtonPress} areNotes={areNotes} isTitle={isTitle} />
                 </View>
+
             </View>
 
         </KeyboardAvoidingView>

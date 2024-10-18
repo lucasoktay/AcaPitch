@@ -2,11 +2,18 @@ import { StyleSheet } from "react-native";
 import colors from "./colors";
 
 const shadow = {
-    shadowColor: colors.grey,
+    shadowColor: colors.lightred,
     shadowOpacity: .2,
-    shadowRadius: 6,
-    shadowOffset: { height: 2 }
+    shadowRadius: 4,
+    shadowOffset: { height: 1 }
 };
+
+const plusshadow = {
+    shadowColor: colors.lightred,
+    shadowOpacity: .5,
+    shadowRadius: 4,
+    shadowOffset: { height: 1 }
+}
 
 const styles = StyleSheet.create({
     fullscreen: {
@@ -90,8 +97,9 @@ const styles = StyleSheet.create({
     },
 
     yoursongs: {
-        fontSize: 22,
-        marginTop: 24,
+        // color: colors.lightred,
+        fontSize: 24,
+        marginTop: 12,
         marginHorizontal: 20,
         marginBottom: 8,
         fontWeight: '500',
@@ -149,7 +157,7 @@ const styles = StyleSheet.create({
         marginVertical: 8,
         marginHorizontal: 20,
         backgroundColor: "white",
-        ...shadow
+        ...shadow,
     },
 
     songwrapperleft: {
@@ -160,7 +168,7 @@ const styles = StyleSheet.create({
     },
 
     song: {
-        fontSize: 20,
+        fontSize: 18,
         fontFamily: 'RubikRegular'
     },
 
@@ -186,7 +194,7 @@ const styles = StyleSheet.create({
 
     plusbutton: {
         position: 'absolute',
-        bottom: 90,
+        bottom: 100,
         left: 20,
         right: 20,
         height: 64,
@@ -196,7 +204,7 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-start',
         paddingLeft: 20,
         backgroundColor: "white",
-        ...shadow,
+        ...plusshadow,
         zIndex: 999
     },
 
@@ -546,13 +554,16 @@ const styles = StyleSheet.create({
 
     deletesongbutton: {
         height: 64,
-        borderRadius: 20,
+        borderWidth: .2,
+        borderColor: colors.lightred,
+        borderRadius: 10,
+        ...plusshadow,
         width: 80,
         marginLeft: 12,
         color: 'white',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: colors.lightred
+        backgroundColor: "white"
     }
 });
 
