@@ -15,7 +15,7 @@ const SignUpButton = ({ email, password, clearFields }) => {
 
                 userCollection.add({
                     email: email,
-                    password: password,
+                    // password: password,
                     uid: auth().currentUser.uid
                 })
             })

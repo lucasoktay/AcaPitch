@@ -1,5 +1,3 @@
-// import { faMicrophoneLines } from '@fortawesome/free-solid-svg-icons';
-// import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { useFocusEffect, useNavigation } from '@react-navigation/native';
 import React, { useCallback, useRef, useState } from 'react';
 import { Text, TextInput, View } from 'react-native';
