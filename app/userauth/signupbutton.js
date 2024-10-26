@@ -29,7 +29,7 @@ const SignUpButton = ({ email, password, clearFields }) => {
                 }
 
                 if (error.code == 'auth/weak-password') {
-                    Alert.alert('That password is too weak!');
+                    Alert.alert('Password must have at least 6 characters.');
                 }
 
                 console.error(error);

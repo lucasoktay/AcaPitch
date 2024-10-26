@@ -184,6 +184,23 @@ const styles = StyleSheet.create({
         // paddingBottom: 95,
     },
 
+    nosongs: {
+        fontSize: 18,
+        fontFamily: 'RubikRegular',
+        color: colors.grey,
+        textAlign: 'center',
+        marginTop: "50%",
+        marginHorizontal: 20,
+    },
+
+    nosongssub: {
+        fontSize: 18,
+        fontFamily: 'RubikRegular',
+        color: colors.grey,
+        textAlign: 'center',
+        marginHorizontal: 20,
+    },
+
     songinfo: {
         height: 64,
         width: 120,

@@ -1,7 +1,7 @@
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
 import { useEffect, useRef, useState } from 'react';
-import { Animated, ScrollView, View } from 'react-native';
+import { Animated, ScrollView, Text, View } from 'react-native';
 import styles from '../styles';
 import Song from './song';
 
@@ -139,7 +139,13 @@ const SongList = ({ handlePlaySound }) => {
     return (
         <View style={styles.songlist}>
             <Animated.View style={[styles.topline, { opacity: topLineOpacity }]} />
-
+            {songDetails.length === 0 ? (
+                <View style={{ rowGap: 8 }}>
+                    <Text style={styles.nosongs}>Add some songs!</Text>
+                    <Text style={styles.nosongssub}>Artist and Tempo fields optional.</Text>
+                    <Text style={styles.nosongssub}>Swipe left on a song to delete (edit coming soon).</Text>
+                </View>
+            ) : null}
             <ScrollView
                 onScroll={Animated.event(
                     [{ nativeEvent: { contentOffset: { y: scrollY } } }],

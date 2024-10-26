@@ -1,6 +1,6 @@
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
-import { Pressable, Text } from 'react-native';
+import { Alert, Pressable, Text } from 'react-native';
 import styles from '../styles';
 
 const SignInButton = ({ email, password, clearFields }) => {
@@ -14,18 +14,16 @@ const SignInButton = ({ email, password, clearFields }) => {
             .then(() => {
             })
             .catch(error => {
+                console.log("ERROR")
                 if (error.code === 'auth/wrong-password') {
                     Alert.alert('That password is incorrect!')
                 }
-
                 if (error.code === 'auth/user-not-found') {
                     Alert.alert('That email address is not found!')
                 }
-
                 if (error.code === 'auth/invalid-email') {
                     Alert.alert('That email address is invalid!');
                 }
-
                 console.error(error);
             }
             );
