@@ -141,7 +141,7 @@ const SongList = ({ handlePlaySound }) => {
             <Animated.View style={[styles.topline, { opacity: topLineOpacity }]} />
             {songDetails.length === 0 ? (
                 <View style={{ rowGap: 8 }}>
-                    <Text style={styles.nosongs}>Add some songs!</Text>
+                    <Text style={styles.nosongs}>Add songs to get started!</Text>
                     <Text style={styles.nosongssub}>Artist and Tempo fields optional.</Text>
                     <Text style={styles.nosongssub}>Swipe left on a song to delete (edit coming soon).</Text>
                 </View>
