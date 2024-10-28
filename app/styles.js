@@ -3,7 +3,7 @@ import colors from "./colors";
 
 const shadow = {
     shadowColor: colors.lightred,
-    shadowOpacity: .2,
+    shadowOpacity: .1,
     shadowRadius: 4,
     shadowOffset: { height: 1 }
 };
@@ -56,8 +56,15 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         width: "100%",
         height: 50,
-        marginVertical: 10,
+        // marginVertical: 10,
         backgroundColor: "white"
+    },
+
+    divider: {
+        height: .5,
+        width: "84%",
+        marginLeft: "16%",
+        backgroundColor: colors.mediumlightgrey,
     },
 
     themesicon: {
@@ -490,7 +497,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         borderWidth: .2,
-        borderColor: colors.lightred,
+        borderColor: colors.mediumlightgrey,
         height: 40,
         borderRadius: 10,
         marginBottom: 8,
