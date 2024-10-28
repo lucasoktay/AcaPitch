@@ -1,4 +1,4 @@
-import { useFocusEffect, useNavigation } from '@react-navigation/native';
+import { useFocusEffect } from '@react-navigation/native';
 import React, { useCallback, useRef, useState } from 'react';
 import { Text, TextInput, View } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
@@ -8,10 +8,8 @@ import SignInButton from './signinbutton';
 import SwitchToSignUp from './switchtosignup';
 
 const SignIn = () => {
-    const [user, setUser] = useState();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const navigation = useNavigation();
     const firstInputRef = useRef(null);
 
     useFocusEffect(

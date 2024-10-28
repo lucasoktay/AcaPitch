@@ -16,6 +16,7 @@ const Home = ({ handlePlaySound }) => {
     const [modalVisible, setModalVisible] = useState(false);
     const [noteMessage, setNoteMessage] = useState("Notes");
     const [sound, setSound] = useState();
+    const [savedNotesState, setSavedNotesState] = useState(null);
     const userCollection = firestore().collection('users');
     const songsCollection = firestore().collection('songs');
     const modalizeRef = useRef(null);
@@ -26,6 +27,7 @@ const Home = ({ handlePlaySound }) => {
     useEffect(() => {
         if (savedNotes) {
             setNoteMessage("Notes");
+            setSavedNotesState(savedNotes);
         }
     }, [savedNotes]);
 
@@ -39,10 +41,10 @@ const Home = ({ handlePlaySound }) => {
     }
 
     const handleSaveButtonPress = async ({ title, artist, tempo }) => {
-        if (!savedNotes || !title) {
+        if (!savedNotesState || !title) {
             if (title) {
                 Alert.alert("Add some notes first!");
-            } else if (savedNotes) {
+            } else if (savedNotesState) {
                 Alert.alert("Please enter a title.");
             } else {
                 Alert.alert("Please enter a title and add notes, or swipe down to cancel.");
@@ -62,7 +64,7 @@ const Home = ({ handlePlaySound }) => {
                 title: title,
                 artist: artist,
                 tempo: tempo,
-                notes: savedNotes
+                notes: savedNotesState
             });
 
             // Update the user's document to include the new song ID
@@ -79,6 +81,9 @@ const Home = ({ handlePlaySound }) => {
                 console.error('User document not found');
                 Alert.alert("Error", "Failed to update user's song list.");
             }
+
+            // set the saved notes to null
+            setSavedNotesState(null);
 
             modalizeRef.current?.close();
 
@@ -112,7 +117,7 @@ const Home = ({ handlePlaySound }) => {
                     modalStyle={{ borderRadius: 20, overflow: 'hidden' }}
                     adjustToContentHeight={true}
                 >
-                    <NewSong onSaveButtonPress={handleSaveButtonPress} onAddNotesButtonPress={handleAddNotesButtonPress} noteMessage={noteMessage} noteList={savedNotes} />
+                    <NewSong onSaveButtonPress={handleSaveButtonPress} onAddNotesButtonPress={handleAddNotesButtonPress} noteMessage={noteMessage} noteList={savedNotesState} />
                 </Modalize>
 
             </View>

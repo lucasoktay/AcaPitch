@@ -39,7 +39,6 @@ const AddNotes = ({ handlePlaySound }) => {
             Alert.alert('Add notes or press cancel.');
         } else {
             navigation.navigate('Home', { savedNotes: noteData });
-            // setNoteData([]);
         }
     };
 
@@ -50,11 +49,6 @@ const AddNotes = ({ handlePlaySound }) => {
                     <View style={{ marginTop: -51, height: 270 }}>
                         <PianoComponent handlePlaySound={handlePlaySound} handlePlayNoteAddNote={handlePlayNote} />
                     </View>
-                    {/* <InputPiano
-                        onPlayNoteInput={handlePlayNote}
-                        onStopNoteInput={handleStopNote}
-                        addedNotes={noteData}
-                    /> */}
                     <BottomButtons
                         isKeyPressed={isKeyPressed}
                         areNotesAdded={areNotesAdded}
