@@ -8,6 +8,7 @@ import Song from './song';
 
 const SongList = ({ handlePlaySound }) => {
     const [songDetails, setSongDetails] = useState([]);
+    const [songOrder, setSongOrder] = useState([]);
     const [unsubscribe, setUnsubscribe] = useState(null);
     const [topLineOpacity] = useState(new Animated.Value(0));
     const [bottomLineOpacity] = useState(new Animated.Value(0));
@@ -29,6 +30,7 @@ const SongList = ({ handlePlaySound }) => {
             if (!querySnapshot.empty) {
                 const userDoc = querySnapshot.docs[0];
                 const userSongList = userDoc.data().songs;
+                const userSongOrder = userDoc.data().songOrder || [];
 
                 const songsCollection = firestore().collection('songs');
                 const songPromises = userSongList.map(id => songsCollection.doc(id).get());
@@ -49,6 +51,18 @@ const SongList = ({ handlePlaySound }) => {
                 });
 
                 setSongDetails(songsList);
+
+                // Update song order if there are new songs
+                const songIds = songsList.map(song => song.id);
+                const newSongOrder = userSongOrder.filter(id => songIds.includes(id));
+                const newSongs = songIds.filter(id => !newSongOrder.includes(id));
+                const updatedSongOrder = [...newSongOrder, ...newSongs];
+                setSongOrder(updatedSongOrder);
+
+                // Update Firestore with the new song order
+                if (newSongs.length > 0) {
+                    await userDoc.ref.update({ songOrder: updatedSongOrder });
+                }
             } else {
                 setSongDetails([]);
             }
@@ -103,6 +117,10 @@ const SongList = ({ handlePlaySound }) => {
             const currentUser = auth().currentUser;
 
             const songDoc = songDetails.find(song => song.title === title);
+            if (!songDoc) {
+                console.error('Song not found');
+                return;
+            }
 
             await firestore().collection('songs').doc(songDoc.id).delete();
 
@@ -116,10 +134,16 @@ const SongList = ({ handlePlaySound }) => {
                 const userDoc = userQuerySnapshot.docs[0];
                 const userData = userDoc.data();
                 const updatedSongs = userData.songs.filter(id => id !== songDoc.id);
+                const updatedSongOrder = songOrder.filter(id => id !== songDoc.id);
 
                 await userDoc.ref.update({
-                    songs: updatedSongs
+                    songs: updatedSongs,
+                    songOrder: updatedSongOrder
                 });
+
+                // Update local state
+                setSongOrder(updatedSongOrder);
+                setSongDetails(songDetails.filter(song => song.id !== songDoc.id));
 
             } else {
                 console.error('User document not found');
@@ -151,21 +175,45 @@ const SongList = ({ handlePlaySound }) => {
         );
     };
 
+    const orderedSongs = songOrder.map(id => {
+        const song = songDetails.find(song => song.id === id);
+        if (!song) {
+            console.error(`Song with id ${id} not found in songDetails`);
+        }
+        return song;
+    }).filter(song => song !== undefined);
+
     return (
         <View style={styles.songlist}>
             <Animated.View style={[styles.topline, { opacity: topLineOpacity }]} />
             {songDetails.length === 0 ? (
                 <View style={{ rowGap: 8 }}>
                     <Text style={styles.nosongs}>Add songs to get started!</Text>
-                    <Text style={styles.nosongssub}>Artist and Tempo fields optional.</Text>
                     <Text style={styles.nosongssub}>Swipe left on a song to delete (edit coming soon).</Text>
                 </View>
             ) : null}
             <DraggableFlatList
-                data={songDetails}
+                data={orderedSongs}
                 renderItem={renderItem}
                 keyExtractor={(item) => item.id}
-                onDragEnd={({ data }) => setSongDetails(data)}
+                onDragEnd={async ({ data }) => {
+                    const newOrder = data.map(song => song.id);
+                    setSongOrder(newOrder);
+
+                    // Update Firestore with the new song order
+                    const currentUser = auth().currentUser;
+                    if (currentUser) {
+                        const userDocRef = firestore()
+                            .collection('users')
+                            .where('uid', '==', currentUser.uid);
+
+                        const userQuerySnapshot = await userDocRef.get();
+                        if (!userQuerySnapshot.empty) {
+                            const userDoc = userQuerySnapshot.docs[0];
+                            await userDoc.ref.update({ songOrder: newOrder });
+                        }
+                    }
+                }}
                 scrollEventThrottle={16}
                 contentContainerStyle={{ paddingBottom: 20 }}
                 onContentSizeChange={(width, height) => setContentHeight(height)}
