@@ -1,15 +1,19 @@
 import { faArrowUp } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { useNavigation } from "@react-navigation/native";
+// import Haptics from 'expo-haptics';
 import { TouchableOpacity, View } from "react-native";
 import styles from "../styles";
 
 const SaveSongButton = ({ onSaveButtonPress, areNotes, isTitle }) => {
-    const navigation = useNavigation();
+
+    const handlePress = () => {
+        // Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+        onSaveButtonPress();
+    }
 
     if (areNotes && isTitle) {
         return (
-            <TouchableOpacity onPress={onSaveButtonPress}>
+            <TouchableOpacity onPress={handlePress}>
                 <View style={styles.savesongbuttonactive} >
                     <FontAwesomeIcon icon={faArrowUp} size={20} color={"white"} />
                 </View>
@@ -17,7 +21,7 @@ const SaveSongButton = ({ onSaveButtonPress, areNotes, isTitle }) => {
         )
     } else {
         return (
-            <TouchableOpacity onPress={onSaveButtonPress}>
+            <TouchableOpacity onPress={handlePress}>
                 <View style={styles.savesongbutton} >
                     <FontAwesomeIcon icon={faArrowUp} size={20} color={"lightgrey"} />
                 </View>

@@ -1,12 +1,12 @@
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
-import { useEffect, useRef, useState } from 'react';
-import { Animated, ScrollView, Text, View } from 'react-native';
+import React, { useEffect, useRef, useState } from 'react';
+import { Animated, Text, View } from 'react-native';
+import DraggableFlatList from 'react-native-draggable-flatlist';
 import styles from '../styles';
 import Song from './song';
 
 const SongList = ({ handlePlaySound }) => {
-    // console.log("loaded sounds songlist: ", loadedSounds);
     const [songDetails, setSongDetails] = useState([]);
     const [unsubscribe, setUnsubscribe] = useState(null);
     const [topLineOpacity] = useState(new Animated.Value(0));
@@ -14,7 +14,6 @@ const SongList = ({ handlePlaySound }) => {
     const [contentHeight, setContentHeight] = useState(0);
     const scrollY = useRef(new Animated.Value(0)).current;
 
-    // get songlist from backend and listen for real-time updates
     useEffect(() => {
         const currentUser = auth().currentUser;
         if (!currentUser) {
@@ -136,6 +135,22 @@ const SongList = ({ handlePlaySound }) => {
         { useNativeDriver: true }
     );
 
+    const renderItem = ({ item, drag, isActive }) => {
+        return (
+            <Song
+                key={item.id}
+                title={item.title}
+                tempo={item.tempo}
+                artist={item.artist}
+                notes={item.notes}
+                onDelete={deleteSong}
+                handlePlaySound={handlePlaySound}
+                onLongPress={drag}
+                isActive={isActive}
+            />
+        );
+    };
+
     return (
         <View style={styles.songlist}>
             <Animated.View style={[styles.topline, { opacity: topLineOpacity }]} />
@@ -146,28 +161,15 @@ const SongList = ({ handlePlaySound }) => {
                     <Text style={styles.nosongssub}>Swipe left on a song to delete (edit coming soon).</Text>
                 </View>
             ) : null}
-            <ScrollView
-                onScroll={Animated.event(
-                    [{ nativeEvent: { contentOffset: { y: scrollY } } }],
-                    { useNativeDriver: false }
-                )}
+            <DraggableFlatList
+                data={songDetails}
+                renderItem={renderItem}
+                keyExtractor={(item) => item.id}
+                onDragEnd={({ data }) => setSongDetails(data)}
                 scrollEventThrottle={16}
                 contentContainerStyle={{ paddingBottom: 20 }}
                 onContentSizeChange={(width, height) => setContentHeight(height)}
-            >
-                {songDetails.map(({ title, tempo, artist, notes }, index) => (
-                    <Song
-                        key={index}
-                        title={title}
-                        tempo={tempo}
-                        artist={artist}
-                        notes={notes}
-                        onDelete={deleteSong}
-                        handlePlaySound={handlePlaySound}
-                    />
-                ))}
-            </ScrollView>
-
+            />
             <Animated.View style={[styles.bottomline, { opacity: bottomLineOpacity }]} />
         </View>
     )

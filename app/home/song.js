@@ -1,6 +1,6 @@
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Animated, Pressable, Text, View } from "react-native";
 import { Swipeable } from 'react-native-gesture-handler';
 import colors from "../colors.js";
@@ -9,13 +9,22 @@ import styles from "../styles";
 import PlayIcon from "./playicon";
 import StopIcon from "./stopicon.js";
 
-const Song = ({ title, tempo, artist, notes, onDelete, handlePlaySound }) => {
+const Song = ({ title, tempo, artist, notes, onDelete, handlePlaySound, onLongPress, isActive }) => {
 
     const [isPlaying, setIsPlaying] = useState(false);
     const [sound, setSound] = useState();
     const stopFlagRef = useRef(false); // Use a ref for the stop flag
     const soundsRef = useRef([]); // Use a ref to store the array of sounds
     const swipeableRef = useRef(null);
+    const backgroundColor = useRef(new Animated.Value(0)).current;
+
+    useEffect(() => {
+        Animated.timing(backgroundColor, {
+            toValue: isActive ? 1 : 0,
+            duration: 300, // Duration of the animation
+            useNativeDriver: false,
+        }).start();
+    }, [isActive]);
 
     const renderRightActions = (progress, dragX) => {
         const trans = dragX.interpolate({
@@ -42,11 +51,6 @@ const Song = ({ title, tempo, artist, notes, onDelete, handlePlaySound }) => {
     };
 
     const sleep = (delay) => new Promise((resolve) => setTimeout(resolve, delay))
-
-    // const makeSound = async (note) => {
-    //     soundsRef.current.push(sound); // Add the sound to the array
-    //     await PlaySound(note, setSound, loadedSounds);
-    // };
 
     const makeSound = async (note) => {
         handlePlaySound(note);
@@ -78,43 +82,57 @@ const Song = ({ title, tempo, artist, notes, onDelete, handlePlaySound }) => {
         tempo = tempo + " BPM";
     }
 
+    const interpolatedBackgroundColor = backgroundColor.interpolate({
+        inputRange: [0, 1],
+        outputRange: ["white", "#d3d3d3"], // From white to light gray
+    });
+
+    const songWrapperStyle = [
+        styles.songwrapper,
+        { backgroundColor: interpolatedBackgroundColor },
+    ];
+
     if (artist != "") {
         return (
             <Swipeable ref={swipeableRef} renderRightActions={renderRightActions}>
-                <View style={styles.songwrapper}>
-                    <View style={styles.songwrapperleft}>
-                        <Pressable onPress={playNotes}>
-                            {isPlaying ? <StopIcon /> : <PlayIcon />}
-                        </Pressable>
-                        <View >
-                            <Text style={styles.song} numberOfLines={1}>{title}</Text>
-                            <Text style={{ fontSize: 14 }} numberOfLines={1}>{artist}</Text>
+                <Animated.View style={songWrapperStyle}>
+                    <Pressable onLongPress={onLongPress} style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between' }}>
+                        <View style={styles.songwrapperleft}>
+                            <Pressable onPress={playNotes}>
+                                {isPlaying ? <StopIcon /> : <PlayIcon />}
+                            </Pressable>
+                            <View >
+                                <Text style={styles.song} numberOfLines={1}>{title}</Text>
+                                <Text style={{ fontSize: 14 }} numberOfLines={1}>{artist}</Text>
+                            </View>
                         </View>
-                    </View>
-                    <View style={styles.songinfo}>
-                        <Text style={{ fontSize: 13 }} numberOfLines={1}>{tempo}</Text>
-                        <Text style={{ fontSize: 13 }} numberOfLines={1} >{formatnotes}</Text>
-                    </View>
-                </View>
+                        <View style={styles.songinfo}>
+                            <Text style={{ fontSize: 13 }} numberOfLines={1}>{tempo}</Text>
+                            <Text style={{ fontSize: 13 }} numberOfLines={1} >{formatnotes}</Text>
+                        </View>
+                    </Pressable>
+                </Animated.View>
             </Swipeable>
         )
     } else {
         return (
             <Swipeable ref={swipeableRef} renderRightActions={renderRightActions}>
-                <View style={styles.songwrapper}>
-                    <View style={styles.songwrapperleft}>
-                        <Pressable onPress={playNotes}>
-                            {isPlaying ? <StopIcon /> : <PlayIcon />}
-                        </Pressable>
-                        <View >
-                            <Text style={styles.song} numberOfLines={1}>{title}</Text>
+                <Animated.View style={songWrapperStyle}>
+                    <Pressable onLongPress={onLongPress} style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between' }}>
+                        <View style={styles.songwrapperleft}>
+                            <Pressable onPress={playNotes}>
+                                {isPlaying ? <StopIcon /> : <PlayIcon />}
+                            </Pressable>
+                            <View >
+                                <Text style={styles.song} numberOfLines={1}>{title}</Text>
+                            </View>
                         </View>
-                    </View>
-                    <View style={styles.songinfo}>
-                        <Text style={{ fontSize: 13 }} numberOfLines={1}>{tempo}</Text>
-                        <Text style={{ fontSize: 13 }} numberOfLines={1}>{formatnotes}</Text>
-                    </View>
-                </View>
+                        <View style={styles.songinfo}>
+                            <Text style={{ fontSize: 13 }} numberOfLines={1}>{tempo}</Text>
+                            <Text style={{ fontSize: 13 }} numberOfLines={1}>{formatnotes}</Text>
+                        </View>
+                    </Pressable>
+                </Animated.View>
             </Swipeable>
         )
     }

@@ -168,6 +168,10 @@ const styles = StyleSheet.create({
         ...shadow,
     },
 
+    activeSongItem: {
+        backgroundColor: '#d3d3d3', // Slightly darken the background color
+    },
+
     songwrapperleft: {
         flexDirection: 'row',
         alignItems: 'center',
