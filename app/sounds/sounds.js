@@ -77,7 +77,7 @@ const soundFiles = {
 };
 
 const loadedSounds = {};
-const BATCH_SIZE = 1; // Number of sounds to load in each batch
+const BATCH_SIZE = 10; // Number of sounds to load in each batch
 const TIMEOUT_DURATION = 500; // half a second
 
 async function loadSounds() {
@@ -124,4 +124,4 @@ function timeout(ms) {
     });
 }
 
-export { loadSounds, loadedSounds };
+export { loadedSounds, loadSounds };

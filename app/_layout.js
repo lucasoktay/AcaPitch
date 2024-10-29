@@ -12,7 +12,6 @@ import { loadSounds, loadedSounds } from './sounds/sounds.js';
 import ThemesComponent from './themes/themes.js';
 import SignIn from './userauth/signin.js';
 import SignUp from './userauth/signup.js';
-// import Temp from './home/temp.js';
 
 const MyStack = () => {
     const [soundsLoaded, setSoundsLoaded] = useState(false);
