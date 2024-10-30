@@ -17,12 +17,21 @@ const Home = ({ handlePlaySound }) => {
     const [noteMessage, setNoteMessage] = useState("Notes");
     const [sound, setSound] = useState();
     const [savedNotesState, setSavedNotesState] = useState(null);
+    const [isSignedIn, setIsSignedIn] = useState(false);
     const userCollection = firestore().collection('users');
     const songsCollection = firestore().collection('songs');
     const modalizeRef = useRef(null);
     const route = useRoute();
     const { savedNotes } = route.params || {};
     const navigation = useNavigation();
+
+    useEffect(() => {
+        const unsubscribe = auth().onAuthStateChanged(user => {
+            setIsSignedIn(!!user);
+        });
+
+        return () => unsubscribe();
+    }, []);
 
     useEffect(() => {
         if (savedNotes) {
@@ -32,6 +41,10 @@ const Home = ({ handlePlaySound }) => {
     }, [savedNotes]);
 
     const handlePlusButtonPress = () => {
+        if (!isSignedIn) {
+            Alert.alert("Sign in to add songs!");
+            return;
+        }
         setNoteMessage("Notes");
         modalizeRef.current?.open();
     }

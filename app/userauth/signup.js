@@ -1,11 +1,13 @@
 import auth from '@react-native-firebase/auth';
-import { useFocusEffect, useNavigation } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 import * as Font from 'expo-font';
 import { SplashScreen } from 'expo-router';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { Text, TextInput, View } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import colors from '../colors';
 import styles from '../styles';
+import ContinueAsGuest from './continueasguest';
 import SignUpButton from './signupbutton';
 import SwitchToSignIn from './switchtosignin';
 
@@ -55,13 +57,13 @@ const SignUp = ({ soundsLoaded }) => {
         }
     }, [appIsReady, soundsLoaded]);
 
-    useFocusEffect(
-        useCallback(() => {
-            if (appIsReady && soundsLoaded && firstInputRef.current) {
-                firstInputRef.current.focus(); // Focus the input every time the screen is focused
-            }
-        }, [appIsReady, soundsLoaded])
-    );
+    // useFocusEffect(
+    //     useCallback(() => {
+    //         if (appIsReady && soundsLoaded && firstInputRef.current) {
+    //             firstInputRef.current.focus(); // Focus the input every time the screen is focused
+    //         }
+    //     }, [appIsReady, soundsLoaded])
+    // );
 
     useEffect(() => {
         if (appIsReady && soundsLoaded && !initializing) {
@@ -118,6 +120,8 @@ const SignUp = ({ soundsLoaded }) => {
                 </View>
                 <SignUpButton email={email} password={password} clearFields={clearFields} />
                 <SwitchToSignIn />
+                <Text style={{ marginTop: 15, color: colors.lightorange, fontSize: 20, fontFamily: 'RubikRegular' }}>OR</Text>
+                <ContinueAsGuest />
             </View>
         </GestureHandlerRootView>
     );

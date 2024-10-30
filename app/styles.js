@@ -196,12 +196,25 @@ const styles = StyleSheet.create({
     },
 
     nosongs: {
-        fontSize: 18,
+        fontSize: 20,
         fontFamily: 'RubikRegular',
         color: colors.grey,
-        textAlign: 'center',
         marginTop: "50%",
-        marginHorizontal: 20,
+    },
+
+    toaddsongs: {
+        fontSize: 20,
+        fontFamily: 'RubikRegular',
+        color: colors.grey,
+    },
+
+    signintoaddsongs: {
+        fontSize: 20,
+        fontFamily: 'RubikRegular',
+        color: colors.lightred,
+        textDecorationLine: 'underline',
+        textAlignVertical: 'center',
+        marginLeft: 20,
     },
 
     nosongssub: {
@@ -444,6 +457,7 @@ const styles = StyleSheet.create({
         fontSize: 18,
         fontFamily: 'RubikRegular',
         marginTop: 10,
+        textDecorationLine: 'underline'
     },
 
     welcometext: {

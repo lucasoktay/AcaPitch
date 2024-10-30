@@ -59,6 +59,11 @@ const MyStack = () => {
                     {props => <PianoComponent {...props} handlePlaySound={handlePlaySound} />}
                 </Stack.Screen>
                 <Stack.Screen
+                    name="Settings"
+                    component={Settings}
+                    options={{ animation: "slide_from_right" }}
+                />
+                <Stack.Screen
                     name="SignIn"
                     component={SignIn}
                     options={{ animation: "slide_from_right" }}
@@ -66,11 +71,6 @@ const MyStack = () => {
                 <Stack.Screen
                     name="Themes"
                     component={ThemesComponent}
-                    options={{ animation: "slide_from_right" }}
-                />
-                <Stack.Screen
-                    name="Settings"
-                    component={Settings}
                     options={{ animation: "slide_from_right" }}
                 />
                 <Stack.Screen

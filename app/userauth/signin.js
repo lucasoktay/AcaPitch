@@ -1,9 +1,9 @@
-import { useFocusEffect } from '@react-navigation/native';
-import React, { useCallback, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { Text, TextInput, View } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
-// import colors from '../colors';
+import colors from '../colors';
 import styles from '../styles';
+import ContinueAsGuest from './continueasguest';
 import SignInButton from './signinbutton';
 import SwitchToSignUp from './switchtosignup';
 
@@ -11,12 +11,6 @@ const SignIn = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const firstInputRef = useRef(null);
-
-    useFocusEffect(
-        useCallback(() => {
-            firstInputRef.current.focus(); // Focus the input every time the screen is focused
-        }, [])
-    );
 
     const clearFields = () => {
         setEmail('');
@@ -64,6 +58,8 @@ const SignIn = () => {
                 </View>
                 <SignInButton email={email} password={password} clearFields={clearFields} />
                 <SwitchToSignUp />
+                <Text style={{ marginTop: 15, color: colors.lightorange, fontSize: 20, fontFamily: 'RubikRegular' }}>OR</Text>
+                <ContinueAsGuest />
             </View>
         </GestureHandlerRootView>
     );

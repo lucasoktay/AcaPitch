@@ -1,7 +1,8 @@
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
+import { useNavigation } from '@react-navigation/native';
 import React, { useEffect, useRef, useState } from 'react';
-import { Animated, Text, View } from 'react-native';
+import { Animated, Pressable, Text, View } from 'react-native';
 import DraggableFlatList from 'react-native-draggable-flatlist';
 import styles from '../styles';
 import Song from './song';
@@ -9,22 +10,32 @@ import Song from './song';
 const SongList = ({ handlePlaySound }) => {
     const [songDetails, setSongDetails] = useState([]);
     const [songOrder, setSongOrder] = useState([]);
+    const [isSignedIn, setIsSignedIn] = useState(false);
     const [unsubscribe, setUnsubscribe] = useState(null);
     const [topLineOpacity] = useState(new Animated.Value(0));
     const [bottomLineOpacity] = useState(new Animated.Value(0));
     const [contentHeight, setContentHeight] = useState(0);
     const scrollY = useRef(new Animated.Value(0)).current;
+    const navigation = useNavigation();
 
     useEffect(() => {
-        const currentUser = auth().currentUser;
-        if (!currentUser) {
-            console.error('No user is currently signed in');
-            return;
-        }
+        const unsubscribeAuth = auth().onAuthStateChanged(user => {
+            setIsSignedIn(!!user);
+            if (user) {
+                fetchSongs(user.uid);
+            } else {
+                setSongDetails([]);
+                setSongOrder([]);
+            }
+        });
 
+        return () => unsubscribeAuth();
+    }, []);
+
+    const fetchSongs = async (uid) => {
         const userDocRef = firestore()
             .collection('users')
-            .where('uid', '==', currentUser.uid);
+            .where('uid', '==', uid);
 
         const unsubscribeListener = userDocRef.onSnapshot(async (querySnapshot) => {
             if (!querySnapshot.empty) {
@@ -71,13 +82,7 @@ const SongList = ({ handlePlaySound }) => {
         });
 
         setUnsubscribe(() => unsubscribeListener);
-
-        return () => {
-            if (unsubscribe) {
-                unsubscribe();
-            }
-        };
-    }, []);
+    };
 
     useEffect(() => {
         if (contentHeight > 0) {
@@ -187,9 +192,20 @@ const SongList = ({ handlePlaySound }) => {
         <View style={styles.songlist}>
             <Animated.View style={[styles.topline, { opacity: topLineOpacity }]} />
             {songDetails.length === 0 ? (
-                <View style={{ rowGap: 8 }}>
-                    <Text style={styles.nosongs}>Add songs to get started!</Text>
-                    <Text style={styles.nosongssub}>Swipe left on a song to delete (edit coming soon).</Text>
+                <View style={{ alignItems: 'center', justifyContent: 'center' }}>
+                    <Text style={styles.nosongs}>
+                        {isSignedIn ? "Add songs to get started!" : (
+                            <>
+                                <Pressable onPress={() => navigation.navigate('SignIn')}>
+                                    <Text style={styles.signintoaddsongs}>Sign in</Text>
+                                </Pressable>
+                                <View style={{ textAlignVertical: 'center' }}>
+                                    <Text style={styles.toaddsongs}> to add songs! </Text>
+                                </View>
+                            </>
+                        )}
+                    </Text>
+                    <Text style={styles.nosongssub}>{isSignedIn ? "Swipe left on a song to delete (edit coming soon)." : ""}</Text>
                 </View>
             ) : null}
             <DraggableFlatList
