@@ -223,6 +223,7 @@ const styles = StyleSheet.create({
         color: colors.grey,
         textAlign: 'center',
         marginHorizontal: 20,
+        marginTop: 8
     },
 
     songinfo: {

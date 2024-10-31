@@ -6,6 +6,7 @@ import BackButton from "./backbutton";
 import ContactButton from "./contactoption";
 import SignInFromSettings from "./signinfromsettings";
 import SignOutButton from "./signoutbutton";
+// import SupportButton from "./supportoption";
 import ThemesButton from "./themesoption";
 
 const Settings = () => {
@@ -31,8 +32,8 @@ const Settings = () => {
                 <ThemesButton />
                 <View style={styles.divider}></View>
                 <ContactButton />
-                {/* <View style={styles.divider}></View> */}
-                {/* <SupportButton /> */}
+                {/* <View style={styles.divider}></View>
+                <SupportButton /> */}
             </View>
             {isSignedIn ? <SignOutButton /> : <SignInFromSettings />}
         </View >

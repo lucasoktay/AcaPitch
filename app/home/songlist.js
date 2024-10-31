@@ -205,7 +205,7 @@ const SongList = ({ handlePlaySound }) => {
                             </>
                         )}
                     </Text>
-                    <Text style={styles.nosongssub}>{isSignedIn ? "Swipe left on a song to delete (edit coming soon)." : ""}</Text>
+                    <Text style={styles.nosongssub}>{isSignedIn ? "Swipe left to delete songs, hold and drag to reorder." : ""}</Text>
                 </View>
             ) : null}
             <DraggableFlatList
