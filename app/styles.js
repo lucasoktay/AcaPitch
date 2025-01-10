@@ -185,14 +185,10 @@ const styles = StyleSheet.create({
     },
 
     songListScrollView: {
-        flex: 1,
     },
 
     songlist: {
         flexDirection: 'column',
-        overflow: 'scroll',
-        flex: 1,
-        // paddingBottom: 95,
     },
 
     nosongs: {

@@ -117,7 +117,7 @@ const Home = ({ handlePlaySound }) => {
 
                     <Text style={[styles.yoursongs]}>Your Songs</Text>
 
-                    <View style={{ height: "70%" }}>
+                    <View style={{ height: "72%" }}>
                         <SongList handlePlaySound={handlePlaySound} />
                     </View>
 

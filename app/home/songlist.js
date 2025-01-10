@@ -231,7 +231,7 @@ const SongList = ({ handlePlaySound }) => {
                     }
                 }}
                 scrollEventThrottle={16}
-                contentContainerStyle={{ paddingBottom: 20 }}
+                contentContainerStyle={{ paddingBottom: 10 }}
                 onContentSizeChange={(width, height) => setContentHeight(height)}
             />
             <Animated.View style={[styles.bottomline, { opacity: bottomLineOpacity }]} />
