@@ -11,10 +11,13 @@ const NewSong = ({ onSaveButtonPress, onAddNotesButtonPress, noteMessage, noteLi
     const [title, setTitle] = useState('');
     const [artist, setArtist] = useState('');
     const [tempo, setTempo] = useState('');
-    const firstInputRef = useRef(null);
+
+    const titleInputRef = useRef(null);
+    const artistInputRef = useRef(null);
+    const tempoInputRef = useRef(null);
 
     useEffect(() => {
-        firstInputRef.current.focus();
+        titleInputRef.current.focus();
     }, []);
 
     useEffect(() => {
@@ -37,6 +40,7 @@ const NewSong = ({ onSaveButtonPress, onAddNotesButtonPress, noteMessage, noteLi
         onSaveButtonPress({ title, artist, tempo });
     }
 
+
     return (
         <KeyboardAvoidingView
             style={{ flex: 1 }}
@@ -46,20 +50,31 @@ const NewSong = ({ onSaveButtonPress, onAddNotesButtonPress, noteMessage, noteLi
             <View style={styles.addsonginputs}>
 
                 <InputField
-                    name={'Title'}
-                    ref={firstInputRef}
+                    name={'Title (required)'}
+                    ref={titleInputRef}
                     onChangeText={(text) => setTitle(text)}
                     fontSize={24}
+                    artistInputRef={artistInputRef}
+                    titleInputRef={titleInputRef}
+                    tempoInputRef={tempoInputRef}
                 />
                 <InputField
                     name={'Artist'}
+                    ref={artistInputRef}
                     onChangeText={(text) => setArtist(text)}
                     fontSize={16}
+                    titleInputRef={titleInputRef}
+                    artistInputRef={artistInputRef}
+                    tempoInputRef={tempoInputRef}
                 />
                 <InputField
                     name={'Tempo'}
+                    ref={tempoInputRef}
                     onChangeText={(text) => setTempo(text)}
                     fontSize={16}
+                    titleInputRef={titleInputRef}
+                    artistInputRef={artistInputRef}
+                    tempoInputRef={tempoInputRef}
                 />
 
 
