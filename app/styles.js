@@ -2,17 +2,17 @@ import { StyleSheet } from "react-native";
 import colors from "./colors";
 
 const shadow = {
-    shadowColor: colors.lightred,
-    shadowOpacity: .1,
-    shadowRadius: 4,
-    shadowOffset: { height: 1 }
+    shadowColor: colors.grey,
+    shadowOpacity: .4,
+    shadowRadius: 10,
+    shadowOffset: { height: 7 }
 };
 
 const plusshadow = {
     shadowColor: colors.lightred,
-    shadowOpacity: .5,
-    shadowRadius: 4,
-    shadowOffset: { height: 1 }
+    shadowOpacity: .3,
+    shadowRadius: 5,
+    shadowOffset: { height: 2 }
 }
 
 const styles = StyleSheet.create({
@@ -20,6 +20,7 @@ const styles = StyleSheet.create({
         flex: 1,
         paddingTop: 60,
         paddingBottom: 80,
+        // backgroundColor: "white"
         backgroundColor: colors.greyred,
     },
 
@@ -64,7 +65,7 @@ const styles = StyleSheet.create({
         height: .5,
         width: "84%",
         marginLeft: "16%",
-        backgroundColor: colors.mediumlightgrey,
+        backgroundColor: colors.grey,
     },
 
     themesicon: {
@@ -91,7 +92,6 @@ const styles = StyleSheet.create({
         height: 40,
         width: 40,
         borderRadius: 20,
-        overflow: 'hidden',
         flexGrow: 0,
         justifyContent: 'center',
         alignItems: 'center'
@@ -152,24 +152,21 @@ const styles = StyleSheet.create({
 
     songwrapper: {
         height: 64,
-        marginHorizontal: 15,
-        borderWidth: .1,
-        borderLeftWidth: .4,
-        borderColor: colors.lightred,
-        borderRadius: 10,
-        flexGrow: 0,
+        marginHorizontal: 25,
+        borderWidth: .5,
+        borderColor: colors.lightgrey,
+        borderRadius: 8,
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
         padding: 8,
-        marginVertical: 8,
-        marginHorizontal: 20,
-        backgroundColor: "white",
+        overflow: 'visible',
         ...shadow,
+        // backgroundColor: 'white',
     },
 
     activeSongItem: {
-        backgroundColor: '#d3d3d3', // Slightly darken the background color
+        backgroundColor: '#d3d3d3',
     },
 
     songwrapperleft: {
@@ -185,10 +182,13 @@ const styles = StyleSheet.create({
     },
 
     songListScrollView: {
+        overflow: 'visible',
     },
 
     songlist: {
-        flexDirection: 'column',
+        overflow: 'visible',
+        // flexDirection: 'column',
+        // columnGap: 16,
     },
 
     nosongs: {
@@ -319,24 +319,24 @@ const styles = StyleSheet.create({
     },
 
     bottomicons: {
-        width: 64,
-        height: 40,
+        // borderWidth: 2,
+        height: "90%",
+        // borderColor: 'red',
         justifyContent: 'center',
         alignItems: 'center',
-        marginVertical: "2%",
+        marginBottom: "2%",
         marginHorizontal: "12.5%"
     },
 
     playicon: {
-        borderWidth: 2,
-        height: 40,
-        width: 40,
-        // borderColor: colors.lightred,
-        justifyContent: 'center',
-        alignItems: 'center',
-        flexGrow: 0,
-        borderRadius: 50,
-        margin: 8
+        marginHorizontal: 8,
+    },
+
+    songwrapperwrapper: {
+        shadowColor: colors.mediumlightgrey,
+        shadowOpacity: 0.7,
+        shadowRadius: 4,
+        shadowOffset: { height: 3 },
     },
 
     topline: {
@@ -611,13 +611,13 @@ const styles = StyleSheet.create({
         borderWidth: .2,
         borderColor: colors.lightred,
         borderRadius: 10,
-        ...plusshadow,
+        ...shadow,
         width: 80,
         marginLeft: 12,
         color: 'white',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: 'white',
+        backgroundColor: colors.lightred,
     }
 });
 

@@ -3,7 +3,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { useEffect, useRef, useState } from "react";
 import { Animated, Pressable, Text, View } from "react-native";
 import { Swipeable } from 'react-native-gesture-handler';
-import colors from "../colors.js";
 import { stopSound } from "../piano/newmakesound.js";
 import styles from "../styles";
 import PlayIcon from "./playicon";
@@ -43,7 +42,7 @@ const Song = ({ title, tempo, artist, notes, onDelete, handlePlaySound, onLongPr
                         }}
                         style={styles.deletesongbutton}
                     >
-                        <FontAwesomeIcon color={colors.lightred} icon={faTrash} size={24} />
+                        <FontAwesomeIcon color={"black"} icon={faTrash} size={25} />
                     </Pressable>
                 </Animated.View>
             </View >
@@ -94,7 +93,7 @@ const Song = ({ title, tempo, artist, notes, onDelete, handlePlaySound, onLongPr
 
     if (artist != "") {
         return (
-            <Swipeable ref={swipeableRef} renderRightActions={renderRightActions}>
+            <Swipeable ref={swipeableRef} renderRightActions={renderRightActions} style={{ overflow: 'visible' }}>
                 <Animated.View style={songWrapperStyle}>
                     <Pressable onLongPress={onLongPress} style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between' }}>
                         <View style={styles.songwrapperleft}>
@@ -116,7 +115,7 @@ const Song = ({ title, tempo, artist, notes, onDelete, handlePlaySound, onLongPr
         )
     } else {
         return (
-            <Swipeable ref={swipeableRef} renderRightActions={renderRightActions}>
+            <Swipeable ref={swipeableRef} renderRightActions={renderRightActions} style={{ overflow: 'visible' }}>
                 <Animated.View style={songWrapperStyle}>
                     <Pressable onLongPress={onLongPress} style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between' }}>
                         <View style={styles.songwrapperleft}>

@@ -98,7 +98,7 @@ const SongList = ({ handlePlaySound }) => {
 
             if (contentHeight < 581) {
                 showBottomLine = scrollY.interpolate({
-                    inputRange: [contentHeight - 600, 0, 1],
+                    inputRange: [-1, 0, 1],
                     outputRange: [1, 0, 0],
                 });
             }
@@ -158,11 +158,6 @@ const SongList = ({ handlePlaySound }) => {
             console.error('Error deleting song:', error);
         }
     }
-
-    const handleScroll = Animated.event(
-        [{ nativeEvent: { contentOffset: { y: scrollY } } }],
-        { useNativeDriver: true }
-    );
 
     const renderItem = ({ item, drag, isActive }) => {
         return (
@@ -231,8 +226,10 @@ const SongList = ({ handlePlaySound }) => {
                     }
                 }}
                 scrollEventThrottle={16}
-                contentContainerStyle={{ paddingBottom: 10 }}
+                onScrollOffsetChange={(offset) => { scrollY.setValue(offset); }}
+                contentContainerStyle={{ paddingBottom: 10, minHeight: '100%', rowGap: 10, overflow: 'visible', paddingVertical: 10 }}
                 onContentSizeChange={(width, height) => setContentHeight(height)}
+
             />
             <Animated.View style={[styles.bottomline, { opacity: bottomLineOpacity }]} />
         </View>

@@ -9,9 +9,9 @@ const colors = {
     mediumlightgrey: "#D3D3D3",
     bone: "#EDECEA",
     grey: "grey",
-    greyred: "#F8F5F4",
-    // navbar: "#fffbfb",
-    navbar: "white",
+    greyred: "white",
+    navbar: "#fffbfb",
+    // navbar: "blue",
 
     loadingbackground: "#74323c",
     loadingyellow: "#eeaf5c",

@@ -1,18 +1,14 @@
-import { faPlay } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+// import { faPlay } from '@fortawesome/free-solid-svg-icons';
+import { PlayCircle } from 'react-native-feather';
+// import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { View } from "react-native";
-import styles from "../styles";
+import styles from '../styles';
 
 const PlayIcon = () => {
     return (
         <View style={{ flexDirection: 'row', justifyContent: 'flex-end' }}>
             <View style={styles.playicon}>
-                <FontAwesomeIcon
-                    icon={faPlay}
-                    size={22}
-                    style={{ marginLeft: 4 }}
-                // color={colors.lightred}
-                />
+                <PlayCircle strokeWidth={1} stroke={"black"} width={46} height={46} />
             </View>
         </View>
     )

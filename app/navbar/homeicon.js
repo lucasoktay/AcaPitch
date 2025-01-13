@@ -1,6 +1,7 @@
-import { faHouse } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+// import { faHouse } from '@fortawesome/free-solid-svg-icons';
+// import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { useNavigation } from "@react-navigation/native";
+import { Home } from "react-native-feather";
 // import * as Haptics from 'expo-haptics';
 import { Pressable } from "react-native";
 import styles from "../styles.js";
@@ -15,11 +16,7 @@ const HomeIcon = ({ homeColor }) => {
 
     return (
         <Pressable onPress={handlePress} style={styles.bottomicons}>
-            <FontAwesomeIcon
-                icon={faHouse}
-                size={30}
-                color={homeColor}
-            />
+            <Home stroke={homeColor} width={36} height={36} />
         </Pressable>
     )
 }
