@@ -93,7 +93,7 @@ const Song = ({ title, tempo, artist, notes, onDelete, handlePlaySound, onLongPr
 
     if (artist != "") {
         return (
-            <Swipeable ref={swipeableRef} renderRightActions={renderRightActions} style={{ overflow: 'visible' }}>
+            <Swipeable ref={swipeableRef} renderRightActions={renderRightActions} containerStyle={{ overflow: 'visible' }}>
                 <Animated.View style={songWrapperStyle}>
                     <Pressable onLongPress={onLongPress} style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between' }}>
                         <View style={styles.songwrapperleft}>
@@ -115,7 +115,7 @@ const Song = ({ title, tempo, artist, notes, onDelete, handlePlaySound, onLongPr
         )
     } else {
         return (
-            <Swipeable ref={swipeableRef} renderRightActions={renderRightActions} style={{ overflow: 'visible' }}>
+            <Swipeable ref={swipeableRef} renderRightActions={renderRightActions} containerStyle={{ overflow: 'visible' }}>
                 <Animated.View style={songWrapperStyle}>
                     <Pressable onLongPress={onLongPress} style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between' }}>
                         <View style={styles.songwrapperleft}>

@@ -2,10 +2,10 @@ import { StyleSheet } from "react-native";
 import colors from "./colors";
 
 const shadow = {
-    shadowColor: colors.grey,
-    shadowOpacity: .4,
-    shadowRadius: 10,
-    shadowOffset: { height: 7 }
+    shadowColor: colors.mediumlightgrey,
+    shadowOpacity: .6,
+    shadowRadius: 5,
+    shadowOffset: { height: 3 }
 };
 
 const plusshadow = {
@@ -15,13 +15,19 @@ const plusshadow = {
     shadowOffset: { height: 2 }
 }
 
+const saveshadow = {
+    shadowColor: colors.lightred,
+    shadowOpacity: .8,
+    shadowRadius: 8,
+    shadowOffset: { height: 2 }
+}
+
 const styles = StyleSheet.create({
     fullscreen: {
         flex: 1,
         paddingTop: 60,
         paddingBottom: 80,
-        // backgroundColor: "white"
-        backgroundColor: colors.greyred,
+        backgroundColor: "white",
     },
 
     fullscreensettings: {
@@ -105,7 +111,7 @@ const styles = StyleSheet.create({
 
     yoursongs: {
         // color: colors.lightred,
-        fontSize: 24,
+        fontSize: 20,
         marginTop: 12,
         marginHorizontal: 20,
         marginBottom: 8,
@@ -162,7 +168,6 @@ const styles = StyleSheet.create({
         padding: 8,
         overflow: 'visible',
         ...shadow,
-        // backgroundColor: 'white',
     },
 
     activeSongItem: {
@@ -358,7 +363,7 @@ const styles = StyleSheet.create({
     fullscreenpiano: {
         height: "90%",
         marginTop: '5%',
-        backgroundColor: colors.greyred,
+        backgroundColor: "white",
     },
 
     pianoscrollview: {
@@ -469,7 +474,7 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-start',
         alignItems: 'flex-start',
         padding: 20,
-        backgroundColor: colors.greyred,
+        backgroundColor: "white",
     },
     modalContainer: {
         flex: 1,
@@ -497,7 +502,8 @@ const styles = StyleSheet.create({
         height: 200,
         width: "100%",
         marginTop: 20,
-        marginVertical: 10
+        marginVertical: 10,
+        backgroundColor: "white",
     },
 
     bottombuttons: {
@@ -526,7 +532,7 @@ const styles = StyleSheet.create({
         height: 40,
         borderRadius: 10,
         marginBottom: 8,
-        ...plusshadow,
+        ...saveshadow,
     },
 
     noteinfo: {
