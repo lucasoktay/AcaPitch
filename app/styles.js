@@ -318,8 +318,8 @@ const styles = StyleSheet.create({
         right: 0,
         height: 80,
         flexDirection: 'row',
-        justifyContent: 'center',
-        alignItems: 'flex-start',
+        justifyContent: 'space-around',
+        alignItems: 'center',
         zIndex: 1000
     },
 
@@ -330,7 +330,6 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         marginBottom: "2%",
-        marginHorizontal: "12.5%"
     },
 
     playicon: {

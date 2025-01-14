@@ -74,6 +74,7 @@ const soundFiles = {
     'A#6': require('../../assets/sounds/A-6.wav'),
     'B6': require('../../assets/sounds/B6.wav'),
     'C7': require('../../assets/sounds/C7.wav'),
+    'tick': require('../../assets/sounds/tick.mp3'),
 };
 
 const loadedSounds = {};

@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import AddNotes from './addnotes/addnotes.js';
 import Home from './home/home.js';
 import LoadingScreen from './loading/loadingscreen.js';
+import MetronomeComponent from './metronome/metronome.js';
 import NewSong from './newsong/newsong.js';
 import PlaySound from './piano/newmakesound.js';
 import PianoComponent from './piano/piano.js';
@@ -83,6 +84,7 @@ const MyStack = () => {
                     {props => <AddNotes {...props} handlePlaySound={handlePlaySound} />}
                 </Stack.Screen>
                 <Stack.Screen name="NewSong" component={NewSong} />
+                <Stack.Screen name="Metronome" component={MetronomeComponent} />
             </Stack.Navigator>
         </NavigationContainer>
     );

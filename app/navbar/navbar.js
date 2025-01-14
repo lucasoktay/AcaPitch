@@ -4,6 +4,7 @@ import { View } from "react-native";
 import colors from '../colors.js';
 import styles from '../styles.js';
 import HomeIcon from "./homeicon";
+import MetronomeIcon from './metronomeicon';
 import PianoIcon from "./pianoicon";
 
 const NavBar = () => {
@@ -21,11 +22,13 @@ const NavBar = () => {
 
     const pianoColor = currentRoute === 'Piano' ? colors.lightred : colors.darkgrey;
     const homeColor = currentRoute === 'Home' ? colors.lightred : colors.darkgrey;
+    const metronomeActive = currentRoute === 'Metronome' ? true : false;
 
     return (
         <View style={styles.navbar}>
             <HomeIcon homeColor={homeColor} />
             <PianoIcon pianoColor={pianoColor} />
+            <MetronomeIcon metronomeActive={metronomeActive} />
         </View>
     )
 }
