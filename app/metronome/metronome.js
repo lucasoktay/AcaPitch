@@ -1,21 +1,29 @@
-import { Text, TouchableOpacity, View } from 'react-native';
-import NavBar from '../navbar/navbar.js';
-import useMetronome from './usemetronome';
+import React, { useEffect } from 'react';
+import { Button, View } from 'react-native';
+import RNMetronome, { metronomeEmitter } from '../../modules/metronome';
 
-const MetronomeComponent = () => {
-    const { isPlaying, start, stop } = useMetronome(120); // 120 BPM
+const Metronome = () => {
+    useEffect(() => {
+        const subscription = metronomeEmitter.addListener('onTick', () => {
+            console.log('Tick!');
+        });
+        return () => {
+            subscription.remove();
+        };
+    }, []);
 
     return (
-        <View style={{ height: "100%", justifyContent: "center", alignItems: "center" }}>
-            <NavBar />
-            <Text>Metronome</Text>
-            <TouchableOpacity
-                style={{ height: 50, width: 50, backgroundColor: "blue" }}
-                onPress={() => isPlaying ? stop() : start()}
-                title={isPlaying ? "Stop" : "Start"}
+        <View>
+            <Button
+                title="Start"
+                onPress={() => RNMetronome.start(120)}
+            />
+            <Button
+                title="Stop"
+                onPress={() => RNMetronome.stop()}
             />
         </View>
     );
 };
 
-export default MetronomeComponent;
+export default Metronome;

@@ -1,0 +1,14 @@
+{
+    "name": "metronome",
+    "version": "1.0.0",
+    "description": "Metronome native module",
+    "main": "build/index.js",
+    "types": "build/index.d.ts",
+    "scripts": {
+      "build": "tsc"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "MIT"
+  }
+  
